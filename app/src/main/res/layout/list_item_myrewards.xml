@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="5.0dip">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:layout_weight="1.0">
+            <TextView android:id="@+id/dateTv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22/02/2018" android:fontFamily="@font/lato" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:layout_weight="1.0">
+            <TextView android:id="@+id/rewardTv" android:textSize="13.0sp" android:textStyle="bold" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:fontFamily="@font/lato" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:layout_weight="1.0">
+            <TextView android:id="@+id/earningTv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:fontFamily="@font/lato" android:drawableLeft="@drawable/coin_icon_16x16" android:drawablePadding="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="#ffd6d6db" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" />
+</LinearLayout>

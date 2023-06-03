@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:orientation="horizontal"
+    android:background="@color/darkBlue"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false">
+
+    <LinearLayout android:orientation="vertical" android:id="@+id/myContestLayout" android:paddingLeft="10dp" android:paddingTop="3dp" android:paddingRight="5dp" android:paddingBottom="3dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.1">
+        <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="right" android:visibility="gone" android:layout_width="5dp" android:layout_height="5dp" android:layout_marginRight="30dp"/>
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/contestIv"
+            android:padding="4dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:tint="@color/colorBottomNavigationInactiveColored"
+            android:src="@drawable/ic_inr"/>
+        <TextView  android:id="@+id/contestTv" android:textSize="12sp" android:textColor="@color/colorBottomNavigationInactiveColored" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Earn"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="vertical" android:id="@+id/homeLayout" android:paddingLeft="5dp" android:paddingTop="3dp" android:paddingRight="5dp" android:paddingBottom="3dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.1">
+        <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="right" android:visibility="gone" android:layout_width="5dp" android:layout_height="5dp" android:layout_marginRight="30dp"/>
+
+        <ImageView
+            android:id="@+id/homeIv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:tint="@color/colorBottomNavigationActiveColored"
+            android:src="@drawable/ic_play" />
+        <TextView  android:id="@+id/homeTv" android:textSize="12sp" android:textColor="@color/colorBottomNavigationActiveColored" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Play"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="vertical" android:id="@+id/myAccountLayout" android:paddingLeft="5dp" android:paddingTop="3dp" android:paddingRight="10dp" android:paddingBottom="3dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.1">
+        <de.hdodenhof.circleimageview.CircleImageView android:layout_gravity="right" android:visibility="gone" android:layout_width="5dp" android:layout_height="5dp" android:layout_marginRight="30dp"/>
+        <ImageView android:layout_gravity="center" android:id="@+id/accountIv" android:padding="5dp" android:layout_width="32dp" android:layout_height="32dp" android:tint="@color/colorBottomNavigationInactiveColored" android:src="@drawable/ic_me"/>
+        <TextView android:id="@+id/accountTv" android:textSize="12sp" android:textColor="@color/colorBottomNavigationInactiveColored" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Me"/>
+    </LinearLayout>
+
+</LinearLayout>
+

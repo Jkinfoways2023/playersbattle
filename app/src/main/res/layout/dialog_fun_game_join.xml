@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10.0dip"
+    app:cardCornerRadius="20.0dip"
+    app:cardPreventCornerOverlap="true">
+
+    <LinearLayout
+        android:id="@id/mainRL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@id/topHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorAccent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/lato_black"
+                android:text="Join Game"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#ffffffff" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@id/noteUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textError"
+            android:layout_marginLeft="35.0dip"
+            android:layout_marginTop="20.0dip"
+            android:layout_marginRight="35.0dip"
+            android:layout_marginBottom="2.0dip"
+            android:fontFamily="@font/lato"
+            android:text="Note: Are you sure you want to play this game." />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteUsername"
+            android:layout_margin="15.0dip"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:padding="10.0dip">
+
+                <Button
+                    android:id="@id/cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background1"
+                    android:backgroundTint="@color/green_A700"
+                    android:fontFamily="@font/lato"
+                    android:text="Cancel"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:padding="10.0dip">
+
+                <Button
+                    android:id="@id/next"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background1"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/lato"
+                    android:text="Next"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

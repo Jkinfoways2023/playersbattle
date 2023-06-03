@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="00.0dip"
+    app:cardCornerRadius="0.0dip"
+    app:cardPreventCornerOverlap="true">
+
+    <RelativeLayout
+        android:id="@id/mainRL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteUsername"
+            android:layout_margin="15.0dip"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:padding="10.0dip">
+
+                <Button
+                    android:id="@id/cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background1"
+                    android:backgroundTint="#ff757575"
+                    android:fontFamily="@font/lato"
+                    android:text="Cancel"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:padding="10.0dip">
+
+                <Button
+                    android:id="@id/next"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background1"
+                    android:backgroundTint="@color/blueRandom"
+                    android:fontFamily="@font/lato"
+                    android:text="Next"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15.0sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@id/topHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/blueRandom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/lato_black"
+                android:text="Register Your Game"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="#ffffffff" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText"
+            android:layout_marginLeft="38.0dip"
+            android:layout_marginBottom="2.0dip"
+            android:fontFamily="@font/lato"
+            android:text="Enter Game Username"
+            android:textColor="#ffff0000"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@id/noteUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textError"
+            android:layout_marginLeft="35.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_marginRight="35.0dip"
+            android:layout_marginBottom="2.0dip"
+            android:fontFamily="@font/lato"
+            android:text="Note: Make sure you enter your Game Username (IGN) and not Character ID." />
+
+        <TextView
+            android:id="@+id/accessCodeInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topHeader"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginTop="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:text="@string/private_match_text"
+            android:textSize="15.0sp"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/accessCodeView"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="7.0dip">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/gameID"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35.0dip"
+                android:layout_marginTop="15.0dip"
+                android:layout_marginRight="35.0dip"
+                android:fontFamily="@font/lato"
+                android:hint="Game Username"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:paddingLeft="7.0dip" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/accessCodeView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/accessCodeInfoText"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/accessCode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35.0dip"
+                android:layout_marginTop="15.0dip"
+                android:layout_marginRight="35.0dip"
+                android:fontFamily="@font/lato"
+                android:hint="Access Code"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingLeft="7.0dip" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

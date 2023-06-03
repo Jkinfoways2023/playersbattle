@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/appbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/BottomButtonsLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/myButton"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:clickable="true"
+                android:fontFamily="@font/lato_black"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="MY NUMBER"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/joinButton"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/blueRandom"
+                android:clickable="true"
+                android:fontFamily="@font/lato_black"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="REGISTER NOW"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/BottomButtonsLL">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/lotteryImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/lottery" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/lotteryImage"
+                        android:background="#b3ffffff"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="Closes in - "
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/timeLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_black"
+                            android:text="1d : 5h : 44m : 4s"
+                            android:textColor="#000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/totalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/bid_image_button"
+                        android:backgroundTint="#b3ffffff"
+                        android:drawablePadding="3dp"
+                        android:fontFamily="@font/lato"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="Total Joined: 8"
+                        android:textColor="#000"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="Rs 500 Paytm Cash - Right Bet Wins"
+                        android:textColor="@color/blueRandom"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/rupee_2" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="13dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:text="x1 Winner"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/prizeText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/lato"
+                                android:text="Rs 500 Paytm Cash"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/bid2" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="13dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:text="Play for:"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/entryFeeText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:drawableLeft="@drawable/coin_icon_16x16"
+                                android:drawablePadding="2dp"
+                                android:fontFamily="@font/lato"
+                                android:text="12"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/result" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="13dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:text="Result on:"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/resultDateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/lato"
+                                android:text="24/02/2019 at 12:30 PM"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ledByLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/cup" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="13dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:text="Currently led by:"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/leadNameText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/lato"
+                                android:text="Husen Memon"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="#fff"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/howtoplaytext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="How to Play?"
+                        android:textColor="@color/blueRandom"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <WebView
+                    android:id="@+id/howtoplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/lato"
+                    android:lineSpacingExtra="3dp"
+                    android:text="• You have to Bid Low and Unique to Win.\10• For your bid to be winning bid, it has to be lowest and unique from all the participants.\10• Click on the BID NOW Button below.\10• Try to Enter Low Bid but make sure it stands out i.e., unique from other Bidders.\10• If your bid matches the bid from any other bidder than your bid becomes not-unique so it will not be a winning bid. In such cases, you need to retry.\10• You can check the live status of your bids under MY BIDS Section."
+                    android:textSize="15sp"
+                    tools:ignore="WebViewLayout" />
+
+                <RelativeLayout
+                    android:id="@+id/RLParticipants"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/aboutMatchListLL"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="15.0dip">
+
+                    <TextView
+                        android:id="@+id/participants"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="Participants"
+                        android:textColor="@color/blueRandom"
+                        android:textSize="17.0dip" />
+
+                    <TextView
+                        android:id="@+id/refreshLVBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="20.0dip"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/ic_refresh"
+                        android:drawableTint="#ff000000"
+                        android:fontFamily="@font/lato_black"
+                        android:foreground="?android:selectableItemBackground"
+                        android:gravity="center"
+                        android:text=" Refresh"
+                        android:textSize="15.0dip"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/LLloadBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RLParticipants"
+                    android:layout_marginTop="17.0dip"
+                    android:layout_marginBottom="15.0dip"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/loadBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_refresh"
+                        android:gravity="center"
+                        android:paddingRight="15.0dip"
+                        android:text=" Load Participants"
+                        android:textColor="@color/blueRandom" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/noParticipantsText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LLloadBtn"
+                    android:layout_marginTop="17.0dip"
+                    android:layout_marginBottom="15.0dip"
+                    android:fontFamily="@font/lato"
+                    android:gravity="center"
+                    android:text="No participants yet."
+                    android:textSize="15.0sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listParticipants"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RLParticipants"
+                    android:layout_marginLeft="18.0dip"
+                    android:layout_marginTop="17.0dip"
+                    android:layout_marginBottom="15.0dip"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/mainCard" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:foreground="?android:attr/selectableItemBackground" app:cardCornerRadius="5dp" app:cardPreventCornerOverlap="true">
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/lotteryBanner" android:paddingLeft="5dp" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="0dp" android:layout_height="150dp" android:src="@drawable/lottery" android:scaleType="fitXY" android:layout_weight="1"
+                android:contentDescription="TODO" />
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:paddingTop="10dp" android:paddingBottom="10dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="5dp" android:layout_weight="1.2">
+                <TextView android:textSize="17sp" android:textStyle="bold" android:textColor="@color/blueRandom" android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="One Lucky Winner" android:fontFamily="@font/lato"/>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+                    <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Draw On: " android:fontFamily="@font/lato"/>
+                    <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/blueRandom" android:id="@+id/date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Husen Memon" android:fontFamily="@font/lato"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+                    <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Won Prize: " android:fontFamily="@font/lato"/>
+                    <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/blueRandom" android:id="@+id/prize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Husen Memon" android:fontFamily="@font/lato"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+                    <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Won By: " android:fontFamily="@font/lato"/>
+                    <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/blueRandom" android:id="@+id/winner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Husen Memon" android:fontFamily="@font/lato"/>
+                </LinearLayout>
+                <LinearLayout android:visibility="gone" android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+                    <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lucky No: " android:fontFamily="@font/lato"/>
+                    <TextView android:textSize="15sp" android:textStyle="bold" android:textColor="@color/blueRandom" android:id="@+id/winningNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11" android:fontFamily="@font/lato"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

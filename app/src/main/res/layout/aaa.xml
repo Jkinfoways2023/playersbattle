@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/prizePoolLL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/down_arrow"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Entry Fee"
+                android:textColor="#ff7c7c7c"
+                android:textSize="12.0sp" />
+
+            <TextView
+                android:id="@+id/entryFee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/coin_icon_16x16"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/lato_black"
+                android:text="500"
+                android:textColor="@color/darkBlue"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Winning Amt"
+                android:textColor="#ff7c7c7c"
+                android:textSize="12.0sp" />
+
+            <TextView
+                android:id="@+id/winningAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14.0dip"
+                android:drawableLeft="@drawable/coin_icon_16x16"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/lato_black"
+                android:text="10"
+                android:textColor="@color/darkBlue"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Game Type"
+                android:textColor="#ff7c7c7c"
+                android:textSize="12.0sp" />
+
+            <TextView
+                android:id="@+id/gameType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14.0dip"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/lato_black"
+                android:text="Game Type"
+                android:textColor="@color/darkBlue"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="7.5dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_top_corner_red">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginTop="15.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:elevation="5.0dip"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5.0dip"
+                    android:layout_weight="0.9"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/srNoWinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="#"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5.0dip"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/playerNameWinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:fontFamily="@font/lato_black"
+                        android:text="Player Name"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5.0dip"
+                    android:layout_weight="0.9"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/totalKillsWinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="Winning Amt"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5.0dip"
+                    android:layout_weight="0.8"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/totalAmountWonWinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_black"
+                        android:text="Score"
+                        android:textColor="#ffffffff"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
+</LinearLayout>

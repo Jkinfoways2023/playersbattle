@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/grey_10"
+    tools:context="com.GlaDius.war.activity.ProductActivity">
+
+    <com.facebook.shimmer.ShimmerFrameLayout android:layout_gravity="center" android:orientation="vertical" android:id="@+id/shimmer_view_container" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip">
+            <include layout="@layout/list_item_shimmer_live" />
+            <include layout="@layout/list_item_shimmer_live" />
+            <include layout="@layout/list_item_shimmer_live" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_toolbar_gradient"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="enterAlways|scroll"
+        app:theme="@style/MyToolbarTheme">
+
+        <TextView
+            android:textSize="18.0dip"
+            android:textStyle="bold"
+            android:textColor="#ffffffff"
+            android:layout_gravity="center"
+            android:id="@+id/tool_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:text="@string/shop_now"
+            android:layout_weight="3.0" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/noProductLL" android:background="@color/colorAccent" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:src="@drawable/no_content" />
+        <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="No product found!" />
+        <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="There are no product found currently.\nCheck back in some time..." android:fontFamily="@font/lato" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView android:id="@+id/nestedScrollView" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:id="@+id/productLL" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:scrollbars="vertical" android:scrollingCache="true"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

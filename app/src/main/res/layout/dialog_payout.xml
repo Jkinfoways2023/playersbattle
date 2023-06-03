@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="00.0dip"
+    app:cardCornerRadius="0.0dip"
+    app:cardPreventCornerOverlap="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mainRL" android:layout_width="match_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/topHeader" android:background="@color/blueRandom" android:layout_width="fill_parent" android:layout_height="?actionBarSize">
+            <TextView android:id="@+id/titleTv" android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Redeem Won Balance" android:layout_centerInParent="true" android:fontFamily="@font/lato_black" />
+        </RelativeLayout>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/editText1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:layout_below="@+id/topHeader">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/nameEt" android:paddingLeft="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="35.0dip" android:singleLine="true" android:maxLength="20" android:inputType="textPersonName" android:imeOptions="actionNext" android:fontFamily="@font/lato" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/editText2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:layout_marginTop="15dp" android:layout_below="@+id/editText1">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/idEt" android:paddingLeft="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="35.0dip" android:singleLine="true" android:inputType="none" android:imeOptions="actionDone" android:fontFamily="@font/lato" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView android:id="@+id/noteTv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Note: You can redeem only winning amount." android:layout_marginLeft="35.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="35.0dip" android:layout_marginBottom="2.0dip" android:layout_below="@+id/editText2" android:fontFamily="@font/lato" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:layout_below="@+id/noteTv"
+            android:baselineAligned="false">
+            <LinearLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <androidx.appcompat.widget.AppCompatButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/closeBt" android:background="@drawable/background1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Cancel" android:textAllCaps="true" android:fontFamily="@font/lato" android:backgroundTint="#ff757575" />
+            </LinearLayout>
+            <LinearLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <androidx.appcompat.widget.AppCompatButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/nextBt" android:background="@drawable/background1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Proceed" android:textAllCaps="true" android:fontFamily="@font/lato" android:backgroundTint="@color/blueRandom" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

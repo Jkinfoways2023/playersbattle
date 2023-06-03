@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    tools:context="com.GlaDius.war.activity.MyRewardsActivity">
+
+    <include layout="@layout/appbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/referralLL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_marginBottom="7.5dip" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="2.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="10.0dip">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green_A700">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:layout_marginRight="5.0dip"
+                            android:layout_marginBottom="10.0dip"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="My Rewards Summary"
+                            android:textAllCaps="true"
+                            android:textColor="@color/darkBlue" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:gravity="center"
+                                android:text="Rewards"
+                                android:textColor="#ff7c7c7c"
+                                android:textSize="12.0sp" />
+
+                            <TextView
+                                android:id="@+id/rewardsCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10.0dip"
+                                android:fontFamily="@font/lato_black"
+                                android:text="5"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="15.0sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato"
+                                android:gravity="center"
+                                android:text="Earnings"
+                                android:textColor="#ff7c7c7c"
+                                android:textSize="12.0sp" />
+
+                            <TextView
+                                android:id="@+id/earningsCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10.0dip"
+                                android:drawableLeft="@drawable/coin_icon_16x16"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/lato_black"
+                                android:text="50"
+                                android:textColor="@color/darkBlue"
+                                android:textSize="15.0sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="7.5dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="10.0dip">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green_A700">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:layout_marginRight="5.0dip"
+                            android:layout_marginBottom="10.0dip"
+                            android:fontFamily="@font/lato_black"
+                            android:gravity="center"
+                            android:text="My Rewards List"
+                            android:textAllCaps="true"
+                            android:textColor="@color/darkBlue" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green_A400">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5.0dip"
+                            android:layout_marginTop="15.0dip"
+                            android:layout_marginRight="5.0dip"
+                            android:layout_marginBottom="15.0dip"
+                            android:elevation="5.0dip"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_margin="5.0dip"
+                                android:layout_weight="1.0"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/srNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_black"
+                                    android:text="Date"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="15.0sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_margin="5.0dip"
+                                android:layout_weight="1.0"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/playerName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/lato_black"
+                                    android:text="Rewards"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="15.0sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_margin="5.0dip"
+                                android:layout_weight="1.0"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/totalAmountWon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/lato_black"
+                                    android:text="Earnings"
+                                    android:textColor="#ffffffff"
+                                    android:textSize="15.0sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/noRewardsLL"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/noRewardsText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10.0dip"
+                                    android:layout_marginTop="15.0dip"
+                                    android:layout_marginRight="10.0dip"
+                                    android:layout_marginBottom="15.0dip"
+                                    android:text="No Rewards Yet." />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rewardsListLL"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="visible">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerView"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:clipToPadding="false" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

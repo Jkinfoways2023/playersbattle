@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="18dp"
+        android:background="@drawable/grad1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/gameType"
+            android:textSize="15.0dip"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_gravity="center"
+            android:text="1 V 1 Battle"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:textSize="23.0dip"
+            android:textStyle="bold"
+            android:textColor="@color/orange_A100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:text="Champions Battle"/>
+
+        <TextView
+            android:id="@+id/entryFee"
+            android:textSize="14.0dip"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:layout_gravity="center"
+            android:text="Entry Fee:$15"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/coin_bg"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/winningAmount"
+                android:textSize="14.0dip"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:layout_gravity="center"
+                android:text="Win : 16"
+                android:paddingStart="15dp"
+                android:paddingVertical="6dp"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/coin_icon"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="15dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

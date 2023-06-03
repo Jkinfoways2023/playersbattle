@@ -1,0 +1,121 @@
+{
+  "project_info": {
+    "project_number": "81022277040",
+    "project_id": "grind-battle-9668a",
+    "storage_bucket": "grind-battle-9668a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81022277040:android:44f53008fe4de92f7eb275",
+        "android_client_info": {
+          "package_name": "com.tournaments.grind_battle.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81022277040-vchc1qfr1pm3lanjs1aec62qgrjhg5p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tournaments.grind_battle.games",
+            "certificate_hash": "3307b0603cec3841f320572efbe111d6e9a22725"
+          }
+        },
+        {
+          "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMQgYDQKQ31htKRiKCFHdnVjdVefNkhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81022277040:android:1bc817dcbcfd56fc7eb275",
+        "android_client_info": {
+          "package_name": "com.tournaments.grind_battle.games_master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81022277040-dmpkt9mfiei9imennrd780o6lq9g8vch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tournaments.grind_battle.games_master",
+            "certificate_hash": "05fec1b26aeba27b1d9263938fd023cb8d9c759a"
+          }
+        },
+        {
+          "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMQgYDQKQ31htKRiKCFHdnVjdVefNkhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81022277040:android:193be31b45cdcb157eb275",
+        "android_client_info": {
+          "package_name": "com.tournaments.grindbattles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81022277040-oih4pv2qk1impkbe32q86er868kggliv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tournaments.grindbattles",
+            "certificate_hash": "3307b0603cec3841f320572efbe111d6e9a22725"
+          }
+        },
+        {
+          "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMQgYDQKQ31htKRiKCFHdnVjdVefNkhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81022277040-hpfc0c1k8d6srs14g2nmdnabmj5bb252.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

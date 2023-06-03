@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7dp">
+    <LinearLayout android:orientation="vertical" android:id="@+id/mainLL" android:background="@drawable/dotted_box" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="5dp">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="5dp" android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" android:textSize="15sp" android:textStyle="bold" android:id="@+id/nameTv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="• Salman" android:fontFamily="@font/lato"/>
+                <LinearLayout android:orientation="horizontal" android:id="@+id/slotLL" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+                    <TextView android:textSize="17sp" android:textStyle="bold" android:layout_gravity="center" android:id="@+id/slot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Team Slot: " android:fontFamily="@font/lato"/>
+                    <TextView android:textSize="17sp" android:textStyle="bold" android:layout_gravity="center" android:id="@+id/slotNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="24" android:fontFamily="@font/lato"/>
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@+id/editRL" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:foreground="?android:attr/selectableItemBackground">
+                <com.GlaDius.war.views.VerticalTextView
+                    android:textSize="15sp" android:textStyle="bold" android:textColor="#fff" android:gravity="center" android:layout_gravity="center" android:id="@+id/editBtn" android:background="#555151" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="EDIT" android:rotation="180" android:fontFamily="@font/lato" android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

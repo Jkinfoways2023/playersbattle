@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" app:cardCornerRadius="7.0dip" app:cardPreventCornerOverlap="true">
+        <RelativeLayout android:id="@+id/mainRL" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@+id/topHeader" android:background="@color/blueRandom" android:layout_width="fill_parent" android:layout_height="?actionBarSize">
+                <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textSize="25.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Instructions" android:layout_centerInParent="true" android:fontFamily="@font/lato_black" />
+            </RelativeLayout>
+            <TextView android:textSize="17.0sp" android:id="@+id/heading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="No New PUBG Accounts Allowed" android:layout_below="@+id/topHeader" android:layout_centerInParent="true" android:fontFamily="@font/lato_black" />
+            <TextView android:textSize="15.0sp" android:id="@+id/rules" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:text="Default match notice" android:layout_below="@+id/heading" android:fontFamily="@font/lato" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:layout_below="@+id/rules">
+                <LinearLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <Button android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/cancel" android:background="@drawable/background1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Cancel" android:textAllCaps="true" android:fontFamily="@font/lato" android:backgroundTint="#ff757575" />
+                </LinearLayout>
+                <LinearLayout android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <Button android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/reset" android:background="@drawable/background1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="I AGREE" android:textAllCaps="true" android:fontFamily="@font/lato" android:backgroundTint="@color/blueRandom" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
