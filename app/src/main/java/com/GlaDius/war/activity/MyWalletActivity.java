@@ -339,19 +339,20 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         if (walletSt.equalsIgnoreCase("PayTm")) {
             remarkSt = "Added From PayTm";
-            generateCheckSum(amount);
+            //generateCheckSum(amount);
+            razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("PayPal")) {
             remarkSt = "Added From PayPal";
-            onBraintreeSubmit();
+            //onBraintreeSubmit();
+            razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("GooglePay")) {
             remarkSt = "Added From GooglePay";
-            payUsingGooglePay(amount, Config.UPI_ID, name, "Added From GooglePay");
+            //payUsingGooglePay(amount, Config.UPI_ID, name, "Added From GooglePay");
+            razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("UPI")) {
             remarkSt = "Added From BHIM UPI";
-            payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
-        } else if (walletSt.equalsIgnoreCase("RP")) {
-            remarkSt = "Added From RP";
-            payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
+            //payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
+            razorpay_payment(amount);
         } else {
             Toast.makeText(this, "Unavailable This Option", Toast.LENGTH_SHORT).show();
         }
@@ -1083,6 +1084,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             JSONObject options = new JSONObject();
 
             options.put("name", "Test Payment");
+            options.put("order_id", "order_id");
             options.put("currency", "INR");
 
             double total = Double.parseDouble(amount);
@@ -1092,11 +1094,11 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             //String b_number[] = SharedHelper.getKey(activity,Constant.USER_NUMBER).split(",");
 
             JSONObject preFill = new JSONObject();
-            //preFill.put("email", SharedHelper.getKey(activity, Constant.USER_EMAIL));
-            //preFill.put("contact", "+"+b_number[0]+b_number[1]);
+            preFill.put("email", "jaypatel@gmail.com");
+            preFill.put("contact", "+918866260677");
 
             options.put("prefill", preFill);
-            //checkout.open(activity, options);
+            checkout.open(this, options);
 
         } catch(Exception e) {
             Log.e(TAG, "Error in starting Razorpay Checkout", e);
@@ -1107,7 +1109,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     public void onPaymentSuccess(String razorpayPaymentID) {
         //transaction_id = razorpayPaymentID;
         //addBalance();
-        //Toast.makeText(this, "Payment successfully done! " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Payment successfully done! " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
     }
 
     @Override
