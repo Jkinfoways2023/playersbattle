@@ -332,4 +332,6 @@
     <string name="instagram">Instagram</string>
     <string name="twitter">Twitter</string>
 
+    <string name="razorpay_payment_key">rzp_test_3NNeByYnEeTV7m</string>
+
 </resources>

@@ -1,5 +1,7 @@
 package com.GlaDius.war.activity;
 
+import static android.content.ContentValues.TAG;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -80,8 +82,10 @@ import com.GlaDius.war.paytm.Paytm;
 import com.GlaDius.war.session.SessionManager;
 import com.GlaDius.war.utils.ExtraOperations;
 import com.GlaDius.war.utils.MySingleton;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 
-public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentTransactionCallback {
+public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentTransactionCallback, PaymentResultListener {
 
     private AppBarLayout app_bar_layout;
     private CollapsingToolbarLayout collapsing_toolbar;
@@ -344,6 +348,9 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             payUsingGooglePay(amount, Config.UPI_ID, name, "Added From GooglePay");
         } else if (walletSt.equalsIgnoreCase("UPI")) {
             remarkSt = "Added From BHIM UPI";
+            payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
+        } else if (walletSt.equalsIgnoreCase("RP")) {
+            remarkSt = "Added From RP";
             payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
         } else {
             Toast.makeText(this, "Unavailable This Option", Toast.LENGTH_SHORT).show();
@@ -1068,5 +1075,47 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             getSupportFragmentManager().popBackStack();
         }
 
+    }
+
+    private void razorpay_payment(String amount){
+        Checkout checkout = new Checkout();
+        try {
+            JSONObject options = new JSONObject();
+
+            options.put("name", "Test Payment");
+            options.put("currency", "INR");
+
+            double total = Double.parseDouble(amount);
+            total = total * 100;
+            options.put("amount", total);
+
+            //String b_number[] = SharedHelper.getKey(activity,Constant.USER_NUMBER).split(",");
+
+            JSONObject preFill = new JSONObject();
+            //preFill.put("email", SharedHelper.getKey(activity, Constant.USER_EMAIL));
+            //preFill.put("contact", "+"+b_number[0]+b_number[1]);
+
+            options.put("prefill", preFill);
+            //checkout.open(activity, options);
+
+        } catch(Exception e) {
+            Log.e(TAG, "Error in starting Razorpay Checkout", e);
+        }
+    }
+
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID) {
+        //transaction_id = razorpayPaymentID;
+        //addBalance();
+        //Toast.makeText(this, "Payment successfully done! " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPaymentError(int code, String response) {
+        try {
+            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("OnPaymentError", "Exception in onPaymentError", e);
+        }
     }
 }
