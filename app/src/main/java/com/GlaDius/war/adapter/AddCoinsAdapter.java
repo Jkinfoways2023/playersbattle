@@ -58,7 +58,18 @@ public class AddCoinsAdapter extends RecyclerView.Adapter<AddCoinsAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 try {
-                    ((MyWalletActivity)context).Add(payoutPojo.getTitle(), payoutPojo.getSubtitle(), payoutPojo.getMessage(), payoutPojo.getAmount(), payoutPojo.getCoins(), payoutPojo.getId(), payoutPojo.getStatus(), payoutPojo.getImage(),payoutPojo.getType(),payoutPojo.getCurrency());
+                    ((MyWalletActivity)context).Add(
+                            payoutPojo.getTitle(),
+                            payoutPojo.getSubtitle(),
+                            payoutPojo.getMessage(),
+                            payoutPojo.getAmount(),
+                            payoutPojo.getCoins(),
+                            payoutPojo.getId(),
+                            payoutPojo.getStatus(),
+                            payoutPojo.getImage(),
+                            payoutPojo.getType(),
+                            payoutPojo.getCurrency()
+                    );
                 }catch (NullPointerException e){
                     e.printStackTrace();
                 }

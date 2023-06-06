@@ -285,6 +285,9 @@
                 <action android:name="com.onesignal.NotificationExtender" />
             </intent-filter>
         </service>-->
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="@string/razorpay_payment_key" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

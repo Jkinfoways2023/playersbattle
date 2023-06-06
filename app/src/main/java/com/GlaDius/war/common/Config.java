@@ -43,7 +43,8 @@ public class Config {
     public static final String DISCORD_CHANNEL_ID = "https://discord.gg/6qMeuX";
 
     // UPI Payment Id
-    public static final String WEB_URL = "https://blackwarofficial.co.in";
+    //public static final String WEB_URL = "https://blackwarofficial.co.in";
+    public static final String WEB_URL = "http://Grindbattle.com";
 
     // Refer & Reward Offer
     //set true to enable or set false to disable
