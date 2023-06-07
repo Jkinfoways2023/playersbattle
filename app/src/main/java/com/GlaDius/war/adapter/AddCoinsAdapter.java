@@ -1,6 +1,7 @@
 package com.GlaDius.war.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class AddCoinsAdapter extends RecyclerView.Adapter<AddCoinsAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 try {
+                    Log.e("titleisssss",payoutPojo.getTitle());
                     ((MyWalletActivity)context).Add(
                             payoutPojo.getTitle(),
                             payoutPojo.getSubtitle(),

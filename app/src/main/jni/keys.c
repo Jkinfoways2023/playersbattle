@@ -10,8 +10,8 @@ Java_com_GlaDius_war_common_Config_getNativeKey1(JNIEnv *env, jclass clazz) {
 JNIEXPORT jstring JNICALL
 Java_com_GlaDius_war_common_Config_getNativeKey2(JNIEnv *env, jclass clazz) {
     // TODO: implement getNativeKey2()
-    // TODO: FILE PATH LINK https://blackwarofficial.co.in/blackplay/admin
-    return (*env)->  NewStringUTF(env, "aHR0cHM6Ly9ibGFja3dhcm9mZmljaWFsLmNvLmluL2JsYWNrcGxheS9hZG1pbi8=");
+    // TODO: FILE PATH LINK https://grindbattle.com/admin
+    return (*env)->  NewStringUTF(env, "aHR0cHM6Ly9ncmluZGJhdHRsZS5jb20vYWRtaW4v");
 }
 
 JNIEXPORT jstring JNICALL

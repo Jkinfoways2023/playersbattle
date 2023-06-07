@@ -3,6 +3,7 @@ package com.GlaDius.war.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
         if (!gamePojo.getBanner().isEmpty()) {
             holder.gameImage.setVisibility(View.VISIBLE);
+            Log.e("imagepathissss",Config.FILE_PATH_URL+gamePojo.getBanner());
             Picasso.get().load(Config.FILE_PATH_URL+gamePojo.getBanner()).resize(720,480).placeholder(R.drawable.bg_game_holder).into(holder.gameImage);
         }
         else {

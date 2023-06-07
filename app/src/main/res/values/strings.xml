@@ -24,9 +24,9 @@
     <string name="pending">Processing</string>
 
     <!-- TODO: Replace the name of your app and download app link -->
-    <string name="shareContent">"Addicted to Games? Want to make some cash out of it?? Try out Blackwar Official, eSports platform. Join Daily Matches &amp; Get Rewards on Each Kill you score.
-        Get Huge Prize on Getting Chicken Dinner. Just Download Blackwar Official Android App &amp; Register using the PromoCode given Below to Get 10 PlayCoins Free Signup Bonus.\n\nDownload Link: https://blackwarofficial.co.in /n Promo Code: "</string>
-    <string name="shareSub">Get Huge Prize on Getting Chicken Dinner. Just Download Blackwar Official Android App &amp; Register.</string>
+    <string name="shareContent">"Addicted to Games? Want to make some cash out of it?? Try out Grind Battle, eSports platform. Join Daily Matches &amp; Get Rewards on Each Kill you score.
+        Get Huge Prize on Getting Chicken Dinner. Just Download Grind Battle Android App &amp; Register using the PromoCode given Below to Get 10 PlayCoins Free Signup Bonus.\n\nDownload Link: http://Grindbattle.com \n Promo Code: "</string>
+    <string name="shareSub">Get Huge Prize on Getting Chicken Dinner. Just Download Grind Battle Android App &amp; Register.</string>
 
     <string name="forceUpdateNote">Note: In order to continue using the app, you must have to update it to the latest version.</string>
     <string name="otp_text">We have sent 6 digit OTP on your given Mobile Number through SMS. Kindly check and enter it below to complete your Registration.</string>

@@ -121,7 +121,11 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.razorpay:checkout:1.6.22'
+    implementation 'com.razorpay:checkout:1.6.20'
+    implementation 'com.cashfree.pg:android-sdk:1.7.28'
+
+    implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+
 
 }
 

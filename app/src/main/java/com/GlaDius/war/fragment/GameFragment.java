@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -504,6 +505,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         sliderLayout.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.LIST_GAME_URL).buildUpon();
         builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        Log.e("urlissssss",builder.toString());
         gameJsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override

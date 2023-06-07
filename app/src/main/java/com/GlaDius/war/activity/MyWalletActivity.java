@@ -164,6 +164,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
             builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
             builder.appendQueryParameter("id", id);
+            Log.e("profileurliss",builder.toString());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -339,23 +340,30 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         if (walletSt.equalsIgnoreCase("PayTm")) {
             remarkSt = "Added From PayTm";
-            //generateCheckSum(amount);
-            razorpay_payment(amount);
+            generateCheckSum(amount);
+            //razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("PayPal")) {
             remarkSt = "Added From PayPal";
-            //onBraintreeSubmit();
-            razorpay_payment(amount);
+            onBraintreeSubmit();
+            //razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("GooglePay")) {
             remarkSt = "Added From GooglePay";
-            //payUsingGooglePay(amount, Config.UPI_ID, name, "Added From GooglePay");
-            razorpay_payment(amount);
+            payUsingGooglePay(amount, Config.UPI_ID, name, "Added From GooglePay");
+            //razorpay_payment(amount);
         } else if (walletSt.equalsIgnoreCase("UPI")) {
             remarkSt = "Added From BHIM UPI";
-            //payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
+            payUsingUpi(amount, Config.UPI_ID, name, "Added From BHIM UPI");
+            //razorpay_payment(amount);
+        }
+        else if (walletSt.equalsIgnoreCase("RazorPay")) {
+            remarkSt = "Added From Razorpay";
             razorpay_payment(amount);
-        } else {
+        }
+        else {
             Toast.makeText(this, "Unavailable This Option", Toast.LENGTH_SHORT).show();
         }
+        Log.e("razorpay_called", "Error in starting Razorpay Checkout");
+
 
         /*remarkSt = "Added From PayPal";
         addTransactionDetails(String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis()));*/
@@ -375,6 +383,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         //creating button_paytm object
         //containing all the values required
+        Log.e("merchantidis",mid);
         final Paytm paytm = new Paytm(
                 mid,
                 Config.CHANNEL_ID,
@@ -403,6 +412,11 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
                 //once we get the checksum we will initiailize the payment.
                 //the method is taking the checksum we got and the button_paytm object as the parameter
+                Log.e("checksomeiss",response.message());
+                Log.e("checksomeiss", String.valueOf(response.body()));
+                Log.e("checksomeiss", String.valueOf(response.body().getOrderId()));
+                Log.e("checksomeiss", String.valueOf(response.body().getChecksumHash()));
+                Log.e("checksomeiss", String.valueOf(response.body().getPaytStatus()));
                 initializePaytmPayment(response.body().getChecksumHash(), paytm);
             }
 
@@ -423,7 +437,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         //creating a hashmap and adding all the values required
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("MID", mid);
+        paramMap.put("MID", paytm.getmId());
         paramMap.put("ORDER_ID", paytm.getOrderId());
         paramMap.put("CUST_ID", paytm.getCustId());
         paramMap.put("CHANNEL_ID", paytm.getChannelId());
@@ -441,7 +455,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         Service.initialize(order, null);
 
         //finally starting the payment transaction
-        Service.startPaymentTransaction(MyWalletActivity.this, true, true, this);
+       Service.startPaymentTransaction(MyWalletActivity.this, true, true, this);
 
     }
 
@@ -460,6 +474,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             }
 
         } catch (Exception e) {
+            Log.e("paytmexception", String.valueOf(e));
             e.printStackTrace();
         }
     }
@@ -467,20 +482,24 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     @Override
     public void networkNotAvailable() {
         Toast.makeText(MyWalletActivity.this, "Network error", Toast.LENGTH_LONG).show();
+        Log.e("paytmexception", String.valueOf("Network"));
     }
 
     @Override
     public void clientAuthenticationFailed(String inErrorMessage) {
+        Log.e("paytmexception", String.valueOf(inErrorMessage));
         Toast.makeText(MyWalletActivity.this, "" + inErrorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void someUIErrorOccurred(String inErrorMessage) {
+        Log.e("paytmexception", String.valueOf(inErrorMessage));
         Toast.makeText(MyWalletActivity.this, "" + inErrorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onErrorLoadingWebPage(int iniErrorCode, String inErrorMessage, String inFailingUrl) {
+        Log.e("paytmexception", String.valueOf(inErrorMessage));
         Toast.makeText(MyWalletActivity.this, "" + inErrorMessage, Toast.LENGTH_LONG).show();
     }
 
@@ -491,6 +510,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
     @Override
     public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
+        Log.e("paytmexception", String.valueOf(inErrorMessage));
         Toast.makeText(MyWalletActivity.this, inResponse.toString(), Toast.LENGTH_LONG).show();
     }
 
@@ -800,6 +820,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             builder.appendQueryParameter("getway_name", walletSt);
             builder.appendQueryParameter("remark", remarkSt);
             builder.appendQueryParameter("type", modeSt);
+            Log.e("Strrinbuilder",builder.toString());
             StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -1079,13 +1100,32 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     }
 
     private void razorpay_payment(String amount){
+
         Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_3NNeByYnEeTV7m");
+
+        try {
+            double total = Double.parseDouble(amount);
+            total = total * 100;
+            JSONObject options = new JSONObject();
+            options.put("name", "Your App");
+            options.put("description", "Payment");
+            options.put("order_id", "test_order");
+            options.put("currency", "INR");
+            options.put("amount", total); // Replace with your dynamic amount
+
+            checkout.open(this, options);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       /* Checkout checkout = new Checkout();
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", "Test Payment");
-            options.put("order_id", "order_id");
+            options.put("name", this.getString(R.string.app_name));
+            options.put("description", "Add Fund to app");
             options.put("currency", "INR");
+            //options.put("order_id", "test_order");
 
             double total = Double.parseDouble(amount);
             total = total * 100;
@@ -1094,29 +1134,33 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             //String b_number[] = SharedHelper.getKey(activity,Constant.USER_NUMBER).split(",");
 
             JSONObject preFill = new JSONObject();
-            preFill.put("email", "jaypatel@gmail.com");
-            preFill.put("contact", "+918866260677");
+            preFill.put("email", email);
+            preFill.put("contact", mnumber);
 
             options.put("prefill", preFill);
             checkout.open(this, options);
 
         } catch(Exception e) {
-            Log.e(TAG, "Error in starting Razorpay Checkout", e);
-        }
+            Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ e);
+        }*/
     }
 
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
         //transaction_id = razorpayPaymentID;
         //addBalance();
+        addTransactionDetails(String.valueOf(System.currentTimeMillis()), razorpayPaymentID);
         Toast.makeText(this, "Payment successfully done! " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPaymentError(int code, String response) {
+
         try {
+            Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ response);
             Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
+            Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ e);
             Log.e("OnPaymentError", "Exception in onPaymentError", e);
         }
     }

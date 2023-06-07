@@ -369,6 +369,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 builder.appendQueryParameter("username", uname);
                 builder.appendQueryParameter("password", password);
                 builder.appendQueryParameter("device_id",strDeviceID);
+                Log.e("builderurlis",builder.toString());
                 StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

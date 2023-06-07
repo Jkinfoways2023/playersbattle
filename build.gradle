@@ -13,6 +13,10 @@ buildscript {
         }
         maven { url "https://dl.bintray.com/buffer/Maven" }
         maven { url 'https://plugins.gradle.org/m2/'}
+        maven
+                {
+                    url 'https://maven.cashfree.com/release'
+                }
     }
     dependencies {
         classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.6'
@@ -26,6 +30,7 @@ buildscript {
 allprojects {
     repositories {
         google()
+        maven {url 'https://maven.cashfree.com/release'}
         jcenter()
         maven { url 'https://maven.google.com' }
         maven{ url "https://jitpack.io"}
