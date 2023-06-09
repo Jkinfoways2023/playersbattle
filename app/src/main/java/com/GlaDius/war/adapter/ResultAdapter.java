@@ -58,20 +58,27 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
         stringBuilder.append(resultPojo.getTime());
         textView.setText(stringBuilder.toString());
 
-        if (resultPojo.getPool_type().equals("1") && resultPojo.getEntry_type().equals("Paid")) {
-            int share = 100-resultPojo.getAdmin_share();
-            int pricepool = ((resultPojo.getEntry_fee()*resultPojo.getTotal_joined())*share)/100;
-            if (pricepool > resultPojo.getPrize_pool()){
-                holder.prize.setText(String.valueOf(pricepool));
+        if(resultPojo.getPool_type()!=null)
+        {
+            if (resultPojo.getPool_type().equals("1") && resultPojo.getEntry_type().equals("Paid")) {
+                int share = 100-resultPojo.getAdmin_share();
+                int pricepool = ((resultPojo.getEntry_fee()*resultPojo.getTotal_joined())*share)/100;
+                if (pricepool > resultPojo.getPrize_pool()){
+                    holder.prize.setText(String.valueOf(pricepool));
+                }
+                else {
+                    holder.prize.setText(String.valueOf(resultPojo.getPrize_pool()));
+                }
             }
-            else {
+            else
+            {
                 holder.prize.setText(String.valueOf(resultPojo.getPrize_pool()));
             }
         }
-        else
-        {
+        else{
             holder.prize.setText(String.valueOf(resultPojo.getPrize_pool()));
         }
+
 
         holder.prizePoolLL.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
