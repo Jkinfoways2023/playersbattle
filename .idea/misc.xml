@@ -131,11 +131,15 @@
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/drawable/bg_toolbar_sky_gradient.xml" value="0.172" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/drawable/semiblack_corner_bg.xml" value="0.172" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_forget_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_joining_match.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_match.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_my_contest.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_my_statistics.xml" value="0.25" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_my_wallet.xml" value="0.22" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_notification_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_play_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_setting.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_sign_in.xml" value="0.2759259259259259" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/activity_splash.xml" value="0.2" />

@@ -3,6 +3,7 @@ package com.GlaDius.war.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,6 +148,7 @@ public class UpcomingFragment extends Fragment {
             builder.appendQueryParameter("game_id", strId);
             builder.appendQueryParameter("user_id", id);
         }
+        Log.e("mymatchesare",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override

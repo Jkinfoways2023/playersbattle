@@ -116,6 +116,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
     private String UPI_PACKAGE_NAME = "in.org.npci.upiapp";
     private int UPI_REQUEST_CODE = 456;
+    private  String rzp_key="";
 
     final int REQUEST_CODE = 1;
     private String strToken;
@@ -181,7 +182,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                             bonus_coins = jsonObject1.getInt("bonus_balance");
                             is_active = jsonObject1.getString("status");
                             mid = jsonObject1.getString("mid");
-
+                            rzp_key=jsonObject1.getString("rzp_m_id");
                             try {
                                 MainActivity.toolwallet.setText(String.valueOf(tot_coins));
                             } catch (NullPointerException | NumberFormatException e) {
@@ -1102,15 +1103,15 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     private void razorpay_payment(String amount){
 
         Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_3NNeByYnEeTV7m");
-
+        Log.e("rzpkeyiss",rzp_key);
+        checkout.setKeyID(rzp_key);
         try {
             double total = Double.parseDouble(amount);
             total = total * 100;
             JSONObject options = new JSONObject();
             options.put("name", "Your App");
             options.put("description", "Payment");
-            options.put("order_id", "test_order");
+            //options.put("order_id", "test_order");
             options.put("currency", "INR");
             options.put("amount", total); // Replace with your dynamic amount
 
