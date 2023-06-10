@@ -150,7 +150,7 @@
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_completed_lottery.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_earn.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_game.xml" value="0.25" />
-        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_home.xml" value="0.14114583333333333" />
+        <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_home.xml" value="0.12" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_lottery.xml" value="0.36666666666666664" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_my_account.xml" value="0.2759259259259259" />
         <entry key="..\:/tournamentsapps/Blackwar_Repository-main/Blackwar_Repository-main/app/src/main/res/layout/fragment_ongoing.xml" value="0.36666666666666664" />
@@ -168,5 +168,5 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

@@ -190,7 +190,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 try {
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                            "https://api.whatsapp.com/send?phone=" + "918396958001"
+                            "https://api.whatsapp.com/send?phone=" + "919102072205"
                     ));
                     startActivity(whatsappIntent);
                 } catch (android.content.ActivityNotFoundException ex) {
