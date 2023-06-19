@@ -1,6 +1,6 @@
 package com.GlaDius.war.activity;
 
-import static android.content.ContentValues.TAG;
+import static com.GlaDius.war.common.Constant.CREATE_ORDER;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -45,9 +45,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,6 +129,10 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     HashMap<String, String> paramHash;
     private FrameLayout frameLayout;
     private CardView addCoin, redeem, transaction;
+
+    WebView webView;
+    RelativeLayout coinsrl;
+    String upi_new_order_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -276,6 +284,9 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         addCoin = (CardView) findViewById(R.id.addCoin);
         redeem = (CardView) findViewById(R.id.redeem);
         transaction = (CardView) findViewById(R.id.transaction);
+        webView=findViewById(R.id.payment_webview);
+        coinsrl=findViewById(R.id.coinsrl);
+
     }
 
 
@@ -338,7 +349,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         coinSt = coins;
         currencySt = amount + " " + currency;
         modeSt = mode;
-
+        Log.e("titleiss", walletSt);
         if (walletSt.equalsIgnoreCase("PayTm")) {
             remarkSt = "Added From PayTm";
             generateCheckSum(amount);
@@ -360,6 +371,10 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             remarkSt = "Added From Razorpay";
             razorpay_payment(amount);
         }
+        else if(walletSt.equalsIgnoreCase("Upi Pay"))
+        {
+            generate_txnId(amount,id);
+        }
         else {
             Toast.makeText(this, "Unavailable This Option", Toast.LENGTH_SHORT).show();
         }
@@ -369,6 +384,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         /*remarkSt = "Added From PayPal";
         addTransactionDetails(String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis()));*/
     }
+
+
 
 
     private void generateCheckSum(String amount) {
@@ -1163,6 +1180,105 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         } catch (Exception e) {
             Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ e);
             Log.e("OnPaymentError", "Exception in onPaymentError", e);
+        }
+    }
+
+    public void callupimethod(String url)
+    {
+        webView.setVisibility(View.VISIBLE);
+        coinsrl.setVisibility(View.GONE);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setSupportMultipleWindows(true);
+        // Do not change Useragent otherwise it will not work. even if not working uncommit below
+        // mWebView.getSettings().setUserAgentString("Mozilla/5.0 (Linux; Android 4.4.4; One Build/KTU84L.H4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.135 Mobile Safari/537.36");
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.addJavascriptInterface(new WebviewInterface(), "Interface");
+        if (url.startsWith("upi:")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        }else{
+            webView.loadUrl(url);
+        }
+
+    }
+    public class WebviewInterface {
+        @JavascriptInterface
+        public void paymentResponse(String client_txn_id, String txn_id) {
+            addTransactionDetails(upi_new_order_id, txn_id);
+        }
+
+        @JavascriptInterface
+        public void errorResponse() {
+            Toast.makeText(MyWalletActivity.this, "Payment cancelled", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void generate_txnId(String amount, String id)
+    {
+        upi_new_order_id= String.valueOf(System.currentTimeMillis());
+        HashMap<String, String> user = session.getUserDetails();
+        try {
+            RequestQueue rq = Volley.newRequestQueue(this);
+            StringRequest jsonObjectRequest = new StringRequest
+                    (Request.Method.POST, CREATE_ORDER , new com.android.volley.Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.e("responsestatus",response);
+                            try {
+                                JSONObject object=new JSONObject(response);
+                                String status=object.getString("status");
+                                if(status.equals("true"))
+                                {
+                                    JSONObject obj=object.getJSONObject("data");
+                                    String url=obj.getString("payment_url");
+                                    callupimethod(url);
+                                }
+                                else
+                                {
+                                    Toast.makeText(MyWalletActivity.this, "Something went wrong try again", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            catch (JSONException e)
+                            {
+                                Log.e("excepongenerate", String.valueOf(e));
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("respooooooooooo", error.toString());
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String>  params = new HashMap<String, String>();
+
+                    params.put("key", Constant.M_KEY);
+                    params.put("client_txn_id",upi_new_order_id);
+                    params.put("amount",amount);
+                    params.put("p_info","Product Name");
+                    params.put("customer_name",user.get(SessionManager.KEY_FIRST_NAME));
+                    params.put("customer_email",user.get(SessionManager.KEY_EMAIL));
+                    params.put("customer_mobile",user.get(SessionManager.KEY_MOBILE));
+                    params.put("redirect_url","http://google.com");
+                    params.put("udf1","user defined field 1 (max 25 char)");
+                    params.put("udf2","user defined field 2 (max 25 char)");
+                    params.put("udf3","user defined field 3 (max 25 char)");
+
+                    Log.e("paras",params.toString());
+                    return params;
+                }
+            };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            rq.add(jsonObjectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

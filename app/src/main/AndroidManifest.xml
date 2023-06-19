@@ -265,10 +265,11 @@
             android:value="@string/adAppId" /> <!-- END AdMob components -->
         <meta-data
             android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="ENABLE" />
+            android:value="ENABLE"
+            android:resource="@drawable/notification_logo" />
         <meta-data
             android:name="com.onesignal.NotificationAccentColor.DEFAULT"
-            android:value="ffffffff" />
+            android:resource="@drawable/notification_logo" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

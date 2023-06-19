@@ -88,4 +88,7 @@ public class Constant {
     public static final String PRIVACY_POLICY_URL = Config.ADMIN_PANEL_URL + "get_privacy_policy/?";
     public static final String TERMS_CONDITION_URL = Config.ADMIN_PANEL_URL + "get_terms_conditions/?";
     public static final String LOAD_REWARDS_URL = Config.ADMIN_PANEL_URL + "get_rewards/?";
+
+    public static final String CREATE_ORDER = "https://merchant.upigateway.com/api/create_order";
+    public static final String M_KEY = "72e7befb-21cc-4bcf-bb9f-3c10be0c564a";
 }

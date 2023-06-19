@@ -45,6 +45,7 @@ import com.GlaDius.war.common.Constant;
 import com.GlaDius.war.common.Toolbox;
 import com.GlaDius.war.model.GamePojo;
 import com.GlaDius.war.model.HtmlGamePojo;
+import com.GlaDius.war.utils.AutoScrollHelper;
 import com.GlaDius.war.utils.ExtraOperations;
 import com.GlaDius.war.utils.MySingleton;
 import com.android.volley.DefaultRetryPolicy;
@@ -605,7 +606,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         sliderPagerAdapter = new SliderHomeAdapter(sliderList, getActivity());
         sliderPagerAdapter.notifyDataSetChanged();
         sliderViewPager.setAdapter(sliderPagerAdapter);
-
+        AutoScrollHelper scroolhelper=new AutoScrollHelper(sliderViewPager);
+        scroolhelper.startAutoScroll();
         dotsCount = sliderPagerAdapter.getCount();
         dots = new ImageView[dotsCount];
 

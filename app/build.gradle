@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.tournaments.grindbattles"
         minSdkVersion 19
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 5
         versionName "5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -99,7 +99,9 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:5.15.3'
 
     // One Signal sdk library ----------------------------------------------------------------------
-    implementation 'com.onesignal:OneSignal:4.8.6'
+    //implementation 'com.onesignal:OneSignal:4.8.6'
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
 
     // Paytm Payment Getway Dependencies -----------------------------------------------------------
     implementation('com.paytm:pgplussdk:1.4.4') {
@@ -125,6 +127,7 @@ dependencies {
     implementation 'com.cashfree.pg:android-sdk:1.7.28'
 
     implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
 
 
 }

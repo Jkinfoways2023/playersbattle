@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
@@ -17,6 +18,7 @@ import com.onesignal.OneSignal;
 import com.GlaDius.war.activity.NotificationDetailsActivity;
 import com.GlaDius.war.activity.SplashActivity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -38,13 +40,82 @@ public class MyApplication extends MultiDexApplication {
         // OneSignal Initialization
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         OneSignal.initWithContext(this);
+        OneSignal.promptForPushNotifications();
+
         OneSignal.setAppId("4ac49b76-376a-4da7-bc58-438f9a50fcb7");
+
         OSDeviceState device = OneSignal.getDeviceState();
         boolean areNotificationsEnabled = device.areNotificationsEnabled();
         if (!areNotificationsEnabled ){
             OneSignal.addTrigger("showPrompt", "true");
         }
+        OneSignal.setNotificationOpenedHandler(
+                new OneSignal.OSNotificationOpenedHandler() {
+                    @Override
+                    public void notificationOpened(OSNotificationOpenedResult result) {
+                        JSONObject data = result.getNotification().toJSONObject();
+                        Log.e("data", "" + data);
+                        String isAnnouncement = "";
+                        String isExternalLink = "";
+                        String title;
+                        String msg;
+                        String path;
+                        String date;
+                        if (data != null) {
 
+
+                            try {
+                                JSONObject obj=data.getJSONObject("additionalData");
+                                isExternalLink=obj.getString("external_link");
+                                isAnnouncement = obj.getString("is_announcement");
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            title = data.optString("notification_title", null);
+                            msg = data.optString("notification_msg", null);
+                            path = data.optString("tpath2", null);
+                            //isExternalLink = data.optString("external_link", null);
+                            Log.e("urlissssssa","a "+isExternalLink);
+                            Log.e("urlissssssa","a "+"title"+title);
+                            Log.e("urlissssssa","a "+"msg"+msg);
+                            Log.e("urlissssssa","a "+"msg"+data);
+                            date = data.optString("txtDate", null);
+                            if (isAnnouncement.equals("0")) {
+                                if (!isAnnouncement.equals("0")) {
+                                    Intent intent = new Intent(MyApplication.this, NotificationDetailsActivity.class);
+                                    intent.putExtra("isNotification", true);
+                                    intent.putExtra("id", "0");
+                                    intent.putExtra("title", title);
+                                    intent.putExtra("message", msg);
+                                    intent.putExtra("image", path);
+                                    intent.putExtra("url", isExternalLink);
+                                    intent.putExtra("created", date);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    try {
+                                        if (!isExternalLink.equals("false")) {
+                                            try {
+                                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(isExternalLink));
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(intent);
+                                            }catch (ActivityNotFoundException e){
+                                                e.printStackTrace();
+                                            }
+                                        } else {
+                                            Intent intent = new Intent(MyApplication.this, SplashActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                        }
+                                    }catch (ActivityNotFoundException e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
         Fresco.initialize(this);
         mInstance = this;
     }
@@ -89,6 +160,9 @@ public class MyApplication extends MultiDexApplication {
                 msg = data.optString("notification_msg", null);
                 path = data.optString("tpath2", null);
                 isExternalLink = data.optString("external_link", null);
+                Log.e("urlissssssa",isExternalLink);
+                Log.e("urlissssssa","title"+title);
+                Log.e("urlissssssa","msg"+msg);
                 date = data.optString("txtDate", null);
                 if (isAnnouncement != null) {
                     if (!isAnnouncement.equals("0")) {
@@ -113,9 +187,9 @@ public class MyApplication extends MultiDexApplication {
                                     e.printStackTrace();
                                 }
                             } else {
-                                Intent intent = new Intent(MyApplication.this, SplashActivity.class);
+                               /* Intent intent = new Intent(MyApplication.this, SplashActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                startActivity(intent);*/
                             }
                         }catch (ActivityNotFoundException e){
                             e.printStackTrace();

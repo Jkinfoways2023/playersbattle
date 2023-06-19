@@ -36,8 +36,8 @@ public class Config {
     public static final String UPI_ID = "";
 
     // How To Join Room YouTube Link
-    public static final String YOUTUBE_CHANNEL_ID = "https://www.youtube.com/channel/UCTNSG0MXjGMbh5XU2aP0eRQ";
-    public static final String HOW_TO_JOIN_URL = "https://www.youtube.com/watch?v=nz0cRaUqUII";
+    public static final String YOUTUBE_CHANNEL_ID = "https://www.youtube.com/@ADOXRYNDERGAMING";
+    public static final String HOW_TO_JOIN_URL = "https://www.youtube.com/watch?v=GtV9tqkj6Wo";
 
     // Discord Channel Link
     public static final String DISCORD_CHANNEL_ID = "https://discord.gg/6qMeuX";

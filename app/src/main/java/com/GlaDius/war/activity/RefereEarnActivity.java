@@ -64,8 +64,7 @@ public class RefereEarnActivity extends AppCompatActivity {
         this.referNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shareContent = getString(R.string.shareContent)+username;
-
+                shareContent = getString(R.string.shareContent)+" "+username;
                 Intent intent = new Intent("android.intent.action.SEND");
                 intent.setType("text/plain");
                 intent.putExtra("android.intent.extra.SUBJECT", getString(R.string.shareSub));
