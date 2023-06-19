@@ -137,7 +137,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
         }
 
         holder.watchBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+            public void onClick(View view)   {
                 try {
                     if (!resultPojo.getSpectate_url().startsWith("http://") && !resultPojo.getSpectate_url().startsWith("https://")){
                         context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://"+resultPojo.getSpectate_url())));

@@ -154,14 +154,17 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         createTabIcons();*/
 
         addCoin.setOnClickListener(v -> {
+            frameLayout.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new AddCoinsFragment()).addToBackStack(null).commit();
         });
 
         redeem.setOnClickListener(v -> {
+            frameLayout.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new RedeemCoinsFragment()).addToBackStack(null).commit();
         });
 
         transaction.setOnClickListener(v -> {
+            frameLayout.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new TransactionsFragment()).addToBackStack(null).commit();
         });
 
@@ -1185,8 +1188,10 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
     public void callupimethod(String url)
     {
+        Log.e("responsestatus", "Payment initiated"+url);
         webView.setVisibility(View.VISIBLE);
         coinsrl.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.GONE);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setSupportMultipleWindows(true);
@@ -1207,6 +1212,9 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         @JavascriptInterface
         public void paymentResponse(String client_txn_id, String txn_id) {
             addTransactionDetails(upi_new_order_id, txn_id);
+            webView.setVisibility(View.VISIBLE);
+            coinsrl.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
         }
 
         @JavascriptInterface
@@ -1216,6 +1224,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     }
     private void generate_txnId(String amount, String id)
     {
+        Log.e("responsestatus","response");
         upi_new_order_id= String.valueOf(System.currentTimeMillis());
         HashMap<String, String> user = session.getUserDetails();
         try {
