@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -93,6 +94,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private String balance;
     private String dateOfbirth;
     private String email;
+    private String token;
     private String firstname;
     private String fullname;
     private String username;
@@ -133,7 +135,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         session = new SessionManager(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         strDeviceID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-
+        
         txt_show = (TextView) findViewById(R.id.txt_show);
         lyt_email_signin = (LinearLayout) findViewById(R.id.lyt_email_signin);
         txt_fgt_pass = (TextView) findViewById(R.id.txt_fgt_pass);
@@ -365,7 +367,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_LOGIN_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("username", uname);
                 builder.appendQueryParameter("password", password);
                 builder.appendQueryParameter("device_id",strDeviceID);
@@ -395,9 +397,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                 lastname = jsonObject1.getString("lname");
                                 username = jsonObject1.getString("username");
                                 email = jsonObject1.getString("email");
+                                token = jsonObject1.getString("token");
                                 countryCode = jsonObject1.getString("country_code");
                                 mobilenumber = jsonObject1.getString("mobile");
-                                session.createLoginSession(id,profile_pic,firstname,lastname,username,password,email,countryCode,mobilenumber);
+                                session.createLoginSession(id,profile_pic,firstname,lastname,username,password,email,countryCode,mobilenumber,token);
 
                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -451,7 +454,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_LOGIN_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("username", uname);
                 builder.appendQueryParameter("device_id",strDeviceID);
                 builder.appendQueryParameter("social", "true");
@@ -483,9 +486,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                 lastname = jsonObject1.getString("lname");
                                 username = jsonObject1.getString("username");
                                 email = jsonObject1.getString("email");
+                                token = jsonObject1.getString("token");
                                 countryCode = jsonObject1.getString("country_code");
                                 mobilenumber = jsonObject1.getString("mobile");
-                                session.createLoginSession(id,profile_pic,firstname,lastname,username,password,email,countryCode,mobilenumber);
+                                session.createLoginSession(id,profile_pic,firstname,lastname,username,password,email,countryCode,mobilenumber,token);
 
                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

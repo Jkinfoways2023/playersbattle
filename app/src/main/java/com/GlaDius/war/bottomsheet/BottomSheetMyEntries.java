@@ -23,6 +23,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -132,7 +133,7 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
             recyclerView.setVisibility(View.GONE);
 
             Uri.Builder builder = Uri.parse(Constant.MY_ENTRIES_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchTitle);
             builder.appendQueryParameter("user_id", userName);
             jsonArrayRequest = new JsonArrayRequest(builder.toString(),
@@ -217,7 +218,7 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
 
             if (new ExtraOperations().haveNetworkConnection(getActivity())) {
                 Uri.Builder builder = Uri.parse(Constant.TIMER_MATCH_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("match_id", matchTitle);
                 StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                     @Override
@@ -308,7 +309,7 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
         private void openCancelDialog(String id, String user_id, String pubg_id, String match_id) {
             if (new ExtraOperations().haveNetworkConnection(getActivity())) {
                 Uri.Builder builder = Uri.parse(Constant.CANCEL_MY_ENTRIES_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("id", id);
                 builder.appendQueryParameter("match_id", match_id);
                 builder.appendQueryParameter("user_id", user_id);
@@ -409,7 +410,7 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
         private void EditUsername( String id, String user_id, String match_id,String encodeGameUserID1) {
             if (new ExtraOperations().haveNetworkConnection(context)) {
                 Uri.Builder builder = Uri.parse(Constant.UPDATE_MY_ENTRIES_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("id", id);
                 builder.appendQueryParameter("match_id", match_id);
                 builder.appendQueryParameter("user_id", user_id);

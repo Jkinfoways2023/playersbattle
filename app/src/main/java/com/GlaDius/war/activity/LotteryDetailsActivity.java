@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -159,7 +160,7 @@ public class LotteryDetailsActivity extends AppCompatActivity {
         lvParticipants.setVisibility(View.VISIBLE);
         refreshLV.setVisibility(View.VISIBLE);
         Uri.Builder builder = Uri.parse(Constant.LOTTERY_PARTICIPANTS_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("lottery_id", id);
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
@@ -339,7 +340,7 @@ public class LotteryDetailsActivity extends AppCompatActivity {
                     //progressBar.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     Uri.Builder builder = Uri.parse(Constant.LOTTERY_JOIN_URL).buildUpon();
-                    builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                    builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                     builder.appendQueryParameter("lottery_id", id);
                     builder.appendQueryParameter("user_id", user_id);
                     builder.appendQueryParameter("name", name);

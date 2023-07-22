@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -79,7 +80,7 @@ public class MyStatisticsActivity extends AppCompatActivity {
         stats.setVisibility(View.VISIBLE);
         noStats.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.MY_STATISTICS_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id", id);
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {

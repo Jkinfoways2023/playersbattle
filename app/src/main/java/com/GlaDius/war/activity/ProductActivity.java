@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -111,7 +112,7 @@ public class ProductActivity extends AppCompatActivity {
         mShimmerViewContainer.setVisibility(View.VISIBLE);
         mShimmerViewContainer.startShimmer();
         Uri.Builder builder = Uri.parse(Constant.GET_PRODUCT_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override

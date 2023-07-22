@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -120,7 +121,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
     private void loadProfile() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override

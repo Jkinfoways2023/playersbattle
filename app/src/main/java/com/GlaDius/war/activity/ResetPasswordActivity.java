@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -114,7 +115,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         passwordResetResponse.setTextColor(Color.parseColor("#000000"));
                         passwordResetResponse.setVisibility(View.VISIBLE);
                         Uri.Builder builder = Uri.parse(Constant.RESET_PASSWORD_URL).buildUpon();
-                        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                         builder.appendQueryParameter("mobile", mobileNumber);
                         builder.appendQueryParameter("password", newPassword);
                         StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {

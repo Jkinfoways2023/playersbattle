@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -140,7 +141,7 @@ public class RewardEarnActivity extends AppCompatActivity implements RewardedVid
     private void loadRewards() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.LOAD_REWARDS_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("username",username);
             builder.appendQueryParameter("reward_limits",Config.WATCH_COUNT);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
@@ -278,7 +279,7 @@ public class RewardEarnActivity extends AppCompatActivity implements RewardedVid
     private void loadProfile() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
@@ -333,7 +334,7 @@ public class RewardEarnActivity extends AppCompatActivity implements RewardedVid
     private void addRewardDetails() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.ADD_REWARD_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("username",username);
             builder.appendQueryParameter("reward_points",Config.PAY_REWARD);
             builder.appendQueryParameter("reward_limits",Config.WATCH_COUNT);

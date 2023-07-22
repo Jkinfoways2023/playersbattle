@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -115,7 +116,7 @@ public class RedeemCoinsFragment extends androidx.fragment.app.Fragment{
         recyclerView.setVisibility(View.GONE);
         noContentLayout.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.GET_REDEEM_COINS_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override

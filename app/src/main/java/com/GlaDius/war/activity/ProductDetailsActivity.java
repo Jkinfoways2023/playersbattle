@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -192,7 +193,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         noSliderLL.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.GET_SLIDER_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("prod_id", id);
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {

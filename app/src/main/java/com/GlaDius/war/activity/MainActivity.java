@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.fragment.LotteryFragment;
 import com.GlaDius.war.fragment.MyAccountFragment;
 import com.GlaDius.war.fragment.TransactionsFragment;
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         initSession();
 
         getCounter();
+        MyApplication.getInstance().testsignin();
 
         //initViews();
         //initListeners();
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadUpdate() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.UPDATE_APP_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -221,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadProfile() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override

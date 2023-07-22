@@ -270,7 +270,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private void loadSummery() {
         if (new ExtraOperations().haveNetworkConnection(getActivity())) {
             Uri.Builder builder = Uri.parse(Constant.MY_SUMMARY_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("user_id", id);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override

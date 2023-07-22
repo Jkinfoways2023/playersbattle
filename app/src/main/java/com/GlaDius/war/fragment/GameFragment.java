@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.R;
 import com.GlaDius.war.activity.ContactUsActivity;
 import com.GlaDius.war.activity.MainActivity;
@@ -233,7 +234,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
     private void loadAnnouncements() {
         Uri.Builder builder = Uri.parse(Constant.ANNOUNCEMENT_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, builder.toString(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -505,7 +506,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         notificationCard.setVisibility(View.GONE);
         sliderLayout.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.LIST_GAME_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         Log.e("urlissssss",builder.toString());
         gameJsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
@@ -626,7 +627,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
         }
 
-        dots[0].setImageDrawable(ActivityCompat.getDrawable(getActivity(), R.drawable.dot_active));
+        //dots[0].setImageDrawable(ActivityCompat.getDrawable(getActivity(), R.drawable.dot_active));
 
         sliderViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

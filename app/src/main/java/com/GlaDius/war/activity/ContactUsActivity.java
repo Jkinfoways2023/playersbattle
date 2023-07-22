@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.R;
 import com.GlaDius.war.common.Config;
 import com.GlaDius.war.common.Constant;
@@ -194,7 +195,7 @@ public class ContactUsActivity extends AppCompatActivity {
     private void loadContatUs() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.CONTACT_US_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

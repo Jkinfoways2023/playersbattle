@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -128,7 +129,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     private void verifyEmail(String emailId) {
         progressBar.setVisibility(View.VISIBLE);
         Uri.Builder builder = Uri.parse(Constant.FORGET_PASSWORD_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("email",emailId);
         StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
             @Override
@@ -213,7 +214,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         if (new ExtraOperations().haveNetworkConnection(this)) {
             progressBar.setVisibility(View.VISIBLE);
             Uri.Builder builder = Uri.parse(Constant.VERIFY_MOBILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("mobile", mobileNumber);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override

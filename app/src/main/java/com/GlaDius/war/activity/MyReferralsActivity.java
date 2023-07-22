@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -99,7 +100,7 @@ public class MyReferralsActivity extends AppCompatActivity {
 
     private void ReferralSummary() {
         Uri.Builder builder = Uri.parse(Constant.REFERRAL_SUMMARY_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("refer_code", username);
         StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
             @Override
@@ -154,7 +155,7 @@ public class MyReferralsActivity extends AppCompatActivity {
         refersList.setVisibility(View.VISIBLE);
         noRefers.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.REFERRAL_LIST_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("refer_code", username);
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {

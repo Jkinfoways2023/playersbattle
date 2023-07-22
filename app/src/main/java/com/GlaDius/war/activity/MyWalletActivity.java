@@ -2,6 +2,7 @@ package com.GlaDius.war.activity;
 
 import static com.GlaDius.war.common.Constant.CREATE_ORDER;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -174,7 +175,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     private void loadProfile() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
             Log.e("profileurliss",builder.toString());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
@@ -832,7 +833,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     private void addTransactionDetails(String orderIdSt, String txnIdSt) {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.ADD_TRANSACTION_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("user_id", id);
             builder.appendQueryParameter("order_id", orderIdSt);
             builder.appendQueryParameter("payment_id", txnIdSt);
@@ -968,7 +969,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
     private void redeemTransactionDetails(String account_holder_name, String account_holder_id, String orderIdSt) {
         Uri.Builder builder = Uri.parse(Constant.ADD_TRANSACTION_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id", id);
         builder.appendQueryParameter("order_id", orderIdSt);
         builder.appendQueryParameter("req_amount", currencySt);

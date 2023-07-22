@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.R;
 import com.GlaDius.war.activity.MyWalletActivity;
 import com.GlaDius.war.common.Config;
@@ -122,7 +123,7 @@ public class HtmlGameRulesActivity extends AppCompatActivity {
         binding.progressBar.setVisibility(View.VISIBLE);
 
         Uri.Builder builder = Uri.parse(Constant.JOIN_GAME).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("entry_fee", model.getEntry_fee());
         builder.appendQueryParameter("user_id",user.get(SessionManager.KEY_ID));
         builder.appendQueryParameter("game_id",model.getId());

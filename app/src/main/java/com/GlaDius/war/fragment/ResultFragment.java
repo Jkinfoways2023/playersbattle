@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.common.Toolbox;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -141,12 +142,12 @@ public class ResultFragment extends androidx.fragment.app.Fragment {
         Uri.Builder builder;
         if (isFromMyContest){
             builder = Uri.parse(Constant.COMPLETED_MATCH_WITHOUT_FILTER_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("user_id",id);
             builder.appendQueryParameter("game_id","45");
         }else {
             builder = Uri.parse(Constant.RESULT_MATCH_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("user_id",id);
             builder.appendQueryParameter("game_id",strId);
         }

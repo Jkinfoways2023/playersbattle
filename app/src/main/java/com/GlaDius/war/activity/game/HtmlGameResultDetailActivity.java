@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.adapter.game.GameResultDetailAdapter;
 import com.GlaDius.war.common.Config;
 import com.GlaDius.war.common.Constant;
@@ -82,7 +83,7 @@ public class HtmlGameResultDetailActivity extends AppCompatActivity {
         binding.shimmerView.startShimmer();
 
         Uri.Builder builder = Uri.parse(Constant.SHOW_GAME_FULL_RESULT).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id",user.get(SessionManager.KEY_ID));
         builder.appendQueryParameter("game_id",gameModel.getId());
 

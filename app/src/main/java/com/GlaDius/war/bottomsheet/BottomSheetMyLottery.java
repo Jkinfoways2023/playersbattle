@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -111,7 +112,7 @@ public class BottomSheetMyLottery extends BottomSheetDialogFragment {
             //cancelButton.setVisibility(View.GONE);
 
             Uri.Builder builder = Uri.parse(Constant.LOTTERY_MY_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("lottery_id", lotteryID);
             builder.appendQueryParameter("user_id", userId);
             jsonArrayRequest = new JsonArrayRequest(builder.toString(),

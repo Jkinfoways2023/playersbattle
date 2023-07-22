@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -135,7 +136,7 @@ public class LiveFragment extends androidx.fragment.app.Fragment {
         mShimmerViewContainer.setVisibility(View.VISIBLE);
         mShimmerViewContainer.startShimmer();
         Uri.Builder builder = Uri.parse(Constant.LIVE_MATCH_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id",id);
         builder.appendQueryParameter("game_id",strId);
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),

@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -164,7 +165,7 @@ public class ResultDetailsActivity extends AppCompatActivity {
 
     private void loadParticipant() {
         Uri.Builder builder = Uri.parse(Constant.MATCH_FULL_RESULT_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id",matchID);
         participantArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
@@ -214,7 +215,7 @@ public class ResultDetailsActivity extends AppCompatActivity {
 
     private void loadWinner() {
         Uri.Builder builder = Uri.parse(Constant.MATCH_WINNER_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id",matchID);
         winnerArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
@@ -266,7 +267,7 @@ public class ResultDetailsActivity extends AppCompatActivity {
     private void loadRunnerup() {
         runnerUpsCard.setVisibility(View.GONE);
         Uri.Builder builder = Uri.parse(Constant.MATCH_RUNNERUP_URL).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id",matchID);
         runnerupArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {

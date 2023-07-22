@@ -4,7 +4,7 @@ JNIEXPORT jstring JNICALL
 Java_com_GlaDius_war_common_Config_getNativeKey1(JNIEnv *env, jclass clazz) {
     // TODO: implement getNativeKey1()
     // TODO: REST API LINK https://blackwarofficial.co.in/blackplay/api/
-    return (*env)->  NewStringUTF(env, "aHR0cHM6Ly9HcmluZGJhdHRsZS5jb20vYXBpcy8=");
+    return (*env)->  NewStringUTF(env, "aHR0cHM6Ly9HcmluZGJhdHRsZS5jb20vYXBpcy9WMi8=");
 }
 
 JNIEXPORT jstring JNICALL

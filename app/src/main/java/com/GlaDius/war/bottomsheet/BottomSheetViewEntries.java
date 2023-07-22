@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -107,7 +108,7 @@ public class BottomSheetViewEntries extends BottomSheetDialogFragment {
             recyclerView.setVisibility(View.GONE);
 
             Uri.Builder builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchTitle);
             jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                     new Response.Listener<JSONArray>() {

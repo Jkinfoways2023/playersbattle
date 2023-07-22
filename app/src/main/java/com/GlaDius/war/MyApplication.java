@@ -11,6 +11,10 @@ import android.widget.Toast;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.GlaDius.war.activity.MainActivity;
+import com.GlaDius.war.activity.SignInActivity;
+import com.GlaDius.war.common.Config;
+import com.GlaDius.war.session.SessionManager;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.onesignal.OSDeviceState;
 import com.onesignal.OSNotificationOpenedResult;
@@ -31,6 +35,7 @@ public class MyApplication extends MultiDexApplication {
     public MyApplication() {
         mInstance = this;
     }
+    private SessionManager sessionManager;
 
 
     @Override
@@ -38,6 +43,9 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
 
         // OneSignal Initialization
+        sessionManager=new SessionManager(this);
+
+
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         OneSignal.initWithContext(this);
         OneSignal.promptForPushNotifications();
@@ -197,6 +205,16 @@ public class MyApplication extends MultiDexApplication {
                     }
                 }
             }
+        }
+    }
+
+    public String  testsignin()
+    {
+        if (sessionManager.isLoggedIn())
+        {
+            return sessionManager.getUserDetails().get(SessionManager.ACCESS_TOKEN);
+        } else {
+            return  Config.PURCHASE_CODE;
         }
     }
 }

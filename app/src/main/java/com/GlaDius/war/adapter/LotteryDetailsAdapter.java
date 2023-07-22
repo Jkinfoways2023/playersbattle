@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -317,7 +318,7 @@ public class LotteryDetailsAdapter extends RecyclerView.Adapter<LotteryDetailsAd
                     //progressBar.setVisibility(View.VISIBLE);
                     dialog.dismiss();
                     Uri.Builder builder = Uri.parse(Constant.LOTTERY_JOIN_URL).buildUpon();
-                    builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                    builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                     builder.appendQueryParameter("lottery_id", lotteryDetailsPojo.getId());
                     builder.appendQueryParameter("user_id", user_id);
                     builder.appendQueryParameter("name", name);

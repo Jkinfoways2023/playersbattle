@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -377,7 +378,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                 if (new ExtraOperations().haveNetworkConnection(this)) {
                     progressBar.setVisibility(View.VISIBLE);
                     Uri.Builder builder = Uri.parse(Constant.VERIFY_REFER_URL).buildUpon();
-                    builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                    builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                     builder.appendQueryParameter("refer", promocode);
                     StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                         @Override
@@ -484,7 +485,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                 if (new ExtraOperations().haveNetworkConnection(this)) {
                     progressBar.setVisibility(View.VISIBLE);
                     Uri.Builder builder = Uri.parse(Constant.VERIFY_REFER_URL).buildUpon();
-                    builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                    builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                     builder.appendQueryParameter("refer", promocode);
                     StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                         @Override
@@ -718,7 +719,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.VERIFY_REGISTER_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("username", username);
                 builder.appendQueryParameter("email", eMail);
                 builder.appendQueryParameter("mobile", mobileNumber);
@@ -1040,7 +1041,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                         }
 
                         Uri.Builder builder = Uri.parse(Constant.VERIFY_REGISTER_URL).buildUpon();
-                        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                         builder.appendQueryParameter("username", username);
                         builder.appendQueryParameter("email", eMail);
                         builder.appendQueryParameter("mobile", mobileNumber);
@@ -1158,7 +1159,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
             if (promocode.length() >= 2){
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_REGISTER_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("fname",firstname);
                 builder.appendQueryParameter("lname",lastname);
                 builder.appendQueryParameter("username",username);
@@ -1231,7 +1232,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
             else {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_REGISTER_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("fname",firstname);
                 builder.appendQueryParameter("lname",lastname);
                 builder.appendQueryParameter("username",username);

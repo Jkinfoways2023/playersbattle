@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -238,7 +239,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
     private void loadProfile() {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
@@ -289,7 +290,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                                         .into(profileIv);
                             }
 
-                            session.createLoginSession(id,profileSt,firstname,lastname,username,session.getUserDetails().get(SessionManager.KEY_PASSWORD),email,countryCode.getText().toString(),session.getUserDetails().get(SessionManager.KEY_MOBILE));
+                            session.createLoginSession(id,profileSt,firstname,lastname,username,session.getUserDetails().get(SessionManager.KEY_PASSWORD),email,countryCode.getText().toString(),session.getUserDetails().get(SessionManager.KEY_MOBILE),session.getUserDetails().get(SessionManager.ACCESS_TOKEN));
                         }
                         else {
                             Toast.makeText(getApplicationContext(),"Something went wrong", Toast.LENGTH_LONG).show();
@@ -328,7 +329,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
         if (validateFirstName() && validateLastName() && validateEmail()) {
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 Uri.Builder builder = Uri.parse(Constant.UPDATE_PROFILE_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("id",id);
                 builder.appendQueryParameter("fname",firstname);
                 builder.appendQueryParameter("lname",lastname);
@@ -349,7 +350,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                                 Toast.makeText(getApplicationContext(),msg+"", Toast.LENGTH_LONG).show();
                             }
                             else  if (success.equals("1")) {
-                                session.createLoginSession(id,profileSt,firstname,lastname,username,token,email,ccode,mnumber);
+                                session.createLoginSession(id,profileSt,firstname,lastname,username,token,email,ccode,mnumber,session.getUserDetails().get(SessionManager.ACCESS_TOKEN));
                                 Intent intent = new Intent(MyProfileActivity.this,MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -449,7 +450,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
         if (validatePassword()) {
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 Uri.Builder builder = Uri.parse(Constant.UPDATE_PROFILE_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("id", id);
                 builder.appendQueryParameter("password", newPassword);
                 StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
@@ -467,7 +468,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                                 Toast.makeText(getApplicationContext(),msg+"", Toast.LENGTH_LONG).show();
                             }
                             else  if (success.equals("1")) {
-                                session.createLoginSession(id,profileSt,firstname,lastname,username,newPassword,email,ccode,mnumber);
+                                session.createLoginSession(id,profileSt,firstname,lastname,username,newPassword,email,ccode,mnumber,session.getUserDetails().get(SessionManager.ACCESS_TOKEN));
                                 Toast.makeText(getApplicationContext(),msg+"", Toast.LENGTH_LONG).show();
                                 try {
                                     Intent intent = new Intent(MyProfileActivity.this, MainActivity.class);

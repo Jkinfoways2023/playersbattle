@@ -17,6 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -443,7 +444,7 @@ public class OTPActivity extends AppCompatActivity {
             if (promocode.length() >= 2){
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_REGISTER_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("fname",firstname);
                 builder.appendQueryParameter("lname",lastname);
                 builder.appendQueryParameter("username",username);
@@ -516,7 +517,7 @@ public class OTPActivity extends AppCompatActivity {
             else {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_REGISTER_URL).buildUpon();
-                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("fname",firstname);
                 builder.appendQueryParameter("lname",lastname);
                 builder.appendQueryParameter("username",username);

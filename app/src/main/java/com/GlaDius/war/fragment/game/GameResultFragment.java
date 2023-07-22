@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.GlaDius.war.MyApplication;
 import com.GlaDius.war.activity.game.HtmlGameResultDetailActivity;
 import com.GlaDius.war.adapter.game.GameContestsAdapter;
 import com.GlaDius.war.adapter.game.GameResultAdapter;
@@ -119,7 +120,7 @@ public class GameResultFragment extends Fragment {
         binding.shimmerView.startShimmer();
 
         Uri.Builder builder = Uri.parse(Constant.LIST_HTML_GAME_RESULT).buildUpon();
-        builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("typeof_game", model.getId());
 
         StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), response -> {
