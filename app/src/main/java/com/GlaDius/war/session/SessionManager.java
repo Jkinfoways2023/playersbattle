@@ -31,10 +31,12 @@ public class SessionManager {
 
     // All Shared Preferences Keys
     private static final String IS_LOGIN = "IsLoggedIn";
+    public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
+    public static final String upi_gateway_key = "upi_gateway_key";
 
     // Id (make variable public to access from outside)
     public static final String KEY_ID = "id";
-    public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
+
     // WhatsApp (make variable public to access from outside)
     public static final String KEY_PROFILE = "profile";
 
@@ -70,7 +72,7 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String id, String profile, String fname, String lname, String username, String password, String email, String code, String mobile,String token){
+    public void createLoginSession(String id, String profile, String fname, String lname, String username, String password, String email, String code, String mobile, String token){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -106,6 +108,13 @@ public class SessionManager {
         editor.commit();
     }
 
+    public void setstringdata(String key, String value)
+    {
+        editor.putString(key, value);
+
+        // commit changes
+        editor.commit();
+    }
     /**
      * Check login method wil check user login status
      * If false it will redirect user to login page
@@ -141,7 +150,6 @@ public class SessionManager {
         user.put(KEY_PASSWORD, pref.getString(KEY_PASSWORD,null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL,null));
         user.put(KEY_CODE, pref.getString(KEY_CODE,null));
-        user.put(ACCESS_TOKEN, pref.getString(ACCESS_TOKEN,null));
         user.put(KEY_MOBILE, pref.getString(KEY_MOBILE,null));
         // return user
         return user;

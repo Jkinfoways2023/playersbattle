@@ -1,28 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/darkBlue"
+    android:orientation="vertical"
     tools:context="com.GlaDius.war.activity.UpdateAppActivity">
 
-    <LinearLayout android:orientation="vertical" android:id="@+id/noStatsLL" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-                    <ImageView android:layout_gravity="center" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/new_update" />
-                    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" android:textStyle="bold" android:textColor="@color/colorAccent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/new_update_is_available" />
-                        <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:id="@+id/version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/new_version_v1_5" />
-                        <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:id="@+id/date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/updated_on_16_10_2018" />
+    <LinearLayout
+        android:id="@+id/noStatsLL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100.0dip"
+                        android:layout_height="100.0dip"
+                        android:layout_gravity="center"
+                        android:src="@drawable/new_update" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_update_is_available"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_version_v1_5"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="#ffffffff" />
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/updated_on_16_10_2018"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="#ffffffff" />
                     </LinearLayout>
                 </LinearLayout>
-                <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" android:textColor="@color/colorAccent" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:text="@string/what_s_new" />
-                <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:id="@+id/whatsnew" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:text="• Bug Fixed\n• New Layout\n• Improved User Interface\n• Reduced App Size\n• Added More Ways to Earn" android:fontFamily="@font/lato" />
-                <TextView android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" android:textSize="17.0sp" android:textColor="#ffffffff" android:id="@+id/forceUpdateNote" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="30.0dip" android:text="@string/forceUpdateNote" android:fontFamily="@font/lato" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="20.0dip"
+                    android:gravity="center"
+                    android:text="@string/what_s_new"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/whatsnew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:fontFamily="@font/lato"
+                    android:text="• Bug Fixed\n• New Layout\n• Improved User Interface\n• Reduced App Size\n• Added More Ways to Earn"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffffff" />
+
+                <TextView
+                    android:id="@+id/forceUpdateNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="30.0dip"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/forceUpdateNote"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#ffffffff"
+                    android:textSize="17.0sp"
+                    android:visibility="gone" />
+
                 <RelativeLayout
                     android:id="@+id/progressRl"
                     android:layout_width="match_parent"
@@ -32,12 +118,86 @@
                     android:layout_marginRight="15.0dip"
                     android:layout_marginBottom="2.0dip"
                     android:visibility="gone">
-                    <TextView android:textColor="#ffffffff" android:id="@+id/progressCompleteTv" android:layout_alignParentStart="true" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:layout_marginLeft="0.0dip" android:layout_marginRight="10.0dip"  android:text="55%" android:fontFamily="@font/lato" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_centerInParent="true"/>
-                    <ProgressBar android:visibility="visible" android:id="@+id/progressBar" android:layout_toEndOf="@id/progressCompleteTv" android:layout_toStartOf="@id/progressRemainTv" android:layout_width="fill_parent" android:layout_height="8dp" style="?android:attr/progressBarStyleHorizontal" android:max="100" android:progress="55" android:progressDrawable="@drawable/download_progress" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_centerInParent="true"/>
-                    <TextView android:textColor="#ffffffff" android:id="@+id/progressRemainTv" android:layout_alignParentEnd="true" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="12sp" android:layout_marginLeft="10.0dip" android:layout_marginRight="0.0dip"  android:text="45%" android:fontFamily="@font/lato" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_centerInParent="true"/>
+
+                    <TextView
+                        android:id="@+id/progressCompleteTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="0.0dip"
+                        android:layout_marginRight="10.0dip"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center_vertical"
+                        android:text="55%"
+                        android:textColor="#ffffffff"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="8dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toStartOf="@id/progressRemainTv"
+                        android:layout_toEndOf="@id/progressCompleteTv"
+                        android:gravity="center_vertical"
+                        android:max="100"
+                        android:progress="55"
+                        android:progressDrawable="@drawable/download_progress"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/progressRemainTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginRight="0.0dip"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center_vertical"
+                        android:text="45%"
+                        android:textColor="#ffffffff"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
                 </RelativeLayout>
-                <Button android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:id="@+id/laterButton" android:background="@drawable/bluebackbutton" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="2.0dip" android:foreground="?android:selectableItemBackground" android:text="@string/later" android:backgroundTint="#ff757575" />
-                <Button android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:textColor="#ffffffff" android:id="@+id/updateButton" android:background="@drawable/bluebackbutton" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="2.0dip" android:foreground="?android:selectableItemBackground" android:text="@string/update" />
+
+                <Button
+                    android:id="@+id/laterButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="40.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="2.0dip"
+                    android:background="@drawable/bluebackbutton"
+                    android:backgroundTint="#ff757575"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:foreground="?android:selectableItemBackground"
+                    android:text="@string/later"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffffff" />
+
+                <Button
+                    android:id="@+id/updateButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="2.0dip"
+                    android:background="@drawable/bluebackbutton"
+                    android:clickable="true"
+                    android:foreground="?android:selectableItemBackground"
+                    android:text="@string/update"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffffff" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

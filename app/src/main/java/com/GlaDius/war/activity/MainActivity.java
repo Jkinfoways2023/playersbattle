@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         getCounter();
         MyApplication.getInstance().testsignin();
-
+        getupikey();
         //initViews();
         //initListeners();
 
@@ -150,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject=new JSONObject(response);
                         JSONArray jsonArray=jsonObject.getJSONArray("result");
                         JSONObject jsonObject1=jsonArray.getJSONObject(0);
-
                         String success = jsonObject1.getString("success");
 
                         if (success.equals("1")) {
@@ -416,5 +416,49 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() { @Override public void run() { doubleBackToExitPressedOnce = false; }}, 1500);
 
+    }
+
+    public void getupikey()
+    {
+        if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
+            Uri.Builder builder = Uri.parse(Constant.get_upi_data).buildUpon();
+            builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+            StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject=new JSONObject(response);
+                        JSONArray jsonArray=jsonObject.getJSONArray("result");
+                        JSONObject jsonObject1=jsonArray.getJSONObject(0);
+                        session.setstringdata(session.upi_gateway_key,jsonObject1.getString("upi_gateway_key"));
+                        Log.e("keyissss",jsonObject1.getString("upi_gateway_key"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+//                        parameters.put("fname", firstname);
+//                        parameters.put("lname", lastname);
+//                        parameters.put("username", uname);
+//                        parameters.put("password", md5pass);
+//                        parameters.put("email", eMail);
+//                        parameters.put("mobile", mobileNumber);
+                    return parameters;
+                }
+            };
+            request.setRetryPolicy(new DefaultRetryPolicy(60000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            request.setShouldCache(false);
+            MySingleton.getInstance(getApplicationContext()).addToRequestque(request);
+        } else {
+            Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_SHORT).show();
+        }
     }
 }

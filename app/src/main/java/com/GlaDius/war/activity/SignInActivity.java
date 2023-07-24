@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.GlaDius.war.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -94,7 +93,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private String balance;
     private String dateOfbirth;
     private String email;
-    private String token;
     private String firstname;
     private String fullname;
     private String username;
@@ -108,6 +106,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private String strCodePhone;
     private String uname;
     private String strDeviceID;
+    private String token;
+
 
     private String phoneVerificationId;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks verificationCallbacks;
@@ -135,7 +135,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         session = new SessionManager(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         strDeviceID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        
+
         txt_show = (TextView) findViewById(R.id.txt_show);
         lyt_email_signin = (LinearLayout) findViewById(R.id.lyt_email_signin);
         txt_fgt_pass = (TextView) findViewById(R.id.txt_fgt_pass);
@@ -367,7 +367,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_LOGIN_URL).buildUpon();
-                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
+                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
                 builder.appendQueryParameter("username", uname);
                 builder.appendQueryParameter("password", password);
                 builder.appendQueryParameter("device_id",strDeviceID);
@@ -454,7 +454,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             if (new ExtraOperations().haveNetworkConnection(this)) {
                 progressBar.setVisibility(View.VISIBLE);
                 Uri.Builder builder = Uri.parse(Constant.USER_LOGIN_URL).buildUpon();
-                builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
+                builder.appendQueryParameter("access_key", Config.PURCHASE_CODE);
                 builder.appendQueryParameter("username", uname);
                 builder.appendQueryParameter("device_id",strDeviceID);
                 builder.appendQueryParameter("social", "true");

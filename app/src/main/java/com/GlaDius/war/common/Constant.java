@@ -6,6 +6,7 @@ public class Constant {
     public static final String USER_REGISTER_URL = Config.ADMIN_PANEL_URL + "user_register/?";
     public static final String USER_LOGIN_URL = Config.ADMIN_PANEL_URL + "user_login/?";
     public static final String GET_PROFILE_URL = Config.ADMIN_PANEL_URL + "get_user_profile/?";
+    public static final String get_upi_data = Config.ADMIN_PANEL_URL + "get_upi_data/?";
     public static final String UPDATE_PROFILE_URL = Config.ADMIN_PANEL_URL + "update_user_profile/?";
     public static final String UPDATE_PHOTO_URL = Config.ADMIN_PANEL_URL + "update_user_photo/?";
     public static final String RESET_PASSWORD_URL = Config.ADMIN_PANEL_URL + "reset_password/?";
@@ -90,5 +91,5 @@ public class Constant {
     public static final String LOAD_REWARDS_URL = Config.ADMIN_PANEL_URL + "get_rewards/?";
 
     public static final String CREATE_ORDER = "https://merchant.upigateway.com/api/create_order";
-    public static final String M_KEY = "72e7befb-21cc-4bcf-bb9f-3c10be0c564a";
+    public static final String M_KEY = "61970d17-b9be-4bff-8dce-8cd805499861";
 }
