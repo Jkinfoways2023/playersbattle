@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.fragment.PlayFragment">
+    tools:context="com.tournaments.grindbattles.fragment.PlayFragment">
 
     <LinearLayout
         android:id="@+id/noMatchesLL"

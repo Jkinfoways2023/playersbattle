@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/darkBlue"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.LeaderboardReferActivity">
+    tools:context="com.tournaments.grindbattles.activity.LeaderboardReferActivity">
 
     <include layout="@layout/appbar" />
 

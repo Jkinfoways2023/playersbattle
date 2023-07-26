@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.GlaDius.war.views.TextView_Lato
+        <com.tournaments.grindbattles.views.TextView_Lato
             android:id="@+id/date"
             android:visibility="visible"
             android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                         android:text="Daily Checkin Credit"
                         android:textSize="16sp" />
 
-                    <com.GlaDius.war.views.TextView_Lato
+                    <com.tournaments.grindbattles.views.TextView_Lato
                         android:id="@+id/amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.GlaDius.war.views.TextView_Lato
+                    <com.tournaments.grindbattles.views.TextView_Lato
                         android:id="@+id/tnType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                         android:textSize="12sp"
                         android:layout_toStartOf="@id/statusName"/>
 
-                    <com.GlaDius.war.views.Textview_lato_thin
+                    <com.tournaments.grindbattles.views.Textview_lato_thin
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/statusName"

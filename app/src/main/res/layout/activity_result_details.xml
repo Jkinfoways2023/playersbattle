@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/darkBlue"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.ResultDetailsActivity">
+    tools:context="com.tournaments.grindbattles.activity.ResultDetailsActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="fill_parent"

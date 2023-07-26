@@ -10,7 +10,7 @@
                 </LinearLayout>
             </LinearLayout>
             <RelativeLayout android:id="@+id/editRL" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:foreground="?android:attr/selectableItemBackground">
-                <com.GlaDius.war.views.VerticalTextView
+                <com.tournaments.grindbattles.views.VerticalTextView
                     android:textSize="15sp" android:textStyle="bold" android:textColor="#fff" android:gravity="center" android:layout_gravity="center" android:id="@+id/editBtn" android:background="#555151" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="EDIT" android:rotation="180" android:fontFamily="@font/lato" android:layout_alignParentEnd="true"/>
             </RelativeLayout>
         </LinearLayout>

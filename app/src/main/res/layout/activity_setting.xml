@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fffafafa"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.SettingActivity">
+    tools:context="com.tournaments.grindbattles.activity.SettingActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

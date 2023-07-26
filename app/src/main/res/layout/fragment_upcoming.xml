@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/semiWhiteColor"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.fragment.UpcomingFragment">
+    tools:context="com.tournaments.grindbattles.fragment.UpcomingFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"

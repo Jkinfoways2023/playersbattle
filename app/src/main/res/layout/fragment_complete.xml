@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/semiWhiteColor"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.fragment.CompleteFragment">
+    tools:context="com.tournaments.grindbattles.fragment.CompleteFragment">
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@id/shimmer_view_container"

@@ -7,7 +7,7 @@
     android:layout_height="fill_parent"
     android:background="@color/semiBlackColor"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.MyWalletActivity">
+    tools:context="com.tournaments.grindbattles.activity.MyWalletActivity">
 
     <RelativeLayout
         android:id="@+id/toolbar"

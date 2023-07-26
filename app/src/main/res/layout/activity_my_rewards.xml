@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.MyRewardsActivity">
+    tools:context="com.tournaments.grindbattles.activity.MyRewardsActivity">
 
     <include layout="@layout/appbar" />
 

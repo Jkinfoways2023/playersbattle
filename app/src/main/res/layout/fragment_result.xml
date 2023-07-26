@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.fragment.ResultFragment">
+    tools:context="com.tournaments.grindbattles.fragment.ResultFragment">
 
     <LinearLayout
         android:id="@+id/noResultsLL"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.GlaDius.war.activity.MatchActivity">
+    tools:context="com.tournaments.grindbattles.activity.MatchActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:gravity="center_vertical"

@@ -20,8 +20,8 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -ignorewarnings
--keep class com.GlaDius.war.playerwar.** { *; }
--keep class com.GlaDius.war.MyApplication
+-keep class com.tournaments.grindbattles.playerwar.** { *; }
+-keep class com.tournaments.grindbattles.MyApplication
 
 -dontwarn com.tournaments.skycoder.playerwar.**
 

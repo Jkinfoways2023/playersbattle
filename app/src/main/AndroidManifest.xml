@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.GlaDius.war">
+    package="com.tournaments.grindbattles">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.GlaDius.war.MyApplication"
+        android:name="com.tournaments.grindbattles.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,17 +20,17 @@
         android:vmSafeMode="true"
         tools:node="merge"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:exported="true" android:name="com.GlaDius.war.activity.game.HtmlGameResultDetailActivity"></activity>
-        <activity android:name="com.GlaDius.war.activity.game.HtmlGameActivity" />
+        <activity android:exported="true" android:name="com.tournaments.grindbattles.activity.game.HtmlGameResultDetailActivity"></activity>
+        <activity android:name="com.tournaments.grindbattles.activity.game.HtmlGameActivity" />
         <activity
-            android:name="com.GlaDius.war.activity.game.HtmlGameRulesActivity"
+            android:name="com.tournaments.grindbattles.activity.game.HtmlGameRulesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:exported="true"  android:name="com.GlaDius.war.activity.game.GameActivity" />
-        <activity android:exported="true"  android:name="com.GlaDius.war.activity.game.FindUserGameActivity" />
-        <activity android:exported="true"  android:name="com.GlaDius.war.activity.my_contest.MyContestActivity" />
-        <activity android:name="com.GlaDius.war.activity.SplashActivity"
+        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.game.GameActivity" />
+        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.game.FindUserGameActivity" />
+        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.my_contest.MyContestActivity" />
+        <activity android:name="com.tournaments.grindbattles.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,186 +40,186 @@
         </activity>
         <activity
 
-            android:name="com.GlaDius.war.activity.IntroActivity"
+            android:name="com.tournaments.grindbattles.activity.IntroActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
-            android:name="com.GlaDius.war.activity.SignInActivity"
+            android:name="com.tournaments.grindbattles.activity.SignInActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
-            android:name="com.GlaDius.war.activity.SignUpActivity"
+            android:name="com.tournaments.grindbattles.activity.SignUpActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.OTPActivity"
+            android:name="com.tournaments.grindbattles.activity.OTPActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"  android:exported="true" />
         <activity
-            android:name="com.GlaDius.war.activity.ResetPasswordActivity"
+            android:name="com.tournaments.grindbattles.activity.ResetPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.ForgetPasswordActivity"
+            android:name="com.tournaments.grindbattles.activity.ForgetPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MainActivity"
+            android:name="com.tournaments.grindbattles.activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MatchActivity"
+            android:name="com.tournaments.grindbattles.activity.MatchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MyMatchesActivity"
+            android:name="com.tournaments.grindbattles.activity.MyMatchesActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.SettingActivity"
+            android:name="com.tournaments.grindbattles.activity.SettingActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.LotteryActivity"
+            android:name="com.tournaments.grindbattles.activity.LotteryActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.LotteryDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.LotteryDetailsActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MyProfileActivity"
+            android:name="com.tournaments.grindbattles.activity.MyProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MyWalletActivity"
+            android:name="com.tournaments.grindbattles.activity.MyWalletActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MyStatisticsActivity"
+            android:name="com.tournaments.grindbattles.activity.MyStatisticsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.TopPlayersActivity"
+            android:name="com.tournaments.grindbattles.activity.TopPlayersActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.JoiningMatchActivity"
+            android:name="com.tournaments.grindbattles.activity.JoiningMatchActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.PlayDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.PlayDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.ResultDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.ResultDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.LiveDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.LiveDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.RoomAuthActivity"
+            android:name="com.tournaments.grindbattles.activity.RoomAuthActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.NotificationDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.NotificationDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.FAQActivity"
+            android:name="com.tournaments.grindbattles.activity.FAQActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.AboutUsActivity"
+            android:name="com.tournaments.grindbattles.activity.AboutUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.ContactUsActivity"
+            android:name="com.tournaments.grindbattles.activity.ContactUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.TermsConditionsActivity"
+            android:name="com.tournaments.grindbattles.activity.TermsConditionsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"  android:exported="true" />
         <activity
-            android:name="com.GlaDius.war.activity.PrivacyPolicyActivity"
+            android:name="com.tournaments.grindbattles.activity.PrivacyPolicyActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.UpdateAppActivity"
+            android:name="com.tournaments.grindbattles.activity.UpdateAppActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.MyReferralsActivity"
+            android:name="com.tournaments.grindbattles.activity.MyReferralsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.NotificationActivity"
+            android:name="com.tournaments.grindbattles.activity.NotificationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.RefereEarnActivity"
+            android:name="com.tournaments.grindbattles.activity.RefereEarnActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.RewardEarnActivity"
+            android:name="com.tournaments.grindbattles.activity.RewardEarnActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.LeaderboardReferActivity"
+            android:name="com.tournaments.grindbattles.activity.LeaderboardReferActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"  android:exported="true" />
         <activity
-            android:name="com.GlaDius.war.activity.MyRewardsActivity"
+            android:name="com.tournaments.grindbattles.activity.MyRewardsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.LeaderboardRewardActivity"
+            android:name="com.tournaments.grindbattles.activity.LeaderboardRewardActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.ProductActivity"
+            android:name="com.tournaments.grindbattles.activity.ProductActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
         <activity
-            android:name="com.GlaDius.war.activity.ProductDetailsActivity"
+            android:name="com.tournaments.grindbattles.activity.ProductDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" android:exported="true"  />
@@ -273,7 +273,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.GlaDius.war.fileprovider"
+            android:authorities="com.tournaments.grindbattles.fileprovider"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"

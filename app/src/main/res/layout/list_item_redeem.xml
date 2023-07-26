@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.GlaDius.war.views.TextView_Lato
+        <com.tournaments.grindbattles.views.TextView_Lato
             android:id="@+id/date"
             android:visibility="gone"
             android:layout_width="match_parent"
@@ -59,14 +59,14 @@
                     android:layout_marginBottom="18.7dp"
                     android:orientation="vertical">
 
-                    <com.GlaDius.war.views.TextView_Lato
+                    <com.tournaments.grindbattles.views.TextView_Lato
                         android:id="@+id/tnName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_black"
                         android:textSize="15sp" />
 
-                    <com.GlaDius.war.views.TextView_Lato
+                    <com.tournaments.grindbattles.views.TextView_Lato
                         android:id="@+id/tnType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

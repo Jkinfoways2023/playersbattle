@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/semiWhiteColor"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.activity.MyStatisticsActivity">
+    tools:context="com.tournaments.grindbattles.activity.MyStatisticsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

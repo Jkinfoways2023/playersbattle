@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="@color/semiWhiteColor"
     android:orientation="vertical"
-    tools:context="com.GlaDius.war.fragment.OngoingFragment">
+    tools:context="com.tournaments.grindbattles.fragment.OngoingFragment">
 
     <LinearLayout
         android:id="@+id/noOnGoingLL"

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.GlaDius.war.activity.FAQActivity">
+    tools:context="com.tournaments.grindbattles.activity.FAQActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

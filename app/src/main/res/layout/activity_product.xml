@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/grey_10"
-    tools:context="com.GlaDius.war.activity.ProductActivity">
+    tools:context="com.tournaments.grindbattles.activity.ProductActivity">
 
     <com.facebook.shimmer.ShimmerFrameLayout android:layout_gravity="center" android:orientation="vertical" android:id="@+id/shimmer_view_container" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip">

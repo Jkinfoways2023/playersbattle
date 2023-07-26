@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/semiWhiteColor"
-    tools:context="com.GlaDius.war.activity.MainActivity">
+    tools:context="com.tournaments.grindbattles.activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/mainContainer"
