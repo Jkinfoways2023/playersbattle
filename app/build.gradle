@@ -8,7 +8,7 @@ android {
         applicationId "com.tournaments.grindbattles"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 7
+        versionCode 8
         versionName "5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

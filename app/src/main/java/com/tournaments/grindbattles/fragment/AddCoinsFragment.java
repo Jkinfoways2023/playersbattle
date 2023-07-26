@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,6 +139,7 @@ public class AddCoinsFragment extends androidx.fragment.app.Fragment {
                     public void onResponse(JSONArray response) {
                         mShimmerViewContainer.stopShimmer();
                         mShimmerViewContainer.setVisibility(View.GONE);
+                        Log.e("Responseisss", String.valueOf(response));
                         JSON_PARSE_DATA_AFTER_WEBCALL_TOP_ADD_COINS(response);
                     }
                 },

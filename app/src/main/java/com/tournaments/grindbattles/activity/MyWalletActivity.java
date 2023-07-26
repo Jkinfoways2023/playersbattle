@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -34,6 +35,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import retrofit2.Call;
@@ -48,7 +50,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -384,7 +388,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         }
         Log.e("razorpay_called", "Error in starting Razorpay Checkout");
 
-
+        //generate_txnId(amount,id);
         /*remarkSt = "Added From PayPal";
         addTransactionDetails(String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis()));*/
     }
@@ -801,7 +805,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                 break;
             case PAYPAL_PAYMENT:
                 if (requestCode == REQUEST_CODE) {
-                    if (resultCode == Activity.RESULT_OK) {
+                    if (resultCode == Activity.RESULT_OK)
+                    {
                         DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
                         PaymentMethodNonce nonce = result.getPaymentMethodNonce();
                         String stringNonce = nonce.getNonce();
@@ -1208,6 +1213,37 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             webView.loadUrl(url);
         }
 
+       /* webView.setWebViewClient(new WebViewClient()
+        {
+            @SuppressWarnings("deprecation")
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView webView, String url)
+            {
+                return shouldOverrideUrlLoading(url);
+            }
+
+            @TargetApi(Build.VERSION_CODES.N)
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request)
+            {
+                Uri uri = request.getUrl();
+                return shouldOverrideUrlLoading(uri.toString());
+            }
+
+            private boolean shouldOverrideUrlLoading(final String url)
+            {
+             *//*   if(url.contains("https://google.com"))
+                {
+                    webView.setVisibility(View.GONE);
+                    coinsrl.setVisibility(View.VISIBLE);
+                    frameLayout.setVisibility(View.GONE);
+                    startActivity(new Intent(MyWalletActivity.this,MyWalletActivity.class));
+                    finish();
+                }*//*
+                return true; // Returning True means that application wants to leave the current WebView and handle the url itself, otherwise return false.
+            }
+        });*/
+
     }
     public class WebviewInterface {
         @JavascriptInterface
@@ -1220,7 +1256,11 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         @JavascriptInterface
         public void errorResponse() {
+            Log.e("canceledd","transaction cancelled");
             Toast.makeText(MyWalletActivity.this, "Payment cancelled", Toast.LENGTH_SHORT).show();
+            webView.setVisibility(View.GONE);
+            coinsrl.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
         }
     }
     private void generate_txnId(String amount, String id)
@@ -1234,11 +1274,11 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     (Request.Method.POST, CREATE_ORDER , new com.android.volley.Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.e("responsestatus",response);
+                            Log.e("responsestatusis",response);
                             try {
                                 JSONObject object=new JSONObject(response);
                                 String status=object.getString("status");
-                                if(status.equals("true"))
+                                if(status.equalsIgnoreCase("true"))
                                 {
                                     JSONObject obj=object.getJSONObject("data");
                                     String url=obj.getString("payment_url");
@@ -1265,20 +1305,18 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                 protected Map<String, String> getParams()
                 {
                     Map<String, String>  params = new HashMap<String, String>();
-
-                    params.put("key", Constant.M_KEY);
+                    params.put("key", user.get(SessionManager.upi_gateway_key));
                     params.put("client_txn_id",upi_new_order_id);
                     params.put("amount",amount);
                     params.put("p_info","Product Name");
                     params.put("customer_name",user.get(SessionManager.KEY_FIRST_NAME));
                     params.put("customer_email",user.get(SessionManager.KEY_EMAIL));
                     params.put("customer_mobile",user.get(SessionManager.KEY_MOBILE));
-                    params.put("redirect_url","http://google.com");
+                    params.put("redirect_url","https://google.com");
                     params.put("udf1","user defined field 1 (max 25 char)");
                     params.put("udf2","user defined field 2 (max 25 char)");
                     params.put("udf3","user defined field 3 (max 25 char)");
-
-                    Log.e("paras",params.toString());
+                    Log.e("responsestatusis",params.toString());
                     return params;
                 }
             };

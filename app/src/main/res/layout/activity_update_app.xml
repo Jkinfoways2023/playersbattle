@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/darkBlue"
-    tools:context="com.tournaments.grindbattles.activity.UpdateAppActivity">
+    tools:context="com.GlaDius.war.activity.UpdateAppActivity">
 
     <LinearLayout android:orientation="vertical" android:id="@+id/noStatsLL" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">

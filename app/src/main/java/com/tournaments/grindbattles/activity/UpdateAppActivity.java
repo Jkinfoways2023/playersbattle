@@ -96,7 +96,8 @@ public class UpdateAppActivity extends AppCompatActivity {
             }
         });
 
-        if (this.isForceUpdate.equals("1")) {
+        if (this.isForceUpdate.equals("1"))
+        {
             this.later.setVisibility(View.GONE);
             this.forceUpdateNote.setVisibility(View.VISIBLE);
         }
