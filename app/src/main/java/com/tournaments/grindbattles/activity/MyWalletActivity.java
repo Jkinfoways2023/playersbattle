@@ -1312,9 +1312,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     params.put("customer_name",user.get(SessionManager.KEY_FIRST_NAME));
                     params.put("customer_email",user.get(SessionManager.KEY_EMAIL));
                     params.put("customer_mobile",user.get(SessionManager.KEY_MOBILE));
-                    params.put("redirect_url","https://google.com");
-                    params.put("udf1","user defined field 1 (max 25 char)");
-                    params.put("udf2","user defined field 2 (max 25 char)");
+                    params.put("udf1",user.get(SessionManager.KEY_ID));
+                    params.put("udf2",user.get(SessionManager.ACCESS_TOKEN));
                     params.put("udf3","user defined field 3 (max 25 char)");
                     Log.e("responsestatusis",params.toString());
                     return params;
