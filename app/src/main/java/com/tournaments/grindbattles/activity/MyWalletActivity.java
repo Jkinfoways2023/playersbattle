@@ -1131,7 +1131,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         Checkout checkout = new Checkout();
         Log.e("rzpkeyiss",rzp_key);
         checkout.setKeyID(rzp_key);
-        try {
+       /* try {
             double total = Double.parseDouble(amount);
             total = total * 100;
             JSONObject options = new JSONObject();
@@ -1145,14 +1145,14 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         } catch (Exception e) {
             e.printStackTrace();
         }
-       /* Checkout checkout = new Checkout();
+        Checkout checkout = new Checkout();*/
         try {
             JSONObject options = new JSONObject();
 
             options.put("name", this.getString(R.string.app_name));
             options.put("description", "Add Fund to app");
             options.put("currency", "INR");
-            //options.put("order_id", "test_order");
+            options.put("order_id", "test_order");
 
             double total = Double.parseDouble(amount);
             total = total * 100;
@@ -1169,7 +1169,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         } catch(Exception e) {
             Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ e);
-        }*/
+        }
     }
 
     @Override
@@ -1213,37 +1213,6 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             webView.loadUrl(url);
         }
 
-       /* webView.setWebViewClient(new WebViewClient()
-        {
-            @SuppressWarnings("deprecation")
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView webView, String url)
-            {
-                return shouldOverrideUrlLoading(url);
-            }
-
-            @TargetApi(Build.VERSION_CODES.N)
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request)
-            {
-                Uri uri = request.getUrl();
-                return shouldOverrideUrlLoading(uri.toString());
-            }
-
-            private boolean shouldOverrideUrlLoading(final String url)
-            {
-             *//*   if(url.contains("https://google.com"))
-                {
-                    webView.setVisibility(View.GONE);
-                    coinsrl.setVisibility(View.VISIBLE);
-                    frameLayout.setVisibility(View.GONE);
-                    startActivity(new Intent(MyWalletActivity.this,MyWalletActivity.class));
-                    finish();
-                }*//*
-                return true; // Returning True means that application wants to leave the current WebView and handle the url itself, otherwise return false.
-            }
-        });*/
-
     }
     public class WebviewInterface {
         @JavascriptInterface
@@ -1265,7 +1234,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     }
     private void generate_txnId(String amount, String id)
     {
-        Log.e("responsestatus","response");
+        Log.e("responsestatus","response method called");
         upi_new_order_id= String.valueOf(System.currentTimeMillis());
         HashMap<String, String> user = session.getUserDetails();
         try {
@@ -1274,14 +1243,16 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     (Request.Method.POST, CREATE_ORDER , new com.android.volley.Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.e("responsestatusis",response);
+                            Log.e("responsestatusis","respo " +response);
                             try {
                                 JSONObject object=new JSONObject(response);
                                 String status=object.getString("status");
                                 if(status.equalsIgnoreCase("true"))
                                 {
+                                    Log.e("responsestatusis","calledd 1252");
                                     JSONObject obj=object.getJSONObject("data");
                                     String url=obj.getString("payment_url");
+
                                     callupimethod(url);
                                 }
                                 else
@@ -1291,14 +1262,15 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                             }
                             catch (JSONException e)
                             {
-                                Log.e("excepongenerate", String.valueOf(e));
+                                Log.e("responsestatusis","error "+ String.valueOf(e));
                                 e.printStackTrace();
                             }
                         }
                     }, new com.android.volley.Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("respooooooooooo", error.toString());
+                            Log.e("responsestatusis", "Volley error "+error.toString());
+                            Log.e("responsestatusis", "Volley error "+error.networkResponse);
                         }
                     }){
                 @Override
@@ -1311,11 +1283,12 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     params.put("p_info","Product Name");
                     params.put("customer_name",user.get(SessionManager.KEY_FIRST_NAME));
                     params.put("customer_email",user.get(SessionManager.KEY_EMAIL));
+                    params.put("redirect_url","http://google.com");
                     params.put("customer_mobile",user.get(SessionManager.KEY_MOBILE));
                     params.put("udf1",user.get(SessionManager.KEY_ID));
-                    params.put("udf2",user.get(SessionManager.ACCESS_TOKEN));
+                    params.put("udf2","null");//user.get(SessionManager.ACCESS_TOKEN));
                     params.put("udf3","user defined field 3 (max 25 char)");
-                    Log.e("responsestatusis",params.toString());
+                    Log.e("responsestatusis","json "+params.toString());
                     return params;
                 }
             };

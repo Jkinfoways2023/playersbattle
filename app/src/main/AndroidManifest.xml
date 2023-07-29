@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.tournaments.grindbattles.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -280,7 +280,7 @@
                 android:resource="@xml/file_provider_paths" />
         </provider> <!-- File Download Service -->
        <!-- <service
-            android:name="com.GlaDius.war.services.NotificationExtenderExample"
+            android:name="com.tournaments.grindbattles.services.NotificationExtenderExample"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>

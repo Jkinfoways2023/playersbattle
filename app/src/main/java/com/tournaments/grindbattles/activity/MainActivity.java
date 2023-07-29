@@ -427,12 +427,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     try {
+                        Log.e("errorisssss","response"+ String.valueOf(response));
                         JSONObject jsonObject=new JSONObject(response);
                         JSONArray jsonArray=jsonObject.getJSONArray("result");
                         JSONObject jsonObject1=jsonArray.getJSONObject(0);
                         session.setstringdata(session.upi_gateway_key,jsonObject1.getString("upi_gateway_key"));
-                        Log.e("keyissss",jsonObject1.getString("upi_gateway_key"));
+                        Log.e("errorisssss","key"+jsonObject1.getString("upi_gateway_key"));
                     } catch (JSONException e) {
+                        Log.e("errorisssss", "error"+String.valueOf(e));
                         e.printStackTrace();
                     }
                 }

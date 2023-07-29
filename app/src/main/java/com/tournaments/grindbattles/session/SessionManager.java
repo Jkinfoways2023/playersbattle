@@ -150,6 +150,7 @@ public class SessionManager {
         user.put(KEY_PASSWORD, pref.getString(KEY_PASSWORD,null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL,null));
         user.put(KEY_CODE, pref.getString(KEY_CODE,null));
+        user.put(upi_gateway_key, pref.getString(upi_gateway_key,null));
         user.put(KEY_MOBILE, pref.getString(KEY_MOBILE,null));
         // return user
         return user;

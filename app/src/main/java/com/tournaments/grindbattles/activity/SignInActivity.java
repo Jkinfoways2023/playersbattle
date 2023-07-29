@@ -1,11 +1,13 @@
-package com.GlaDius.war.activity;
+package com.tournaments.grindbattles.activity;
 
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.GlaDius.war.MyApplication;
+
+import com.tournaments.grindbattles.R;
+import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -67,12 +69,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import androidx.cardview.widget.CardView;
-import com.GlaDius.war.R;
-import com.GlaDius.war.common.Config;
-import com.GlaDius.war.common.Constant;
-import com.GlaDius.war.session.SessionManager;
-import com.GlaDius.war.utils.ExtraOperations;
-import com.GlaDius.war.utils.MySingleton;
+import com.tournaments.grindbattles.common.Config;
+import com.tournaments.grindbattles.common.Constant;
+import com.tournaments.grindbattles.session.SessionManager;
+import com.tournaments.grindbattles.utils.ExtraOperations;
+import com.tournaments.grindbattles.utils.MySingleton;
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
