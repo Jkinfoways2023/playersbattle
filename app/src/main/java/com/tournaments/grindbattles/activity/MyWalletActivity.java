@@ -1131,7 +1131,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         Checkout checkout = new Checkout();
         Log.e("rzpkeyiss",rzp_key);
         checkout.setKeyID(rzp_key);
-       /* try {
+        try {
             double total = Double.parseDouble(amount);
             total = total * 100;
             JSONObject options = new JSONObject();
@@ -1140,13 +1140,20 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             //options.put("order_id", "test_order");
             options.put("currency", "INR");
             options.put("amount", total); // Replace with your dynamic amount
+            JSONObject preFill = new JSONObject();
+            preFill.put("email", email);
+            preFill.put("contact", mnumber);
 
+            options.put("prefill", preFill);
             checkout.open(this, options);
         } catch (Exception e) {
+            Log.e("exceptionissss", String.valueOf(e));
             e.printStackTrace();
         }
-        Checkout checkout = new Checkout();*/
-        try {
+/*
+        Checkout checkout = new Checkout();
+*/
+       /* try {
             JSONObject options = new JSONObject();
 
             options.put("name", this.getString(R.string.app_name));
@@ -1169,7 +1176,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         } catch(Exception e) {
             Log.e("exceptionisss", "Error in starting Razorpay Checkout"+ e);
-        }
+        }*/
     }
 
     @Override

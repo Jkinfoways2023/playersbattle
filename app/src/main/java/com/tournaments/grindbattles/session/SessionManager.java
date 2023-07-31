@@ -143,6 +143,7 @@ public class SessionManager {
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
         user.put(KEY_ID, pref.getString(KEY_ID,null));
+        user.put(ACCESS_TOKEN, pref.getString(ACCESS_TOKEN,null));
         user.put(KEY_PROFILE, pref.getString(KEY_PROFILE,null));
         user.put(KEY_FIRST_NAME, pref.getString(KEY_FIRST_NAME,null));
         user.put(KEY_LAST_NAME, pref.getString(KEY_LAST_NAME,null));
