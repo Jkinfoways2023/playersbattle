@@ -17,6 +17,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.storage.UploadTask;
 import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -346,13 +349,18 @@ public class OTPActivity extends AppCompatActivity {
                     et_otp6.setText("");
                     AuthResult authResult = task.getResult();
                     String verificationId = authResult.getAdditionalUserInfo().getProviderId();
-                    Intent intent = new Intent(OTPActivity.this,ResetPasswordActivity.class);
-                    intent.putExtra("ccode", "+"+countryCode);
-                    intent.putExtra("phone", mobileNumber);
-                    intent.putExtra("verification_id", verificationId);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    auth.getCurrentUser().getIdToken(true).addOnCompleteListener(result -> {
+                        String idToken = result.getResult().getToken();
+                        //Do whatever
+                        Intent intent = new Intent(OTPActivity.this,ResetPasswordActivity.class);
+                        intent.putExtra("ccode", "+"+countryCode);
+                        intent.putExtra("phone", mobileNumber);
+                        intent.putExtra("verification_id", idToken);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    });
+
                 } else {
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
