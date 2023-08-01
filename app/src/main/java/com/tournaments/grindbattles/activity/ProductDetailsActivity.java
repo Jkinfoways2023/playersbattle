@@ -281,7 +281,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
         Uri.Builder builders = Uri.parse(Constant.GET_SLIDER_URL).buildUpon();
-        builders.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builders.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builders.appendQueryParameter("prod_id", id);
         galleryJsonArrayRequest = new JsonArrayRequest(Request.Method.GET, builders.toString(),  null, new Response.Listener<JSONArray>() {
             @Override

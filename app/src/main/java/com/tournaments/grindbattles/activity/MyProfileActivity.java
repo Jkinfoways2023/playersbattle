@@ -601,7 +601,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> parameters = new HashMap<String, String>();
-                        parameters.put("access_key", Config.PURCHASE_CODE);
+                        parameters.put("access_key", MyApplication.getInstance().testsignin());
                         parameters.put("id", id);
                         parameters.put("user_profile", profileSt);
                         return parameters;
