@@ -242,7 +242,7 @@ public class LotteryDetailsActivity extends AppCompatActivity {
         errorTv.setText("Please wait a few seconds...");
 
         Uri.Builder builder1 = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
-        builder1.appendQueryParameter("access_key", Config.PURCHASE_CODE);
+        builder1.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder1.appendQueryParameter("id", user_id);
         StringRequest request = new StringRequest(Request.Method.POST, builder1.toString(), new Response.Listener<String>() {
             @Override

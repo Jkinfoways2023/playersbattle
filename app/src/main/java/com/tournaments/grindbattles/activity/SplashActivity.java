@@ -52,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
                     return;
                 try {
                     if (!Config.PURCHASE_CODE.isEmpty()) {
-                        if (sessionManager.isLoggedIn()) {
+                        if (sessionManager.isLoggedIn() && sessionManager.getUserDetails().get(SessionManager.ACCESS_TOKEN) != null) {
                             Intent i = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(i);
                             finish();
@@ -74,7 +74,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (!Config.PURCHASE_CODE.isEmpty()) {
-                    if (sessionManager.isLoggedIn()) {
+                    if (sessionManager.isLoggedIn() && sessionManager.getUserDetails().get(SessionManager.ACCESS_TOKEN) != null) {
                         Intent i = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(i);
                         finish();
