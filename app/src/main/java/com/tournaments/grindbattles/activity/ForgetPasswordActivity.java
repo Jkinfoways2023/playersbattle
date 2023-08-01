@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -130,6 +131,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         Uri.Builder builder = Uri.parse(Constant.FORGET_PASSWORD_URL).buildUpon();
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("email",emailId);
+        Log.e("accesskey",builder.toString());
         StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

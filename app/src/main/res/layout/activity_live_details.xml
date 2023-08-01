@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,126 +29,681 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/pubg_banner"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/pubg_banner" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@drawable/bg_toolbar_gradient"
-                app:title="My Wallet"
-                app:titleTextColor="@color/white"
-                app:layout_collapseMode="pin"
                 app:contentInsetEnd="0.0dip"
                 app:contentInsetLeft="0.0dip"
                 app:contentInsetRight="0.0dip"
                 app:contentInsetStart="0.0dip"
                 app:elevation="0.0dip"
-                app:theme="@style/MyToolbarTheme" />
+                app:layout_collapseMode="pin"
+                app:theme="@style/MyToolbarTheme"
+                app:title="My Wallet"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView app:layout_behavior="@string/appbar_scrolling_view_behavior" android:id="@+id/nestedScroll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/actionBarSize">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:orientation="vertical" android:id="@+id/matchIDPassLL" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textSize="17.0sp" android:textColor="@color/blueRandom" android:id="@+id/titleMatchIDPass" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="Match Room Details" android:fontFamily="@font/lato_black" />
-                <TextView android:textSize="17.0sp" android:id="@+id/RoomIDPassUpcoming" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="5.0dip" android:text="Upcoming Username and Password" android:layout_below="@+id/titleMatchIDPass" android:fontFamily="@font/lato" />
-                <RelativeLayout android:id="@+id/roomIDPassRL" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@+id/titleMatchIDPass">
-                    <TextView android:textSize="17.0sp" android:id="@+id/roomIDText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" android:text="Room ID: " android:fontFamily="@font/lato" />
-                    <TextView android:textSize="17.0sp" android:id="@+id/roomIDValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" android:text="15263" android:layout_toRightOf="@+id/roomIDText" android:fontFamily="@font/lato_black" android:drawablePadding="@dimen/spacing_medium" android:drawableEnd="@drawable/ic_content_copy"/>
-                    <TextView android:textSize="17.0sp" android:id="@+id/roomPassText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="5.0dip" android:text="Room Password: " android:layout_below="@+id/roomIDText" android:fontFamily="@font/lato" />
-                    <TextView android:textSize="17.0sp" android:id="@+id/roomPassValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="5.0dip" android:text="PLZ123" android:layout_toRightOf="@+id/roomPassText" android:layout_below="@+id/roomIDText" android:fontFamily="@font/lato_black" android:drawablePadding="@dimen/spacing_medium" android:drawableEnd="@drawable/ic_content_copy"/>
-                    <TextView android:visibility="gone" android:textSize="17.0sp" android:id="@+id/matchSlotText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="5.0dip" android:text="Room Slot No: " android:layout_below="@+id/roomPassText" android:fontFamily="@font/lato" />
-                    <TextView android:visibility="gone" android:textSize="17.0sp" android:id="@+id/matchSlotValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="5.0dip" android:text="23" android:layout_toRightOf="@+id/matchSlotText" android:layout_below="@+id/roomPassText" android:fontFamily="@font/lato_black" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/matchIDPassLL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/titleMatchIDPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:fontFamily="@font/lato_black"
+                    android:text="Match Room Details"
+                    android:textColor="@color/blueRandom"
+                    android:textSize="17.0sp" />
+
+                <TextView
+                    android:id="@+id/RoomIDPassUpcoming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleMatchIDPass"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginBottom="5.0dip"
+                    android:fontFamily="@font/lato"
+                    android:text="Upcoming Username and Password"
+                    android:textSize="17.0sp"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/roomIDPassRL"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleMatchIDPass"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/roomIDText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15.0dip"
+                        android:layout_marginTop="15.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:fontFamily="@font/lato"
+                        android:text="Room ID: "
+                        android:textSize="17.0sp" />
+
+                    <TextView
+                        android:id="@+id/roomIDValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginTop="15.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_toRightOf="@+id/roomIDText"
+                        android:drawableEnd="@drawable/ic_content_copy"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/lato_black"
+                        android:text="15263"
+                        android:textSize="17.0sp" />
+
+                    <TextView
+                        android:id="@+id/roomPassText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/roomIDText"
+                        android:layout_marginLeft="15.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:fontFamily="@font/lato"
+                        android:text="Room Password: "
+                        android:textSize="17.0sp" />
+
+                    <TextView
+                        android:id="@+id/roomPassValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/roomIDText"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_toRightOf="@+id/roomPassText"
+                        android:drawableEnd="@drawable/ic_content_copy"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/lato_black"
+                        android:text="PLZ123"
+                        android:textSize="17.0sp" />
+
+                    <TextView
+                        android:id="@+id/matchSlotText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/roomPassText"
+                        android:layout_marginLeft="15.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:fontFamily="@font/lato"
+                        android:text="Room Slot No: "
+                        android:textSize="17.0sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/matchSlotValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/roomPassText"
+                        android:layout_marginLeft="5.0dip"
+                        android:layout_marginTop="2.0dip"
+                        android:layout_marginBottom="5.0dip"
+                        android:layout_toRightOf="@+id/matchSlotText"
+                        android:fontFamily="@font/lato_black"
+                        android:text="23"
+                        android:textSize="17.0sp"
+                        android:visibility="gone" />
                 </RelativeLayout>
             </RelativeLayout>
-            <TextView android:textSize="17.0sp" android:textColor="@color/blueRandom" android:id="@+id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="PUBG Mobile Match #35" android:layout_below="@+id/matchIDPassLL" android:fontFamily="@font/lato_black" />
-            <RelativeLayout android:id="@+id/RLTVM" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="5.0dip" android:layout_below="@+id/title">
-                <androidx.cardview.widget.CardView android:id="@+id/typeCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Type: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Squad" android:fontFamily="@font/lato" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/matchIDPassLL"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:layout_marginRight="5.0dip"
+                android:fontFamily="@font/lato_black"
+                android:text="PUBG Mobile Match #35"
+                android:textColor="@color/blueRandom"
+                android:textSize="17.0sp" />
+
+            <RelativeLayout
+                android:id="@+id/RLTVM"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="3.0dip"
+                android:layout_marginRight="5.0dip">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/typeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Type: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="Squad"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView android:id="@+id/versionCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@+id/typeCard" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Version: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FPP" android:fontFamily="@font/lato" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/versionCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_toRightOf="@+id/typeCard"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Version: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="FPP"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView android:id="@+id/mapCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@+id/versionCard" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Map: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/map" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Erangel" android:fontFamily="@font/lato" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mapCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_toRightOf="@+id/versionCard"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Map: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="Erangel"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
-            <RelativeLayout android:id="@+id/RLMTEF" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="5.0dip" android:layout_below="@+id/RLTVM">
-                <androidx.cardview.widget.CardView android:id="@+id/matchTypeCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="10.0dip" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Match Type: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/matchType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Free" android:fontFamily="@font/lato" />
+
+            <RelativeLayout
+                android:id="@+id/RLMTEF"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLTVM"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="5.0dip">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/matchTypeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginTop="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Match Type: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/matchType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="Free"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@+id/matchTypeCard" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Entry Fee: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/fee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="50" android:fontFamily="@font/lato" android:drawableLeft="@drawable/coin_icon_16x16" android:drawablePadding="5dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_toRightOf="@+id/matchTypeCard"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Entry Fee: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/coin_icon_16x16"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/lato"
+                            android:text="50"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
-            <RelativeLayout android:id="@+id/RLtimedate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="5.0dip" android:layout_below="@+id/RLMTEF">
-                <androidx.cardview.widget.CardView android:id="@+id/timeCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="10.0dip" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Match Schedule: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/startdate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10/12/2018 at 10:00 AM" android:fontFamily="@font/lato" />
+
+            <RelativeLayout
+                android:id="@+id/RLtimedate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLMTEF"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="5.0dip">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/timeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginTop="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Match Schedule: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/startdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="10/12/2018 at 10:00 AM"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
-            <TextView android:textSize="17.0dip" android:textColor="@color/blueRandom" android:id="@+id/prizeDetails" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:text="Prize Details" android:layout_below="@+id/RLtimedate" android:fontFamily="@font/lato_black" />
-            <RelativeLayout android:visibility="gone" android:id="@+id/RLPD" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="3.0dip" android:layout_below="@+id/prizeDetails">
-                <androidx.cardview.widget.CardView android:id="@+id/winnerPrizeCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Winning Prize: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/winnerPrize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="50" android:fontFamily="@font/lato" />
+
+            <TextView
+                android:id="@+id/prizeDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLtimedate"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="5.0dip"
+                android:fontFamily="@font/lato_black"
+                android:text="Prize Details"
+                android:textColor="@color/blueRandom"
+                android:textSize="17.0dip" />
+
+            <RelativeLayout
+                android:id="@+id/RLPD"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/prizeDetails"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="3.0dip"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/winnerPrizeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Winning Prize: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/winnerPrize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="50"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@+id/winnerPrizeCard" app:cardPreventCornerOverlap="true" app:contentPadding="10.0dip">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <TextView android:textSize="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="Per Kill: " android:fontFamily="@font/lato" />
-                        <TextView android:textSize="15.0dip" android:textStyle="bold" android:id="@+id/perKillPrize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10" android:fontFamily="@font/lato" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_toRightOf="@+id/winnerPrizeCard"
+                    app:cardPreventCornerOverlap="true"
+                    app:contentPadding="10.0dip">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3.0dip"
+                            android:fontFamily="@font/lato"
+                            android:text="Per Kill: "
+                            android:textSize="15.0dip" />
+
+                        <TextView
+                            android:id="@+id/perKillPrize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="10"
+                            android:textSize="15.0dip"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
-            <androidx.cardview.widget.CardView android:id="@+id/prizePoolCard" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:layout_below="@+id/RLPD" app:cardPreventCornerOverlap="true" app:contentPadding="10dp">
-                <TextView android:textSize="15dp" android:textStyle="bold" android:id="@+id/fullPrizeText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_marginTop="3dp" android:text="Win Prize - 1000 PlayCoins\102nd Team - 500 PlayCoins\103rd Team - 200 PlayCoins\10Per Kill - 50 PlayCoins" android:lineSpacingExtra="5dp" android:fontFamily="@font/lato"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/prizePoolCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLPD"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardPreventCornerOverlap="true"
+                app:contentPadding="10dp">
+
+                <TextView
+                    android:id="@+id/fullPrizeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/lato"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Win Prize - 1000 PlayCoins\102nd Team - 500 PlayCoins\103rd Team - 200 PlayCoins\10Per Kill - 50 PlayCoins"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
-            <TextView android:textSize="17.0dip" android:textColor="@color/blueRandom" android:id="@+id/aboutMatch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:text="About this Match" android:layout_below="@+id/prizePoolCard" android:fontFamily="@font/lato_black" />
-            <LinearLayout android:orientation="vertical" android:id="@+id/aboutMatchListLL" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@+id/aboutMatch">
-                <WebView android:id="@+id/listRules" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="7.0dip"
+
+            <TextView
+                android:id="@+id/aboutMatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/prizePoolCard"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="5.0dip"
+                android:fontFamily="@font/lato_black"
+                android:text="About this Match"
+                android:textColor="@color/blueRandom"
+                android:textSize="17.0dip" />
+
+            <LinearLayout
+                android:id="@+id/aboutMatchListLL"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/aboutMatch"
+                android:orientation="vertical">
+
+                <WebView
+                    android:id="@+id/listRules"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:layout_marginRight="7.0dip"
                     tools:ignore="WebViewLayout" />
             </LinearLayout>
-            <RelativeLayout android:id="@+id/RLParticipants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_below="@+id/aboutMatchListLL">
-                <TextView android:textSize="17.0dip" android:textColor="@color/blueRandom" android:id="@+id/participants" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Participants" android:fontFamily="@font/lato_black" />
-                <TextView android:textSize="15.0dip" android:gravity="center" android:id="@+id/refreshLVBtn" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:foreground="?android:selectableItemBackground" android:text=" Refresh" android:drawableLeft="@drawable/ic_refresh" android:fontFamily="@font/lato_black" android:layout_alignParentEnd="true" android:drawableTint="#ff000000" />
+
+            <RelativeLayout
+                android:id="@+id/RLParticipants"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/aboutMatchListLL"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="15.0dip">
+
+                <TextView
+                    android:id="@+id/participants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_black"
+                    android:text="Participants"
+                    android:textColor="@color/blueRandom"
+                    android:textSize="17.0dip" />
+
+                <TextView
+                    android:id="@+id/refreshLVBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="20.0dip"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/ic_refresh"
+                    android:drawableTint="#ff000000"
+                    android:fontFamily="@font/lato_black"
+                    android:foreground="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:text=" Refresh"
+                    android:textSize="15.0dip"
+                    android:visibility="gone" />
             </RelativeLayout>
-            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/LLloadBtn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="15.0dip" android:layout_below="@+id/RLParticipants">
-                <Button android:textColor="@color/blueRandom" android:gravity="center" android:id="@+id/loadBtn" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Load Participants" android:drawableLeft="@drawable/ic_refresh" />
+
+            <LinearLayout
+                android:id="@+id/LLloadBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLParticipants"
+                android:layout_marginTop="17.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/loadBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_refresh"
+                    android:gravity="center"
+                    android:paddingRight="15.0dip"
+                    android:text=" Load Participants"
+                    android:textColor="@color/blueRandom" />
             </LinearLayout>
-            <TextView android:textSize="15.0sp" android:textStyle="bold" android:gravity="center" android:id="@+id/noParticipantsText" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="15.0dip" android:text="No participants yet." android:layout_below="@+id/LLloadBtn" android:fontFamily="@font/lato" />
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/listParticipants" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="15.0dip" android:layout_below="@+id/RLParticipants" />
+
+            <TextView
+                android:id="@+id/noParticipantsText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LLloadBtn"
+                android:layout_marginTop="17.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="No participants yet."
+                android:textSize="15.0sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listParticipants"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RLParticipants"
+                android:layout_marginLeft="18.0dip"
+                android:layout_marginTop="17.0dip"
+                android:layout_marginBottom="15.0dip"
+                android:visibility="gone" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout android:orientation="vertical" android:id="@+id/BottomButtonsLL" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="bottom">
-        <LinearLayout android:orientation="horizontal" android:id="@+id/spectatePlayLL" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/BottomButtonsLL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/spectatePlayLL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
             tools:ignore="UselessParent">
-            <Button android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@+id/spectateButton" android:background="#ff23d54a" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="?actionBarSize" android:foreground="?android:selectableItemBackground" android:text="Spectate" android:drawablePadding="10.0dip" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/lato_black"
+
+            <Button
+                android:id="@+id/spectateButton"
+                android:layout_width="0.0dip"
+                android:layout_height="?actionBarSize"
+                android:layout_weight="1.0"
+                android:background="#ff23d54a"
+                android:clickable="true"
+                android:drawablePadding="10.0dip"
+                android:fontFamily="@font/lato_black"
+                android:foreground="?android:selectableItemBackground"
+                android:paddingTop="10.0dip"
+                android:paddingBottom="10.0dip"
+                android:text="Spectate"
+                android:textAllCaps="true"
+                android:textColor="#ffffffff"
+                android:textSize="15.0sp"
                 tools:ignore="ButtonStyle" />
-            <Button android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@+id/playButton" android:background="@color/colorAccent" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="visible" android:clickable="true" android:layout_width="0.0dip" android:layout_height="?actionBarSize" android:foreground="?android:selectableItemBackground" android:text="PLAY NOW" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/lato_black"
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="0.0dip"
+                android:layout_height="?actionBarSize"
+                android:layout_weight="1.0"
+                android:background="@color/colorAccent"
+                android:clickable="true"
+                android:fontFamily="@font/lato_black"
+                android:foreground="?android:selectableItemBackground"
+                android:paddingTop="10.0dip"
+                android:paddingBottom="10.0dip"
+                android:text="PLAY NOW"
+                android:textAllCaps="true"
+                android:textColor="#ffffffff"
+                android:textSize="15.0sp"
+                android:visibility="visible"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>

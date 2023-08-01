@@ -344,10 +344,12 @@ public class OTPActivity extends AppCompatActivity {
                     et_otp4.setText("");
                     et_otp5.setText("");
                     et_otp6.setText("");
-
+                    AuthResult authResult = task.getResult();
+                    String verificationId = authResult.getAdditionalUserInfo().getProviderId();
                     Intent intent = new Intent(OTPActivity.this,ResetPasswordActivity.class);
                     intent.putExtra("ccode", "+"+countryCode);
                     intent.putExtra("phone", mobileNumber);
+                    intent.putExtra("verification_id", verificationId);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

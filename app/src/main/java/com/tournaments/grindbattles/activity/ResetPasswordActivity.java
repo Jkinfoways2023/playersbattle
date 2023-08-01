@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -43,7 +44,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private RelativeLayout lyt_save_pwd;
     private LinearLayout parent_layout;
     private TextView passwordResetResponse,txt_pshow,txt_cshow;
-    private String countryCode, mobileNumber;
+    private String countryCode, mobileNumber,verification_id="";
     private String newPassword, retypeNewPassword;
     private ProgressBar progressBar;
 
@@ -94,6 +95,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         if (extras != null) {
             countryCode = extras.getString("ccode");
             mobileNumber = extras.getString("phone");
+            verification_id=extras.getString("verification_id");
         }
 
         lyt_save_pwd.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +119,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                         builder.appendQueryParameter("mobile", mobileNumber);
                         builder.appendQueryParameter("password", newPassword);
+                        builder.appendQueryParameter("verification_id", verification_id);
+                        Log.e("urlisssssssss",builder.toString());
                         StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

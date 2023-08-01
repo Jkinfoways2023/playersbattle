@@ -10,6 +10,7 @@ import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.google.android.material.textfield.TextInputEditText;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -134,6 +135,7 @@ public class ActionAlertMessage {
             builder.appendQueryParameter("entry_type", entryType);
             builder.appendQueryParameter("match_type", matchType);
             builder.appendQueryParameter("entry_fee", String.valueOf(entryFee));
+            Log.e("urlisssssss",builder.toString());
             StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
