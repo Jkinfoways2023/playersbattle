@@ -91,5 +91,7 @@ public class Constant {
     public static final String LOAD_REWARDS_URL = Config.ADMIN_PANEL_URL + "get_rewards/?";
 
     public static final String CREATE_ORDER = "https://merchant.upigateway.com/api/create_order";
+    public static final String CREATE_ORDER_PAYTM_PAY = "https://pg.gtelararia.in/order/create";//"https://merchant.upigateway.com/api/create_order";
+
     public static final String M_KEY = "61970d17-b9be-4bff-8dce-8cd805499861";
 }

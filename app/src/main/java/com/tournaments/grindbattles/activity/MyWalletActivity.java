@@ -1,7 +1,9 @@
 package com.tournaments.grindbattles.activity;
 
 import static com.tournaments.grindbattles.common.Constant.CREATE_ORDER;
+import static com.tournaments.grindbattles.common.Constant.CREATE_ORDER_PAYTM_PAY;
 
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -16,6 +18,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -382,6 +385,10 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         else if(walletSt.equalsIgnoreCase("Upi Pay"))
         {
             generate_txnId(amount,id);
+        }
+        else if(walletSt.equalsIgnoreCase("Paytm Pay"))
+        {
+            generate_txnId_paytm_pay(amount,id);
         }
         else {
             Toast.makeText(this, "Unavailable This Option", Toast.LENGTH_SHORT).show();
@@ -852,6 +859,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                 @Override
                 public void onResponse(String response) {
                     try {
+                        Log.e("Strrinbuilder",response);
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray jsonArray = jsonObject.getJSONArray("result");
                         JSONObject jsonObject1 = jsonArray.getJSONObject(0);
@@ -1224,6 +1232,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     public class WebviewInterface {
         @JavascriptInterface
         public void paymentResponse(String client_txn_id, String txn_id) {
+            Toast.makeText(MyWalletActivity.this, ""+client_txn_id+" txnidd => "+txn_id, Toast.LENGTH_SHORT).show();
+            Log.e("txnstatusisssss",client_txn_id+" txnidd => "+txn_id);
             addTransactionDetails(upi_new_order_id, txn_id);
             webView.setVisibility(View.VISIBLE);
             coinsrl.setVisibility(View.VISIBLE);
@@ -1250,7 +1260,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     (Request.Method.POST, CREATE_ORDER , new com.android.volley.Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.e("responsestatusis","respo " +response);
+                            Log.e("responsestatusisorder","respo " +response);
                             try {
                                 JSONObject object=new JSONObject(response);
                                 String status=object.getString("status");
@@ -1295,6 +1305,17 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                     params.put("udf1",user.get(SessionManager.KEY_ID));
                     params.put("udf2","null");//user.get(SessionManager.ACCESS_TOKEN));
                     params.put("udf3","user defined field 3 (max 25 char)");
+
+                 /*   params.put("loginid","9599212427");
+                    params.put("apikey","u6nij2l1ta");
+                    params.put("orderid",upi_new_order_id);
+                    params.put("amt","5");
+                    params.put("trxnote",user.get(SessionManager.KEY_EMAIL));
+                    params.put("custmobile",user.get(SessionManager.KEY_MOBILE));
+                    params.put("redirecturl","redirect_url");
+                    params.put("mcallback_url","callback_url");*/
+
+                    Log.e("responsestatusis","url "+CREATE_ORDER);
                     Log.e("responsestatusis","json "+params.toString());
                     return params;
                 }
@@ -1307,5 +1328,185 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void generate_txnId_paytm_pay(String amount, String id)
+    {
+        Log.e("responsestatus","response method called");
+        upi_new_order_id= String.valueOf(System.currentTimeMillis());
+        HashMap<String, String> user = session.getUserDetails();
+
+
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("loginid", "9599212427");
+            jsonParams.put("apikey", "u6nij2l1ta");
+            jsonParams.put("orderid", upi_new_order_id);
+            jsonParams.put("amt", amount);
+            jsonParams.put("trxnote", user.get(SessionManager.KEY_ID));
+            jsonParams.put("custmobile", user.get(SessionManager.KEY_MOBILE));
+            jsonParams.put("redirecturl", "https://www.google.com/");
+            jsonParams.put("mcallback_url", "callback_url");
+            // Add more key-value pairs as needed
+            Log.e("responsestatusis","url "+CREATE_ORDER);
+            Log.e("responsestatusis","json "+jsonParams.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST, // Change to GET if needed
+                CREATE_ORDER_PAYTM_PAY,
+                jsonParams,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("responsestatusisorder","respo " +response);
+                        try {
+                            JSONObject object = response;
+                            String status = response.getString("status");
+                            if (status.equalsIgnoreCase("success")) {
+                                Log.e("responsestatusis", "calledd 1252");
+                                //JSONObject obj = object.getJSONObject("data");
+                                String url = object.getString("gotourl");
+
+                                callupimethodpaytmpg(url);
+                            } else {
+                                Toast.makeText(MyWalletActivity.this, "Something went wrong try again", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e)
+                        {
+                            Log.e("responsestatusis","error "+ String.valueOf(e));
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("responsestatusis", "Volley error "+error.toString());
+                        Log.e("responsestatusis", "Volley error "+error.networkResponse);
+                    }
+                }
+        );
+
+// Add the request to the RequestQueue
+        RequestQueue requestQueue = Volley.newRequestQueue(MyWalletActivity.this);
+        requestQueue.add(jsonObjectRequest);
+
+       /* try {
+            RequestQueue rq = Volley.newRequestQueue(this);
+            StringRequest jsonObjectRequest = new StringRequest
+                    (Request.Method.POST, CREATE_ORDER_PAYTM_PAY , new com.android.volley.Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.e("responsestatusisorder","respo " +response);
+                            try {
+                                JSONObject object=new JSONObject(response);
+                                String status=object.getString("status");
+                                if(status.equalsIgnoreCase("true"))
+                                {
+                                    Log.e("responsestatusis","calledd 1252");
+                                    JSONObject obj=object.getJSONObject("data");
+                                    String url=obj.getString("payment_url");
+
+                                    callupimethod(url);
+                                }
+                                else
+                                {
+                                    Toast.makeText(MyWalletActivity.this, "Something went wrong try again", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            catch (JSONException e)
+                            {
+                                Log.e("responsestatusis","error "+ String.valueOf(e));
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("responsestatusis", "Volley error "+error.toString());
+                            Log.e("responsestatusis", "Volley error "+error.networkResponse);
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String>  params = new HashMap<String, String>();
+                    params.put("loginid","9599212427");
+                    params.put("apikey","u6nij2l1ta");
+                    params.put("orderid",upi_new_order_id);
+                    params.put("amt","5");
+                    params.put("trxnote",user.get(SessionManager.KEY_EMAIL));
+                    params.put("custmobile",user.get(SessionManager.KEY_MOBILE));
+                    params.put("redirecturl","redirect_url");
+                    params.put("mcallback_url","callback_url");
+                    Log.e("responsestatusis","url "+CREATE_ORDER);
+                    Log.e("responsestatusis","json "+params.toString());
+                    return params;
+                }
+            };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            rq.add(jsonObjectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    private void callupimethodpaytmpg(String url)
+    {
+        webView.setVisibility(View.VISIBLE);
+        coinsrl.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.GONE);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setSupportMultipleWindows(true);
+        // Do not change Useragent otherwise it will not work. even if not working uncommit below
+        // mWebView.getSettings().setUserAgentString("Mozilla/5.0 (Linux; Android 4.4.4; One Build/KTU84L.H4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.135 Mobile Safari/537.36");
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.addJavascriptInterface(new WebviewInterface(), "Interface");
+        if (url.startsWith("upi:")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        }else{
+            webView.loadUrl(url);
+        }
+        webView.setWebViewClient(new WebViewClient() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                String url = "";
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    url = request.getUrl().toString();
+                }
+                Log.e("urlisssssss",url);
+                // Check the URL and decide whether to load it or handle it differently
+                if (url.contains("?pgstatus=success")) {
+                    Toast.makeText(MyWalletActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    addTransactionDetails(upi_new_order_id, orderIdSt);
+                    webView.setVisibility(View.VISIBLE);
+                    coinsrl.setVisibility(View.VISIBLE);
+                    frameLayout.setVisibility(View.GONE);
+                }
+                if (url.contains("upi:")) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                }
+                if(url.contains("?pgstatus=cancle"))
+                {
+                    webView.setVisibility(View.GONE);
+                    coinsrl.setVisibility(View.VISIBLE);
+                    frameLayout.setVisibility(View.GONE);
+                }
+                return true; // Return true to indicate that you've handled the URL loading
+            }
+        });
     }
 }
