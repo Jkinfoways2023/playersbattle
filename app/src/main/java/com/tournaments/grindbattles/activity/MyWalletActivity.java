@@ -1346,7 +1346,6 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             jsonParams.put("trxnote", user.get(SessionManager.KEY_ID));
             jsonParams.put("custmobile", user.get(SessionManager.KEY_MOBILE));
             jsonParams.put("redirecturl", "https://www.google.com/");
-            jsonParams.put("mcallback_url", "callback_url");
             // Add more key-value pairs as needed
             Log.e("responsestatusis","url "+CREATE_ORDER);
             Log.e("responsestatusis","json "+jsonParams.toString());
