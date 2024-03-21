@@ -692,7 +692,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                app:srcCompat="@drawable/ic_whatsapp" />
+                app:srcCompat="@drawable/ic_telegram"
+                android:tint="@color/white"/>
 
         </LinearLayout>
 

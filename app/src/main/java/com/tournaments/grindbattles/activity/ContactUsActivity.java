@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -43,7 +44,7 @@ public class ContactUsActivity extends AppCompatActivity {
     private ImageView twitterIv, youtubeIv, facebookIv, instagramIv;
     private Button whatsappBt, facebookBt, discordBt, instagramBt, tiwtterBt;
 
-    private String whatsappSt, facebookSt, twitterFollowSt, youtubeFollowSt, facebookFollowSt, instagramFollowSt;
+    private String whatsappSt, facebookSt, twitterFollowSt, youtubeFollowSt, facebookFollowSt, instagramFollowSt,discord_id;
 
     private SessionManager session;
     private String id;
@@ -95,7 +96,7 @@ public class ContactUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Config.ENABLE_MESSENGER_SUPPORT) {
-                    openMessengerConversationUsingUri(ContactUsActivity.this, facebookSt);
+                    openMessengerConversationUsingUri(ContactUsActivity.this, whatsappSt);
                 } else {
                     Toast.makeText(ContactUsActivity.this, "This option disable by admin", Toast.LENGTH_SHORT).show();
                 }
@@ -106,7 +107,7 @@ public class ContactUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Config.ENABLE_WHATSAPP_SUPPORT) {
-                    openWhatsAppConversationUsingUri(ContactUsActivity.this, whatsappSt);
+                    openWhatsAppConversationUsingUri(ContactUsActivity.this, facebookSt);
                 } else {
                     Toast.makeText(ContactUsActivity.this, "This option disable by admin", Toast.LENGTH_SHORT).show();
                 }
@@ -117,7 +118,7 @@ public class ContactUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Config.ENABLE_DISCORD_SUPPORT) {
-                    openWebPage(Config.DISCORD_CHANNEL_ID);
+                    openWebPage(discord_id);
                 } else {
                     Toast.makeText(ContactUsActivity.this, "This option disable by admin", Toast.LENGTH_SHORT).show();
                 }
@@ -196,6 +197,7 @@ public class ContactUsActivity extends AppCompatActivity {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.CONTACT_US_URL).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
+            Log.e("jsonobjectisssss",builder.toString());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -205,7 +207,7 @@ public class ContactUsActivity extends AppCompatActivity {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(0);
 
                         String success = jsonObject1.getString("success");
-
+                        Log.e("jsonobjectisssss", String.valueOf(jsonObject1));
                         if (success.equals("1")) {
                             titleTv.setText(jsonObject1.getString("title"));
                             addressTv.setText(jsonObject1.getString("address"));
@@ -215,6 +217,7 @@ public class ContactUsActivity extends AppCompatActivity {
                             facebookSt = jsonObject1.getString("messenger_id");
                             facebookFollowSt = jsonObject1.getString("fb_follow");
                             instagramFollowSt = jsonObject1.getString("ig_follow");
+                            discord_id=jsonObject1.getString("discord");
                             twitterFollowSt = jsonObject1.getString("twitter_follow");
                             youtubeFollowSt = jsonObject1.getString("youtube_follow");
                         } else {
@@ -262,9 +265,9 @@ public class ContactUsActivity extends AppCompatActivity {
         mnumber = user.get(SessionManager.KEY_MOBILE);
     }
 
-    private void openMessengerConversationUsingUri(Context context, String FbUserID) {
+    private void openMessengerConversationUsingUri(Context context, String numberWithCountryCode) {
         try {
-            Uri uri = Uri.parse("fb-messenger://user/" + FbUserID);
+            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + numberWithCountryCode);
             Intent sendIntent = new Intent(Intent.ACTION_VIEW, uri);
             context.startActivity(sendIntent);
         } catch (NullPointerException | ActivityNotFoundException e) {
@@ -273,12 +276,21 @@ public class ContactUsActivity extends AppCompatActivity {
     }
 
     public static void openWhatsAppConversationUsingUri(Context context, String numberWithCountryCode) {
-        try {
+       /* try {
             Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + numberWithCountryCode);
             Intent sendIntent = new Intent(Intent.ACTION_VIEW, uri);
             context.startActivity(sendIntent);
         } catch (NullPointerException | ActivityNotFoundException e) {
             e.printStackTrace();
+        }*/
+        //change  to telegram link
+        try {
+            Intent whatsappIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                    numberWithCountryCode
+            ));
+            context.startActivity(whatsappIntent);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(context, "Telegram have not been installed", Toast.LENGTH_SHORT).show();
         }
     }
 

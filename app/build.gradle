@@ -8,8 +8,8 @@ android {
         applicationId "com.tournaments.grindbattles"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 8
-        versionName "5.0"
+        versionCode 9
+        versionName "6.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [onesignal_app_id: "4ac49b76-376a-4da7-bc58-438f9a50fcb7", onesignal_google_project_number: "81022277040"]

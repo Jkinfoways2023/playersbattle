@@ -116,7 +116,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
     private SessionManager session;
     private String id, name, firstname, lastname, email, mnumber, username, password;
-    private String walletSt, statusSt, orderIdSt, txnIdSt, mid, amountSt, coinSt, remarkSt, modeSt, currencySt, is_active;
+    private String walletSt, statusSt, orderIdSt, txnIdSt, mid, amountSt, coinSt, remarkSt, modeSt, currencySt, is_active,paytm_pay_login_id,paytm_pay_api_key;
     private int tot_coins, won_coins, bonus_coins;
 
     final int UPI_PAYMENT = 0;
@@ -202,6 +202,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                             is_active = jsonObject1.getString("status");
                             mid = jsonObject1.getString("mid");
                             rzp_key=jsonObject1.getString("rzp_m_id");
+                            paytm_pay_api_key = jsonObject1.getString("paytm_pay_api_key");
+                            paytm_pay_login_id = jsonObject1.getString("paytm_pay_login_id");
                             try {
                                 MainActivity.toolwallet.setText(String.valueOf(tot_coins));
                             } catch (NullPointerException | NumberFormatException e) {
@@ -455,7 +457,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
             @Override
             public void onFailure(Call<Checksum> call, Throwable t) {
-
+                Log.e("checksomeiss","failed"+t.getMessage());
             }
         });
     }
@@ -1339,8 +1341,8 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
         JSONObject jsonParams = new JSONObject();
         try {
-            jsonParams.put("loginid", "9599212427");
-            jsonParams.put("apikey", "u6nij2l1ta");
+            jsonParams.put("loginid", paytm_pay_login_id);
+            jsonParams.put("apikey", paytm_pay_api_key);
             jsonParams.put("orderid", upi_new_order_id);
             jsonParams.put("amt", amount);
             jsonParams.put("trxnote", user.get(SessionManager.KEY_ID));
@@ -1371,6 +1373,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
                                 callupimethodpaytmpg(url);
                             } else {
+
                                 Toast.makeText(MyWalletActivity.this, "Something went wrong try again", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e)

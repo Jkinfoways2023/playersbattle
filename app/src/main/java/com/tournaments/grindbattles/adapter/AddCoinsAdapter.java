@@ -58,6 +58,7 @@ public class AddCoinsAdapter extends RecyclerView.Adapter<AddCoinsAdapter.ViewHo
         holder.SingleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 try {
                     Log.e("titleisssss",payoutPojo.getTitle());
                     ((MyWalletActivity)context).Add(

@@ -191,11 +191,11 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 try {
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                            "https://api.whatsapp.com/send?phone=" + "919102072205"
+                            "https://t.me/GRINDBATTLE"
                     ));
                     startActivity(whatsappIntent);
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getActivity(), "Whatsapp have not been installed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Telegram have not been installed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

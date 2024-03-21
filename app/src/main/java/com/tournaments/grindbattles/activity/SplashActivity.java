@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
         videoView = (VideoView) findViewById(R.id.videoView);
 
         Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.gif_splash);
-        videoView.setVideoURI(video);
+        //videoView.setVideoURI(video);
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
@@ -68,7 +68,7 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
-        videoView.start();
+        //videoView.start();
 
         new Handler().postDelayed(new Runnable() {
             @Override
