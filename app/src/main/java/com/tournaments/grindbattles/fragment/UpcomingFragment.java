@@ -131,6 +131,7 @@ public class UpcomingFragment extends Fragment {
     }
 
     private void loadMatch() {
+        Toast.makeText(getActivity(), "called", Toast.LENGTH_SHORT).show();
         recyclerView.setVisibility(View.GONE);
         noMatchesLL.setVisibility(View.GONE);
         mShimmerViewContainer.setVisibility(View.VISIBLE);
