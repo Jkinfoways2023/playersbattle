@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.CountDownTimer;
 import android.text.Html;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -35,6 +36,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.tournaments.grindbattles.adapter.ParticipantsSlotListAdapter;
 import com.tournaments.grindbattles.views.Tools;
 import com.squareup.picasso.Picasso;
 
@@ -61,7 +63,7 @@ public class PlayDetailsActivity extends AppCompatActivity {
 
     private int matchEntryFee,matchPerKill,matchWinPrize,roomSize,totalJoined,admin_share;
     private String matchID, matchMap,matchRules,matchStartTime,currentTime,matchStatus,matchTitle,matchTopImage, matchPrizePool,isCanceled,canceledDesc,secretCode;
-    private String matchType,matchVersion,entryType,spectateURL,privateStatus,matchIds,roomID,roomPass,slotNo,joinedStatus,userJoined, platform, pool_type,betStatus;
+    private String matchType,matchVersion,entryType,spectateURL,privateStatus,matchIds,roomID,roomPass,slotNo,joinedStatus,userJoined, platform, pool_type,betStatus,game_type;
 
     private NestedScrollView nestedScrollView;
     private TextView titleMatchIDPass;
@@ -259,6 +261,7 @@ public class PlayDetailsActivity extends AppCompatActivity {
         Uri.Builder builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id", matchID);
+        Log.e("urlisssssss",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -299,9 +302,18 @@ public class PlayDetailsActivity extends AppCompatActivity {
             participantPojoList.add(participantPojo);
         }
         if (!participantPojoList.isEmpty()){
-            adapter = new ParticipantsListAdapter(participantPojoList,this);
-            adapter.notifyDataSetChanged();
-            lvParticipants.setAdapter(adapter);
+            if(game_type.equalsIgnoreCase("1"))
+            {
+                adapter = new ParticipantsListAdapter(participantPojoList,this);
+                adapter.notifyDataSetChanged();
+                lvParticipants.setAdapter(adapter);
+            }
+            else{
+                adapter = new ParticipantsSlotListAdapter(participantPojoList,this);
+                adapter.notifyDataSetChanged();
+                lvParticipants.setAdapter(adapter);
+            }
+
         }
         else {
             noParticipants.setVisibility(View.VISIBLE);
@@ -343,6 +355,7 @@ public class PlayDetailsActivity extends AppCompatActivity {
             admin_share = extras.getInt("ADMIN_SHARE_KEY");
             slotNo = String.valueOf(extras.getInt("SLOT_KEY"));
             betStatus = extras.getString("BET_STATUS_KEY");
+            game_type = String.valueOf(extras.getInt("GAME_TYPE"));
 
             toolbar.setTitle((CharSequence) matchTitle);
             this.title.setText(this.matchTitle);

@@ -4,6 +4,29 @@
     package="com.tournaments.grindbattles">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data
+                android:host="pay"
+                android:scheme="upi" />
+        </intent>
+
+        <package android:name="com.android.chrome" />
+    </queries>
 
     <application
         android:name=".MyApplication"
@@ -18,19 +41,31 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:vmSafeMode="true"
-        tools:node="merge"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:exported="true" android:name="com.tournaments.grindbattles.activity.game.HtmlGameResultDetailActivity"></activity>
-        <activity android:name="com.tournaments.grindbattles.activity.game.HtmlGameActivity" />
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:node="merge">
         <activity
-            android:name="com.tournaments.grindbattles.activity.game.HtmlGameRulesActivity"
+            android:name=".activity.SlotSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.game.HtmlGameResultDetailActivity"
+            android:exported="true" />
+        <activity android:name=".activity.game.HtmlGameActivity" />
+        <activity
+            android:name=".activity.game.HtmlGameRulesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.game.GameActivity" />
-        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.game.FindUserGameActivity" />
-        <activity android:exported="true"  android:name="com.tournaments.grindbattles.activity.my_contest.MyContestActivity" />
-        <activity android:name="com.tournaments.grindbattles.activity.SplashActivity"
+        <activity
+            android:name=".activity.game.GameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.game.FindUserGameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.my_contest.MyContestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,198 +74,233 @@
             </intent-filter>
         </activity>
         <activity
-
-            android:name="com.tournaments.grindbattles.activity.IntroActivity"
+            android:name=".activity.IntroActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.SignInActivity"
+            android:name=".activity.SignInActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.SignUpActivity"
+            android:name=".activity.SignUpActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.OTPActivity"
+            android:name=".activity.OTPActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"  android:exported="true" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ResetPasswordActivity"
+            android:name=".activity.ResetPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ForgetPasswordActivity"
+            android:name=".activity.ForgetPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MatchActivity"
+            android:name=".activity.MatchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyMatchesActivity"
+            android:name=".activity.MyMatchesActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.SettingActivity"
+            android:name=".activity.SettingActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.LotteryActivity"
+            android:name=".activity.LotteryActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.LotteryDetailsActivity"
+            android:name=".activity.LotteryDetailsActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyProfileActivity"
+            android:name=".activity.MyProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyWalletActivity"
+            android:name=".activity.MyWalletActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyStatisticsActivity"
+            android:name=".activity.MyStatisticsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.TopPlayersActivity"
+            android:name=".activity.TopPlayersActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.JoiningMatchActivity"
+            android:name=".activity.JoiningMatchActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.PlayDetailsActivity"
+            android:name=".activity.PlayDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ResultDetailsActivity"
+            android:name=".activity.ResultDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.LiveDetailsActivity"
+            android:name=".activity.LiveDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.RoomAuthActivity"
+            android:name=".activity.RoomAuthActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.NotificationDetailsActivity"
+            android:name=".activity.NotificationDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.FAQActivity"
+            android:name=".activity.FAQActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.AboutUsActivity"
+            android:name=".activity.AboutUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ContactUsActivity"
+            android:name=".activity.ContactUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.TermsConditionsActivity"
+            android:name=".activity.TermsConditionsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"  android:exported="true" />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.PrivacyPolicyActivity"
+            android:name=".activity.PrivacyPolicyActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.UpdateAppActivity"
+            android:name=".activity.UpdateAppActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyReferralsActivity"
+            android:name=".activity.MyReferralsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.NotificationActivity"
+            android:name=".activity.NotificationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.RefereEarnActivity"
+            android:name=".activity.RefereEarnActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.RewardEarnActivity"
+            android:name=".activity.RewardEarnActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" android:exported="true"  />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.LeaderboardReferActivity"
+            android:name=".activity.LeaderboardReferActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"  android:exported="true" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.MyRewardsActivity"
+            android:name=".activity.MyRewardsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.LeaderboardRewardActivity"
+            android:name=".activity.LeaderboardRewardActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ProductActivity"
+            android:name=".activity.ProductActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.tournaments.grindbattles.activity.ProductDetailsActivity"
+            android:name=".activity.ProductDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" android:exported="true"  />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.paytm.pgsdk.PaytmPGActivity"
             android:configChanges="keyboardHidden|orientation|keyboard"
-            android:screenOrientation="portrait" android:exported="true"  />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
-            android:launchMode="singleTask"
-            android:exported="true" >
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -265,8 +335,8 @@
             android:value="@string/adAppId" /> <!-- END AdMob components -->
         <meta-data
             android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="ENABLE"
-            android:resource="@drawable/notification_logo" />
+            android:resource="@drawable/notification_logo"
+            android:value="ENABLE" />
         <meta-data
             android:name="com.onesignal.NotificationAccentColor.DEFAULT"
             android:resource="@drawable/notification_logo" />
@@ -279,50 +349,28 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider_paths" />
         </provider> <!-- File Download Service -->
-       <!-- <service
+        <!--
+ <service
             android:name="com.tournaments.grindbattles.services.NotificationExtenderExample"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
                 <action android:name="com.onesignal.NotificationExtender" />
             </intent-filter>
-        </service>-->
-        <!--<meta-data
+        </service>
+        -->
+        <!--
+<meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="@string/razorpay_payment_key" />-->
-        <meta-data android:name="com.google.android.gms.version"
+            android:value="@string/razorpay_payment_key" />
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="cashfree_pg_logging_level"
             android:value="2"
             tools:replace="android:value" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-
-            <data
-                android:host="pay"
-                android:scheme="upi" />
-        </intent>
-
-        <package android:name="com.android.chrome" />
-    </queries>
-
-
-
 
 </manifest>

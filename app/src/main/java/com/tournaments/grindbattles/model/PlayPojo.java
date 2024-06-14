@@ -2,11 +2,19 @@ package com.tournaments.grindbattles.model;
 
 public class PlayPojo {
     private String id,game_id,title,time,match_type,version,map,is_private,entry_type,sponsored_by,platform,pool_type,bet_status;
-    private String match_status,match_id,room_id,room_pass,access_key,joined_status,user_joined,rules,image,match_desc,is_cancel,cancel_reason;
+    private String match_status,match_id,room_id,room_pass,access_key,joined_status,user_joined,rules,image,match_desc,is_cancel,cancel_reason,game_type;
 
     private int entry_fee,per_kill,prize_pool,room_size,total_joined,admin_share,slot;
 
     public PlayPojo() {
+    }
+
+    public String getGame_type() {
+        return game_type;
+    }
+
+    public void setGame_type(String game_type) {
+        this.game_type = game_type;
     }
 
     public String getId() {

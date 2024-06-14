@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tournaments.grindbattles.activity.RoomAuthActivity;
+import com.tournaments.grindbattles.activity.SlotSelectionActivity;
 import com.tournaments.grindbattles.session.SessionManager;
 import com.squareup.picasso.Picasso;
 
@@ -228,7 +229,15 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
             public void onClick(View view) {
                 if (playPojo.getUser_joined().equals("0")) {
                     if (new ExtraOperations().haveNetworkConnection(context)) {
-                        Intent intent = new Intent(context, PlayDetailsActivity.class);
+                        Intent intent;
+                        if(playPojo.getGame_type().equalsIgnoreCase("1"))
+                        {
+                            intent = new Intent(context, PlayDetailsActivity.class);
+                        }
+                        else{
+                            intent = new Intent(context, SlotSelectionActivity.class);
+                        }
+
                         intent.putExtra("EntryFee_KEY", playPojo.getEntry_fee());
                         intent.putExtra("ID_KEY", playPojo.getId());
                         intent.putExtra("Map_KEY", playPojo.getMap());
@@ -258,6 +267,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                         intent.putExtra("POOL_TYPE_KEY", playPojo.getPool_type());
                         intent.putExtra("ADMIN_SHARE_KEY", playPojo.getAdmin_share());
                         intent.putExtra("SLOT_KEY", playPojo.getSlot());
+                        intent.putExtra("GAME_TYPE", playPojo.getGame_type());
                         context.startActivity(intent);
                     }
                     else {

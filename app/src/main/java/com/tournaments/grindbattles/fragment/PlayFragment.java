@@ -138,6 +138,7 @@ public class PlayFragment extends androidx.fragment.app.Fragment {
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id",id);
         builder.appendQueryParameter("game_id",strId);
+        Log.e("urlisssssss",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -199,6 +200,7 @@ public class PlayFragment extends androidx.fragment.app.Fragment {
                 playPojo.setPool_type(json.getString("pool_type"));
                 playPojo.setAdmin_share(json.getInt("admin_share"));
                 playPojo.setPool_type(json.getString("pool_type"));
+                playPojo.setGame_type(json.getString("game_type"));
                 playPojo.setSlot(json.getInt("slot"));
             } catch (JSONException e) {
                 e.printStackTrace();
