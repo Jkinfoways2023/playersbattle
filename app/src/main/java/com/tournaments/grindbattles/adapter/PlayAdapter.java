@@ -230,14 +230,14 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                 if (playPojo.getUser_joined().equals("0")) {
                     if (new ExtraOperations().haveNetworkConnection(context)) {
                         Intent intent;
-                        if(playPojo.getGame_type().equalsIgnoreCase("1"))
+                 /*       if(playPojo.getGame_type().equalsIgnoreCase("1"))
                         {
                             intent = new Intent(context, PlayDetailsActivity.class);
                         }
                         else{
-                            intent = new Intent(context, SlotSelectionActivity.class);
-                        }
 
+                        }*/
+                        intent = new Intent(context, PlayDetailsActivity.class);
                         intent.putExtra("EntryFee_KEY", playPojo.getEntry_fee());
                         intent.putExtra("ID_KEY", playPojo.getId());
                         intent.putExtra("Map_KEY", playPojo.getMap());

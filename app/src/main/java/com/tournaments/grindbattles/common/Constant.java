@@ -45,6 +45,7 @@ public class Constant {
     public static final String UPDATE_MY_ENTRIES_URL = Config.ADMIN_PANEL_URL + "update_my_entries/?";
     public static final String CANCEL_MY_ENTRIES_URL = Config.ADMIN_PANEL_URL + "cancel_my_entries/?";
     public static final String PARTICIPANTS_MATCH_URL = Config.ADMIN_PANEL_URL + "get_match_participants/?";
+    public static final String PARTICIPANTS_MATCH_URL_SLOT = Config.ADMIN_PANEL_URL + "get_slot_list/?";
 
     public static final String MATCH_WINNER_URL = Config.ADMIN_PANEL_URL + "get_match_winner/?";
     public static final String MATCH_RUNNERUP_URL = Config.ADMIN_PANEL_URL + "get_match_runnerup/?";
@@ -96,4 +97,7 @@ public class Constant {
     public static final String CREATE_ORDER_PAYTM_PAY = "https://pg.gtelararia.in/order/create";
 
     public static final String M_KEY = "61970d17-b9be-4bff-8dce-8cd805499861";
+
+
+    public static final String get_match_slot_list = Config.ADMIN_PANEL_URL + "get_match_slot_list/?";
 }

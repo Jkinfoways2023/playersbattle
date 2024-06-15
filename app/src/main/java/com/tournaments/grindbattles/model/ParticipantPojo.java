@@ -1,20 +1,30 @@
 package com.tournaments.grindbattles.model;
 
 public class ParticipantPojo {
-    String id, user_id, pubg_id;
+    String id, user_id, pubg_id,pos_string;
     int  kills, position,win, prize, slot;
 
     public ParticipantPojo() {
     }
 
-    public ParticipantPojo(String id, String user_id, String pubg_id, int kills, int position, int win, int prize) {
+    public ParticipantPojo(String id, String user_id, String pubg_id, String pos_string, int kills, int position, int win, int prize, int slot) {
         this.id = id;
         this.user_id = user_id;
         this.pubg_id = pubg_id;
+        this.pos_string = pos_string;
         this.kills = kills;
         this.position = position;
         this.win = win;
         this.prize = prize;
+        this.slot = slot;
+    }
+
+    public String getPos_string() {
+        return pos_string;
+    }
+
+    public void setPos_string(String pos_string) {
+        this.pos_string = pos_string;
     }
 
     public String getId() {

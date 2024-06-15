@@ -161,7 +161,15 @@ public class PlayDetailsActivity extends AppCompatActivity {
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+                Intent intent;
+                if(matchType.equalsIgnoreCase("1"))
+                {
+                     intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+                }
+                else{
+                     intent = new Intent(getApplicationContext(), SlotSelectionActivity.class);
+                }
+
                 intent.putExtra("matchType", matchType);
                 intent.putExtra("matchID",matchID);
                 intent.putExtra("matchName",matchTitle);
@@ -258,7 +266,15 @@ public class PlayDetailsActivity extends AppCompatActivity {
         loadBtnLL.setVisibility(View.GONE);
         lvParticipants.setVisibility(View.VISIBLE);
         refreshLV.setVisibility(View.VISIBLE);
-        Uri.Builder builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
+        Uri.Builder builder;
+        if(game_type.equalsIgnoreCase("1"))
+        {
+             builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
+        }
+        else{
+            builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL_SLOT).buildUpon();
+        }
+
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id", matchID);
         Log.e("urlisssssss",builder.toString());
@@ -294,8 +310,17 @@ public class PlayDetailsActivity extends AppCompatActivity {
                 json = response.getJSONObject(i);
                 //participantPojo.setId(json.getString("id"));
                 //participantPojo.setUser_id(json.getString("user_id"));
-                participantPojo.setPubg_id(json.getString("pubg_id"));
-                participantPojo.setSlot(json.getInt("slot"));
+                if(game_type.equalsIgnoreCase("1"))
+                {
+                    participantPojo.setPubg_id(json.getString("pubg_id"));
+                    participantPojo.setSlot(json.getInt("slot"));
+                }
+                else{
+                    participantPojo.setPubg_id(json.getString("user_name"));
+                    participantPojo.setSlot(json.getInt("slot"));
+                    participantPojo.setPos_string(String.valueOf(json.getInt("slot"))+json.getString("position"));
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
