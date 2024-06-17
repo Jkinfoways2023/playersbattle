@@ -57,6 +57,7 @@
             android:text="B"
             android:layout_weight="1"
             android:textStyle="bold"
+            android:id="@+id/titileB"
             android:gravity="center_horizontal"
             android:textColor="@color/white"/>
         <TextView
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="C"
             android:textStyle="bold"
+            android:id="@+id/titileC"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/white"/>
@@ -72,8 +74,57 @@
             android:layout_height="wrap_content"
             android:text="D"
             android:textStyle="bold"
+            android:id="@+id/titileD"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/white"/>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_above="@+id/nextButtonLL"
+            android:id="@+id/recyclerView"
+            android:layout_marginHorizontal="15dp"
+
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/nextButtonLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bluebackbutton"
+                    android:clickable="true"
+                    android:fontFamily="@font/lato"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Join Now"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </LinearLayout>
