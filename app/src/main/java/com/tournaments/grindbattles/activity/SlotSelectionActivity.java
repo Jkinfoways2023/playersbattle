@@ -1,5 +1,6 @@
 package com.tournaments.grindbattles.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,9 +46,13 @@ public class SlotSelectionActivity extends AppCompatActivity {
     private String matchType;
     private String matchName;
     public  String user_id="";
-    List<SlotListOrganizedModel.Data> slotmodel;
+    List<SlotListOrganizedModel.Data> slotmodel=new ArrayList<SlotListOrganizedModel.Data>();;
     public int selected_slot=0;
     private SessionManager session;
+    ArrayList<Integer> final_selected_id=new ArrayList<>();
+     String final_selected_slot="";
+     String final_selected_position="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +61,77 @@ public class SlotSelectionActivity extends AppCompatActivity {
 
         getintentdata();
         getslotdetails();
+        nextbuttonclick();
+    }
 
+    private void nextbuttonclick()
+    {
         binding.backimg.setOnClickListener(v->{
             finish();
         });
+
+        binding.next.setOnClickListener(v->{
+            String selected_pos="";
+            final_selected_slot="";
+            final_selected_position="";
+            for(int a=0;a<final_selected_id.size();a++)
+            {
+                Log.e("selected_ids","\n\n\n => "+final_selected_id.get(a));
+                fillstrings(final_selected_id.get(a));
+                if(selected_pos.equalsIgnoreCase(""))
+                {
+                    selected_pos=String.valueOf(final_selected_id.get(a));
+                }
+                else{
+                    selected_pos=selected_pos+","+final_selected_id.get(a);
+                }
+            }
+            if(final_selected_id.size()>0)
+            {
+                Intent intent;
+                intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+                intent.putExtra("matchType", matchType);
+                intent.putExtra("matchID",matchID);
+                intent.putExtra("matchName",matchName);
+                intent.putExtra("entryFee", entryFee);
+                intent.putExtra("entryType", type);
+                intent.putExtra("JoinStatus",joinStatus);
+                intent.putExtra("isPrivate", privateStatus);
+                intent.putExtra("matchRules", matchRules);
+                intent.putExtra("ROOM_SIZE_KEY", roomSize);
+                intent.putExtra("TOTAL_JOINED_KEY", totalJoined);
+                intent.putExtra("from", "slot");
+                intent.putExtra("selected_slot_id", selected_pos);
+                intent.putExtra("selected_slot", final_selected_slot);
+                intent.putExtra("selected_slot_position", final_selected_position);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(this, "Select at least single slot", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fillstrings(int id)
+    {
+        for(int a=0;a<slotmodel.size();a++)
+        {
+            for(int b=0;b<slotmodel.get(a).position.size();b++)
+            {
+                if(slotmodel.get(a).position.get(b).id==id)
+                {
+                    if(final_selected_slot.equalsIgnoreCase(""))
+                    {
+                        final_selected_slot=String.valueOf(slotmodel.get(a).slot);
+                        final_selected_position=String.valueOf(slotmodel.get(a).position.get(b).position);
+                    }
+                    else{
+                        final_selected_slot=final_selected_slot+","+String.valueOf(slotmodel.get(a).slot);
+                        final_selected_position=final_selected_position+","+String.valueOf(slotmodel.get(a).position.get(b).position);
+                    }
+                }
+            }
+        }
     }
 
     private void getintentdata()
@@ -113,7 +185,6 @@ public class SlotSelectionActivity extends AppCompatActivity {
 
     private void organizeslots(SlotListModel model)
     {
-        slotmodel=new ArrayList<SlotListOrganizedModel.Data>();
         ArrayList<Integer> slot_ids=new ArrayList<>();
         for (int a=0;a<model.data.size();a++)
         {
@@ -174,8 +245,18 @@ public class SlotSelectionActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(SlotSelectionActivity.this));
         SlotListAdapter adapter=new SlotListAdapter(slotmodel,SlotSelectionActivity.this,selected_slot);
         binding.recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(pos->{
-            Toast.makeText(this, ""+pos, Toast.LENGTH_SHORT).show();
+        adapter.setOnItemClickListener((position, action) -> {
+            Log.e("selected_ids"," => "+position+" op => "+action);
+            if(action==1)
+            {
+                //add id
+                final_selected_id.add(position);
+            }
+            else{
+               int ids= final_selected_id.indexOf(position);
+                final_selected_id.remove(ids);
+                //remove id
+            }
         });
         if(slotmodel.get(0).position.size()==1)
         {

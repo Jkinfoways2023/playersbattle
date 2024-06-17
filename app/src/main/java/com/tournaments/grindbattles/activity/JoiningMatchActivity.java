@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -23,7 +24,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.tournaments.grindbattles.R;
@@ -73,7 +76,10 @@ public class JoiningMatchActivity extends AppCompatActivity {
     private String lastname;
     private String email;
     private String mnumber;
-
+    public String selected_slot;
+    ArrayList<String> selected_slots=new ArrayList<>();
+    ArrayList<String> selected_positions=new ArrayList<>();
+    ArrayList<String> selected_ids=new ArrayList<>();
     public static ProgressBar progressBar;
 
 
@@ -235,6 +241,39 @@ public class JoiningMatchActivity extends AppCompatActivity {
             this.matchRules = getIntent().getStringExtra("matchRules");
             this.roomSize = getIntent().getIntExtra("ROOM_SIZE_KEY",100);
             this.totalJoined = getIntent().getIntExtra("TOTAL_JOINED_KEY",0);
+
+            if(getIntent().hasExtra("from"))
+            {
+                Log.e("selected_ids",getIntent().getStringExtra("selected_slot_id"));
+                Log.e("selected_ids",getIntent().getStringExtra("selected_slot"));
+                Log.e("selected_ids",getIntent().getStringExtra("selected_slot_position"));
+
+                String[] stringArray1 = getIntent().getStringExtra("selected_slot_id").split(",");
+                String[] stringArray2 = getIntent().getStringExtra("selected_slot").split(",");
+                String[] stringArray3 = getIntent().getStringExtra("selected_slot_position").split(",");
+
+                for (String value : stringArray1)
+                {
+                    selected_ids.add(value);
+                }
+                for (String value : stringArray2)
+                {
+                    selected_slots.add(value);
+                }
+                for (String value : stringArray3)
+                {
+                    selected_positions.add(value);
+                }
+
+                for(int a=0;a<selected_ids.size();a++)
+                {
+                    Log.e("selected_ids",selected_ids.get(a)+", ");
+                    Log.e("selected_ids",selected_slots.get(a)+", ");
+                    Log.e("selected_ids",selected_positions.get(a)+", ");
+                }
+
+            }
+
 
             if (this.matchType.equals("Free")) {
                 this.entryfee.setText("Free");

@@ -116,7 +116,7 @@
                     android:clickable="true"
                     android:fontFamily="@font/lato"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:text="Join Now"
+                    android:text="Next"
                     android:textAllCaps="true"
                     android:textColor="#fff"
                     android:textSize="15sp"

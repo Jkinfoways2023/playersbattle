@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tournaments.grindbattles.Interface.OnItemClickListener;
+import com.tournaments.grindbattles.Interface.OnSlotItemClickListener;
 import com.tournaments.grindbattles.databinding.DesignSlotsBinding;
 import com.tournaments.grindbattles.model.SlotListOrganizedModel;
 
@@ -20,7 +20,7 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 {
     List<SlotListOrganizedModel.Data> slotmodel;
     Context context;
-    private OnItemClickListener onItemClickListener;
+    private OnSlotItemClickListener onItemClickListener;
     int total_selected=0;
     int max_team=0;
     public SlotListAdapter(List<SlotListOrganizedModel.Data> slotmodel, Context context,int total_selected) {
@@ -72,13 +72,16 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         }
                         else {
                             total_selected=total_selected+1;
+                            onItemClickListener.onItemClick(slotmodel.get(position).position.get(0).id,1);
+
                         }
 
                     }
                     else{
                         total_selected=total_selected-1;
-                    }
+                        onItemClickListener.onItemClick(slotmodel.get(position).position.get(0).id,0);
 
+                    }
                 }
             });
             viewHolder.binding.posB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -94,11 +97,13 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         }
                         else {
                             total_selected=total_selected+1;
+                            onItemClickListener.onItemClick(slotmodel.get(position).position.get(1).id,1);
                         }
 
                     }
                     else{
                         total_selected=total_selected-1;
+                        onItemClickListener.onItemClick(slotmodel.get(position).position.get(1).id,0);
                     }
                 }
             });
@@ -115,11 +120,13 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             }
                             else {
                                 total_selected=total_selected+1;
+                                onItemClickListener.onItemClick(slotmodel.get(position).position.get(2).id,1);
                             }
 
                         }
                         else{
                             total_selected=total_selected-1;
+                            onItemClickListener.onItemClick(slotmodel.get(position).position.get(2).id,0);
                         }
 
                 }
@@ -136,11 +143,13 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         }
                         else {
                             total_selected=total_selected+1;
+                            onItemClickListener.onItemClick(slotmodel.get(position).position.get(3).id,1);
                         }
 
                     }
                     else{
                         total_selected=total_selected-1;
+                        onItemClickListener.onItemClick(slotmodel.get(position).position.get(3).id,0);
                     }
                 }
             });
@@ -202,7 +211,7 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             viewHolder.binding.posA.setClickable(false);
             viewHolder.binding.posA.setAlpha(0.3f);
         }
-        viewHolder.binding.llA.setVisibility(View.GONE);
+        viewHolder.binding.llB.setVisibility(View.GONE);
         viewHolder.binding.llC.setVisibility(View.GONE);
         viewHolder.binding.llD.setVisibility(View.GONE);
     }
@@ -232,7 +241,7 @@ public class SlotListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnSlotItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 }
