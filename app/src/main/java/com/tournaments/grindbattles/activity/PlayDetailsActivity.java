@@ -162,13 +162,15 @@ public class PlayDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                if(matchType.equalsIgnoreCase("1"))
+                if(game_type.equalsIgnoreCase("1"))
                 {
                      intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
                 }
                 else{
                      intent = new Intent(getApplicationContext(), SlotSelectionActivity.class);
                 }
+                //intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+
 
                 intent.putExtra("matchType", matchType);
                 intent.putExtra("matchID",matchID);
@@ -380,8 +382,8 @@ public class PlayDetailsActivity extends AppCompatActivity {
             admin_share = extras.getInt("ADMIN_SHARE_KEY");
             slotNo = String.valueOf(extras.getInt("SLOT_KEY"));
             betStatus = extras.getString("BET_STATUS_KEY");
-            game_type = String.valueOf(extras.getInt("GAME_TYPE"));
-
+            game_type = extras.getString("GAME_TYPE");
+            Log.e("gametypeisssss 2",game_type);
             toolbar.setTitle((CharSequence) matchTitle);
             this.title.setText(this.matchTitle);
             this.startTime.setText(this.matchStartTime);

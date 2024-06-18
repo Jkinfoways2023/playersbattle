@@ -50,6 +50,7 @@
     <color name="colorNoInternetGradStartH">#ffffd07f</color>
     <color name="colorPrimary">#6100FF</color>
     <color name="colorPrimaryDark">#6100FF</color>
+    <color name="colorPrimaryLight">#A46100FF</color>
     <color name="yello_app">#ff751c</color>
     <color name="colorSuccess">#ff32cd32</color>
     <color name="colorWarning">#ffff8c00</color>

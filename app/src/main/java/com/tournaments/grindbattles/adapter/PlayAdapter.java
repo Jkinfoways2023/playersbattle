@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -268,6 +269,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                         intent.putExtra("ADMIN_SHARE_KEY", playPojo.getAdmin_share());
                         intent.putExtra("SLOT_KEY", playPojo.getSlot());
                         intent.putExtra("GAME_TYPE", playPojo.getGame_type());
+                        Log.e("gametypeisssss",playPojo.getGame_type());
                         context.startActivity(intent);
                     }
                     else {

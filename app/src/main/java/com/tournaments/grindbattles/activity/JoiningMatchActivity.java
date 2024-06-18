@@ -1,5 +1,6 @@
 package com.tournaments.grindbattles.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +11,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -39,6 +44,7 @@ import com.tournaments.grindbattles.utils.MySingleton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 public class JoiningMatchActivity extends AppCompatActivity {
 
@@ -81,6 +87,11 @@ public class JoiningMatchActivity extends AppCompatActivity {
     ArrayList<String> selected_positions=new ArrayList<>();
     ArrayList<String> selected_ids=new ArrayList<>();
     public static ProgressBar progressBar;
+    LinearLayout    ll1,ll2,ll3,ll4;
+    TextView position1,position2,position3,position4;
+    TextView team1,team2,team3,team4;
+    TextView add_player1,add_player2,add_player3,add_player4;
+    ImageView edit1,edit2,edit3,edit4;
 
 
     @Override
@@ -117,7 +128,14 @@ public class JoiningMatchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = firstname+" "+lastname;
-                new ActionAlertMessage().showJoinMatchAlert(JoiningMatchActivity.this, id, username, name, matchID, type, matchType, privateStatus, entryFee);
+                if(selected_ids.size()==0)
+                {
+                    new ActionAlertMessage().showJoinMatchAlert(JoiningMatchActivity.this, id, username, name, matchID, type, matchType, privateStatus, entryFee);
+                }
+                else{
+                    Toast.makeText(JoiningMatchActivity.this, "coming soon", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -222,6 +240,30 @@ public class JoiningMatchActivity extends AppCompatActivity {
         addMoneyLL = (LinearLayout) findViewById(R.id.addMoneyLL);
         progressBar = findViewById(R.id.progressBar);
 
+        ll1=findViewById(R.id.ll1);
+        ll2=findViewById(R.id.ll2);
+        ll3=findViewById(R.id.ll3);
+        ll4=findViewById(R.id.ll4);
+        position1=findViewById(R.id.position1);
+        position2=findViewById(R.id.position2);
+        position3=findViewById(R.id.position3);
+        position4=findViewById(R.id.position4);
+        team1=findViewById(R.id.team1);
+        team2=findViewById(R.id.team2);
+        team3=findViewById(R.id.team3);
+        team4=findViewById(R.id.team4);
+        add_player1=findViewById(R.id.add_player1);
+        add_player2=findViewById(R.id.add_player2);
+        add_player3=findViewById(R.id.add_player3);
+        add_player4=findViewById(R.id.add_player4);
+        edit1=findViewById(R.id.edit1);
+        edit2=findViewById(R.id.edit2);
+        edit3=findViewById(R.id.edit3);
+        edit4=findViewById(R.id.edit4);
+
+
+
+
         addMoneyLL.setVisibility(View.GONE);
         nextButtonLL.setVisibility(View.GONE);
         balanceStatus.setTextColor(Color.parseColor("#000000"));
@@ -241,6 +283,10 @@ public class JoiningMatchActivity extends AppCompatActivity {
             this.matchRules = getIntent().getStringExtra("matchRules");
             this.roomSize = getIntent().getIntExtra("ROOM_SIZE_KEY",100);
             this.totalJoined = getIntent().getIntExtra("TOTAL_JOINED_KEY",0);
+
+
+
+
 
             if(getIntent().hasExtra("from"))
             {
@@ -265,22 +311,135 @@ public class JoiningMatchActivity extends AppCompatActivity {
                     selected_positions.add(value);
                 }
 
-                for(int a=0;a<selected_ids.size();a++)
+               /* for(int a=0;a<selected_ids.size();a++)
                 {
-                    Log.e("selected_ids",selected_ids.get(a)+", ");
-                    Log.e("selected_ids",selected_slots.get(a)+", ");
-                    Log.e("selected_ids",selected_positions.get(a)+", ");
+                    team1.setText("Team "+selected_slots.get(a));
+                    position1.setText("Team "+selected_positions.get(a));
+
+                    team2.setText("Team "+selected_slots.get(a));
+                    position2.setText("Team "+selected_positions.get(a));
+
+                    team3.setText("Team "+selected_slots.get(a));
+                    position3.setText("Team "+selected_positions.get(a));
+
+                    team4.setText("Team "+selected_slots.get(a));
+                    position4.setText("Team "+selected_positions.get(a));
+                }*/
+                if(selected_ids.size()==1)
+                {
+                    team1.setText("Team "+selected_slots.get(0));
+                    position1.setText(selected_positions.get(0));
                 }
 
+
+                if(selected_ids.size()==2)
+                {
+                    team1.setText("Team "+selected_slots.get(0));
+                    position1.setText(selected_positions.get(0));
+
+                    team2.setText("Team "+selected_slots.get(1));
+                    position2.setText(selected_positions.get(1));
+                }
+
+                if(selected_ids.size()==3)
+                {
+                    team1.setText("Team "+selected_slots.get(0));
+                    position1.setText(selected_positions.get(0));
+
+                    team2.setText("Team "+selected_slots.get(1));
+                    position2.setText(selected_positions.get(1));
+
+                    team3.setText("Team " + selected_slots.get(2));
+                    position3.setText(selected_positions.get(2));
+                }
+
+                if(selected_ids.size()==4) {
+                    team1.setText("Team " + selected_slots.get(0));
+                    position1.setText(selected_positions.get(0));
+
+                    team2.setText("Team " + selected_slots.get(1));
+                    position2.setText(selected_positions.get(1));
+
+                    team3.setText("Team " + selected_slots.get(2));
+                    position3.setText(selected_positions.get(2));
+
+                    team4.setText("Team " + selected_slots.get(3));
+                    position4.setText(selected_positions.get(3));
+                }
+
+
+
+
+
+                LinearLayout squadFeeLL=findViewById(R.id.squadFeeLL);
+                squadFeeLL.setVisibility(View.VISIBLE);
+
+                if (this.matchType.equals("Free")) {
+                    this.entryfee.setText("Free");
+                    this.entryfee.setTextColor(Color.parseColor("#1E7E34"));
+                } else {
+                    this.entryfee.setText(String.valueOf(entryFee));
+                }
+
+
+                TextView squadEntryFee=findViewById(R.id.squadEntryFee);
+//                squadEntryFee.setText("Total payable = "+String.valueOf(selected_ids.size())+" X "+entryFee);
+                this.entryFee =selected_ids.size()*this.entryFee;
+                TextView squadEntryFeeRight=findViewById(R.id.squadEntryFeeRight);
+                squadEntryFeeRight.setText(String.valueOf(entryFee));
+
+                findViewById(R.id.team_data).setVisibility(View.VISIBLE);
+                if(selected_ids.size()==1)
+                {
+
+                    ll2.setVisibility(View.GONE);
+                    ll3.setVisibility(View.GONE);
+                    ll4.setVisibility(View.GONE);
+                }
+                else if(selected_ids.size()==2)
+                {
+                    ll3.setVisibility(View.GONE);
+                    ll4.setVisibility(View.GONE);
+                }
+                else if(selected_ids.size()==3)
+                {
+                    ll4.setVisibility(View.GONE);
+                }
+
+                edit1.setOnClickListener(v->{
+                    showdialog(add_player1);
+                });
+                add_player1.setOnClickListener(v->{
+                    showdialog(add_player1);
+                });
+
+                edit2.setOnClickListener(v->{
+                    showdialog(add_player2);
+                });
+                add_player2.setOnClickListener(v->{
+                    showdialog(add_player2);
+                });
+
+                edit3.setOnClickListener(v->{
+                    showdialog(add_player3);
+                });
+                add_player3.setOnClickListener(v->{
+                    showdialog(add_player3);
+                });
+
+                edit4.setOnClickListener(v->{
+                    showdialog(add_player4);
+                });
+                add_player4.setOnClickListener(v->{
+                    showdialog(add_player4);
+                });
+
+
+
+
             }
 
 
-            if (this.matchType.equals("Free")) {
-                this.entryfee.setText("Free");
-                this.entryfee.setTextColor(Color.parseColor("#1E7E34"));
-            } else {
-                this.entryfee.setText(String.valueOf(entryFee));
-            }
 
             try{
                 if (!joinStatus.equals("null")) {
@@ -352,6 +511,42 @@ public class JoiningMatchActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadProfile();
+    }
+
+
+    public void showdialog(TextView tv)
+    {
+        final Dialog dialog = new Dialog(JoiningMatchActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_joinprompt_solo);
+        dialog.setCancelable(true);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        final TextInputEditText gameID = (TextInputEditText) dialog.findViewById(R.id.gameID);
+
+
+        Button button = (Button) dialog.findViewById(R.id.next);
+        Button button2 = (Button) dialog.findViewById(R.id.cancel);
+
+        button.setOnClickListener(v->{
+            if(gameID.getText().toString().trim().equalsIgnoreCase(""))
+            {
+                Toast.makeText(this, "Enter Game Id", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            tv.setText(gameID.getText().toString().trim());
+            dialog.dismiss();
+        });
+
+        button2.setOnClickListener(v->{
+            dialog.dismiss();
+        });
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
     }
 
 }
