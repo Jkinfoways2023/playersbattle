@@ -336,7 +336,7 @@ public class ActionAlertMessage {
         }
     }
 
-    private void successDialog(final JoiningMatchActivity joiningMatchActivity) {
+    public static void successDialog(final JoiningMatchActivity joiningMatchActivity) {
         final Dialog dialog = new Dialog(joiningMatchActivity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_confirmation);

@@ -38,8 +38,7 @@ public class ParticipantsSlotListAdapter extends RecyclerView.Adapter<Participan
 
         i = position+1;
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(i );
-        stringBuilder.append(" => ");
+        stringBuilder.append("=> ");
         stringBuilder.append(participantPojo.getPos_string());
         stringBuilder.append("  ");
         stringBuilder.append(participantPojo.getPubg_id());

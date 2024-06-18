@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.Request;
@@ -242,7 +243,16 @@ public class SlotSelectionActivity extends AppCompatActivity {
                 slotmodel.add(datas);
         }
         }
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(SlotSelectionActivity.this));
+
+        if(slotmodel.get(0).position.size()==1)
+        {
+            binding.recyclerView.setLayoutManager(new GridLayoutManager(SlotSelectionActivity.this,4));
+            binding.topheader.setVisibility(View.GONE);
+        }
+        else{
+            binding.recyclerView.setLayoutManager(new LinearLayoutManager(SlotSelectionActivity.this));
+
+        }
         SlotListAdapter adapter=new SlotListAdapter(slotmodel,SlotSelectionActivity.this,selected_slot);
         binding.recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener((position, action) -> {

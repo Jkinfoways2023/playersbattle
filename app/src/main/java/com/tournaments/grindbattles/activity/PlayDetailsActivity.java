@@ -113,7 +113,6 @@ public class PlayDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_details);
-
         initView();
         initSession();
         initToolbar();
@@ -320,7 +319,7 @@ public class PlayDetailsActivity extends AppCompatActivity {
                 else{
                     participantPojo.setPubg_id(json.getString("user_name"));
                     participantPojo.setSlot(json.getInt("slot"));
-                    participantPojo.setPos_string(String.valueOf(json.getInt("slot"))+json.getString("position"));
+                    participantPojo.setPos_string("Team: "+String.valueOf(json.getInt("slot"))+", Pos: "+json.getString("position")+" - ");
                 }
 
             } catch (JSONException e) {

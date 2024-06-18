@@ -319,6 +319,14 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
         holder.joinBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(context, JoiningMatchActivity.class);
+
+                if(playPojo.getGame_type().equalsIgnoreCase("1"))
+                {
+                    intent = new Intent(context, JoiningMatchActivity.class);
+                }
+                else{
+                    intent = new Intent(context, SlotSelectionActivity.class);
+                }
                 intent.putExtra("matchType", playPojo.getMatch_type());
                 intent.putExtra("matchID", playPojo.getId());
                 intent.putExtra("matchName", playPojo.getTitle());
@@ -329,6 +337,8 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                 intent.putExtra("matchRules", playPojo.getRules());
                 intent.putExtra("ROOM_SIZE_KEY", playPojo.getRoom_size());
                 intent.putExtra("TOTAL_JOINED_KEY", playPojo.getTotal_joined());
+                intent.putExtra("SLOT_KEY", playPojo.getSlot());
+                intent.putExtra("GAME_TYPE", playPojo.getGame_type());
                 context.startActivity(intent);
             }
         });

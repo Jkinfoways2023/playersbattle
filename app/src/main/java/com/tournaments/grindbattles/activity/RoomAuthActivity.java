@@ -107,7 +107,6 @@ public class RoomAuthActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_auth);
-
         initToolbar();
 
         roomIDValue = findViewById(R.id.roomIDValue);

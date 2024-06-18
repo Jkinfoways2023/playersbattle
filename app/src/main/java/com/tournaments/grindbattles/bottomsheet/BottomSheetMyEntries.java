@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -135,6 +136,8 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchTitle);
             builder.appendQueryParameter("user_id", userName);
+
+            Log.e("entryurlisssss",builder.toString());
             jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -149,6 +152,8 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
                                     myEntriesPojo.setUser_id(json.getString("user_id"));
                                     myEntriesPojo.setMatch_id(json.getString("match_id"));
                                     myEntriesPojo.setPubg_id(json.getString("pubg_id"));
+                                    myEntriesPojo.setSlot_position(json.getString("slot_position"));
+                                    myEntriesPojo.setSlot(json.getString("slot"));
                                     //myEntriesPojo.setSlot(json.getString("slot"));
                                     //myEntriesPojo.setIs_canceled(json.getString("is_canceled"));
                                 } catch (JSONException e) {
@@ -185,6 +190,9 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
 
     }
 
+
+
+
     public class MyEntriesAdapter extends RecyclerView.Adapter<MyEntriesAdapter.ViewHolder> {
 
         private Context context;
@@ -212,6 +220,13 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
             TextView textView = holder.ingamename;
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("• ");
+
+
+            if(!myEntriesPojo.getSlot().equalsIgnoreCase("0"))
+            {
+                stringBuilder.append("Team : "+myEntriesPojo.getSlot());
+                stringBuilder.append(",Pos : "+myEntriesPojo.getSlot_position()+" - ");
+            }
             stringBuilder.append(myEntriesPojo.getPubg_id());
             textView.setText(stringBuilder.toString());
 

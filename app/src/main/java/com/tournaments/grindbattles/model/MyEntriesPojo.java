@@ -7,9 +7,18 @@ public class MyEntriesPojo {
     private String match_id;
     private String pubg_id;
     private String slot;
+    private String slot_position;
     private String is_canceled;
 
     public MyEntriesPojo() {
+    }
+
+    public String getSlot_position() {
+        return slot_position;
+    }
+
+    public void setSlot_position(String slot_position) {
+        this.slot_position = slot_position;
     }
 
     public String getId() {

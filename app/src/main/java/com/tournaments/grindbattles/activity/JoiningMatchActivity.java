@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.tournaments.grindbattles.MyApplication;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -93,7 +94,8 @@ public class JoiningMatchActivity extends AppCompatActivity {
     TextView add_player1,add_player2,add_player3,add_player4;
     ImageView edit1,edit2,edit3,edit4;
 
-
+    String access_code_for_private_match="";
+    String encodeGameUserID1="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,12 +135,202 @@ public class JoiningMatchActivity extends AppCompatActivity {
                     new ActionAlertMessage().showJoinMatchAlert(JoiningMatchActivity.this, id, username, name, matchID, type, matchType, privateStatus, entryFee);
                 }
                 else{
-                    Toast.makeText(JoiningMatchActivity.this, "coming soon", Toast.LENGTH_SHORT).show();
+
+                    position1=findViewById(R.id.position1);
+                    position2=findViewById(R.id.position2);
+                    position3=findViewById(R.id.position3);
+                    position4=findViewById(R.id.position4);
+                    team1=findViewById(R.id.team1);
+                    team2=findViewById(R.id.team2);
+                    team3=findViewById(R.id.team3);
+                    team4=findViewById(R.id.team4);
+                    add_player1=findViewById(R.id.add_player1);
+                    add_player2=findViewById(R.id.add_player2);
+                    add_player3=findViewById(R.id.add_player3);
+                    add_player4=findViewById(R.id.add_player4);
+                    edit1=findViewById(R.id.edit1);
+                    edit2=findViewById(R.id.edit2);
+                    edit3=findViewById(R.id.edit3);
+                    edit4=findViewById(R.id.edit4);
+
+                    if(selected_ids.size()==1)
+                    {
+                        Log.e("ifcalled","11");
+                        if(add_player1.getText().toString().trim().equalsIgnoreCase("") || add_player1.getText().toString().trim().equalsIgnoreCase("Player 1"))
+                        {
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Log.e("ifcalled","else 11");
+                            encodeGameUserID1=selected_ids.get(0)+"____"+add_player1.getText().toString().trim();
+                            joinmatch();
+                        }
+
+
+                    }
+                    else if(selected_ids.size()==2)
+                    {
+                        if(add_player1.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 1"))
+                        {
+                            Log.e("ifcalled","21");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                        {
+                            Log.e("ifcalled","22");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Log.e("ifcalled","else 22");
+                            encodeGameUserID1=selected_ids.get(0)+"____"+add_player1.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
+                            joinmatch();
+                        }
+
+                    }
+
+                    else if(selected_ids.size()==3)
+                    {
+
+                        if(add_player1.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 1"))
+                        {
+                            Log.e("if","31");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                        {
+                            Log.e("if","32");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
+                        }
+                         else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 3"))
+                        {
+                            Log.e("if","33");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 3 detail", Toast.LENGTH_SHORT).show();
+                        }
+                         else{
+                            Log.e("if","else 33");
+                             encodeGameUserID1=selected_ids.get(0)+"=>"+add_player1.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(2)+"____"+add_player3.getText().toString().trim();
+                            joinmatch();
+                        }
+
+
+                    }
+                    else if(selected_ids.size()==4){
+                        if(add_player1.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 1"))
+                        {
+                            Log.e("if","41");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
+                        }
+
+                       else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                        {
+                            Log.e("if","42");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 3"))
+                        {
+                            Log.e("if","43");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 3 detail", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(add_player4.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 4"))
+                        {
+                            Log.e("if","44");
+                            Toast.makeText(JoiningMatchActivity.this, "Enter player 4 detail", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Log.e("if","else 44");
+                            encodeGameUserID1=selected_ids.get(0)+"____"+add_player1.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(2)+"____"+add_player3.getText().toString().trim();
+                            encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(3)+"____"+add_player4.getText().toString().trim();
+                            joinmatch();
+                        }
+
+                    }
+
                 }
 
             }
         });
 
+    }
+
+    private void joinmatch()
+    {
+        if (new ExtraOperations().haveNetworkConnection(JoiningMatchActivity.this)) {
+            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL).buildUpon();
+            builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
+            builder.appendQueryParameter("match_id", matchID);
+            builder.appendQueryParameter("user_id", id);
+            builder.appendQueryParameter("username", username);
+            builder.appendQueryParameter("name", name);
+            builder.appendQueryParameter("is_private", privateStatus);
+            builder.appendQueryParameter("accessKey", access_code_for_private_match);
+            builder.appendQueryParameter("pubg_id", encodeGameUserID1);
+            builder.appendQueryParameter("entry_type", type);
+            builder.appendQueryParameter("match_type", matchType);
+            builder.appendQueryParameter("slot_based", "1");
+            builder.appendQueryParameter("selected_slot", String.valueOf(selected_ids.size()));
+            builder.appendQueryParameter("entry_fee", String.valueOf(entryFee));
+            Log.e("urlisssssss",builder.toString());
+            StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("result");
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+
+                        String success = jsonObject1.getString("success");
+                        String msg = jsonObject1.getString("msg");
+
+                        if (success.equals("0")) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(JoiningMatchActivity.this, msg + "", Toast.LENGTH_LONG).show();
+                        } else if (success.equals("1")) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(JoiningMatchActivity.this, msg + "", Toast.LENGTH_LONG).show();
+                        } else if (success.equals("2")) {
+                            progressBar.setVisibility(View.GONE);
+                            ActionAlertMessage.successDialog(JoiningMatchActivity.this);
+                        } else if (success.equals("3")) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(JoiningMatchActivity.this, msg + "", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+//                        parameters.put("fname", firstname);
+//                        parameters.put("lname", lastname);
+//                        parameters.put("username", uname);
+//                        parameters.put("password", md5pass);
+//                        parameters.put("email", eMail);
+//                        parameters.put("mobile", mobileNumber);
+                    return parameters;
+                }
+            };
+            request.setRetryPolicy(new DefaultRetryPolicy(60000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            request.setShouldCache(false);
+            //MySingleton.getInstance(JoiningMatchActivity.this).addToRequestque(request);
+        } else {
+            Toast.makeText(JoiningMatchActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadProfile() {
@@ -244,6 +436,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
         ll2=findViewById(R.id.ll2);
         ll3=findViewById(R.id.ll3);
         ll4=findViewById(R.id.ll4);
+
         position1=findViewById(R.id.position1);
         position2=findViewById(R.id.position2);
         position3=findViewById(R.id.position3);
@@ -283,8 +476,6 @@ public class JoiningMatchActivity extends AppCompatActivity {
             this.matchRules = getIntent().getStringExtra("matchRules");
             this.roomSize = getIntent().getIntExtra("ROOM_SIZE_KEY",100);
             this.totalJoined = getIntent().getIntExtra("TOTAL_JOINED_KEY",0);
-
-
 
 
 
@@ -531,7 +722,22 @@ public class JoiningMatchActivity extends AppCompatActivity {
 
         Button button = (Button) dialog.findViewById(R.id.next);
         Button button2 = (Button) dialog.findViewById(R.id.cancel);
+        final TextView textError = (TextView) dialog.findViewById(R.id.textError);
+        TextView accessCodeInfoText = (TextView) dialog.findViewById(R.id.accessCodeInfoText);
+        final TextInputLayout accessCodeView = (TextInputLayout) dialog.findViewById(R.id.accessCodeView);
+        final TextInputEditText accessCode = (TextInputEditText) dialog.findViewById(R.id.accessCode);
 
+        if (privateStatus.equals("yes")) {
+            if(access_code_for_private_match.equalsIgnoreCase(""))
+            {
+                accessCodeView.setVisibility(View.VISIBLE);
+                accessCodeInfoText.setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            accessCode.setVisibility(View.GONE);
+            accessCodeInfoText.setVisibility(View.GONE);
+        }
         button.setOnClickListener(v->{
             if(gameID.getText().toString().trim().equalsIgnoreCase(""))
             {
