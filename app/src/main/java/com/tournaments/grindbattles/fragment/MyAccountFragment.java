@@ -4,6 +4,7 @@ package com.tournaments.grindbattles.fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
@@ -26,6 +28,7 @@ import com.tournaments.grindbattles.R;
 import com.tournaments.grindbattles.activity.AboutUsActivity;
 import com.tournaments.grindbattles.activity.ContactUsActivity;
 import com.tournaments.grindbattles.activity.FAQActivity;
+import com.tournaments.grindbattles.activity.KycActivity;
 import com.tournaments.grindbattles.activity.MainActivity;
 import com.tournaments.grindbattles.activity.MyProfileActivity;
 import com.tournaments.grindbattles.activity.MyStatisticsActivity;
@@ -59,9 +62,11 @@ import com.google.android.gms.common.api.Status;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.ObjIntConsumer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -106,6 +111,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private String name;
     private String email;
     private String mnumber;
+    private String kyc;
     private String username;
     private String password;
 
@@ -118,7 +124,8 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     private GoogleApiClient googleApiClient;
 
     private SwitchCompat notificationSwitch;
-
+    TextView kycstatus;
+    CardView kyccard;
     public MyAccountFragment() {
         // Required empty public constructor
     }
@@ -185,6 +192,7 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void initSession() {
         session = new SessionManager(getActivity());
         HashMap<String, String> user = session.getUserDetails();
@@ -195,7 +203,26 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         password = user.get(SessionManager.KEY_PASSWORD);
         email = user.get(SessionManager.KEY_EMAIL);
         mnumber = user.get(SessionManager.KEY_MOBILE);
+        kyc = user.get(SessionManager.kyc);
 
+        if(kyc.equalsIgnoreCase("0"))
+        {
+            //pending
+            kycstatus.setVisibility(View.VISIBLE);
+            kyccard.setVisibility(View.VISIBLE);
+
+        }
+        else if(kyc.equalsIgnoreCase("2"))
+        {
+            //completed
+            kycstatus.setText("Kyc Under process");
+            kycstatus.setTextColor(getContext().getColor(R.color.orange_A400));
+            kycstatus.setVisibility(View.VISIBLE);
+        }
+
+        kyccard.setOnClickListener(v->{
+            startActivity(new Intent(getActivity(), KycActivity.class));
+        });
         try {
             if (!firstname.equals("null") && !lastname.equals("null")) {
                 name = firstname + " " + lastname;
@@ -263,6 +290,9 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
         this.rateApp = (CardView) view.findViewById(R.id.rateCard);
         this.moreApp =(CardView) view.findViewById(R.id.moreCard);
         this.notificationSwitch = view.findViewById(R.id.switch_notification);
+
+        kycstatus=view.findViewById(R.id.kycstatus);
+        kyccard=view.findViewById(R.id.kyccard);
     }
 
     private void loadSummery() {

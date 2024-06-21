@@ -45,6 +45,7 @@ import com.tournaments.grindbattles.common.Constant;
 import com.tournaments.grindbattles.common.Toolbox;
 import com.tournaments.grindbattles.model.GamePojo;
 import com.tournaments.grindbattles.model.HtmlGamePojo;
+import com.tournaments.grindbattles.session.SessionManager;
 import com.tournaments.grindbattles.utils.AutoScrollHelper;
 import com.tournaments.grindbattles.utils.ExtraOperations;
 import com.tournaments.grindbattles.utils.MySingleton;
@@ -63,6 +64,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -122,7 +124,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private int page1 = 0;
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
-
+    private SessionManager session;
+    HashMap<String, String> user;
     public GameFragment() {
         // Required empty public constructor
     }
@@ -189,9 +192,17 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.cvWhatsapp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                user = session.getUserDetails();
+                String link = user.get(SessionManager.telegram_link);
+                if(link==null)
+                {
+                    link="https://t.me/GRINDBATTLE"   ;
+                }
                 try {
+                    //"https://t.me/GRINDBATTLE"
+
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                            "https://t.me/GRINDBATTLE"
+                            link
                     ));
                     startActivity(whatsappIntent);
                 } catch (android.content.ActivityNotFoundException ex) {
@@ -492,6 +503,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         this.upOngoingCard = (CardView) view.findViewById(R.id.ongoing);
         this.completedCard = (CardView) view.findViewById(R.id.completed);
         this.mainLayout = (RelativeLayout) view.findViewById(R.id.mainLayout);
+        session = new SessionManager(getContext());
+
 
     }
 

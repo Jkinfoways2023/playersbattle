@@ -115,7 +115,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     private TextView bonusTv;
 
     private SessionManager session;
-    private String id, name, firstname, lastname, email, mnumber, username, password;
+    private String id, name, firstname, lastname, email, mnumber, username, password,kyc,is_block,status;
     private String walletSt, statusSt, orderIdSt, txnIdSt, mid, amountSt, coinSt, remarkSt, modeSt, currencySt, is_active,paytm_pay_login_id,paytm_pay_api_key;
     private int tot_coins, won_coins, bonus_coins;
 
@@ -282,6 +282,9 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         password = user.get(SessionManager.KEY_PASSWORD);
         email = user.get(SessionManager.KEY_EMAIL);
         mnumber = user.get(SessionManager.KEY_MOBILE);
+        kyc=user.get(SessionManager.kyc);
+        is_block=user.get(SessionManager.is_block);
+        status=user.get(SessionManager.status);
     }
 
     private void initView() {
@@ -906,80 +909,103 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
 
 
     public void Redeem(String title, String subtitle, String message, String amount, final String coins, String id, String status, String image, String mode, String currency) {
-        walletSt = title;
-        amountSt = amount;
-        coinSt = coins;
-        currencySt = amount + " " + currency;
-        modeSt = mode;
-        remarkSt = "Redeem From " + title;
-        try {
-            if (is_active.equals("1")) {
-                if (won_coins >= Integer.parseInt(coins)) {
-                    final Dialog dialog = new Dialog(this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.dialog_payout);
-                    dialog.setCancelable(false);
 
-                    final WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                    lp.copyFrom(dialog.getWindow().getAttributes());
-                    lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-                    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-                    //final TextView titleTv = dialog.findViewById(R.id.titleTv);
-                    final TextView noteTv = dialog.findViewById(R.id.noteTv);
-                    final TextInputEditText nameEt = dialog.findViewById(R.id.nameEt);
-                    final TextInputEditText idEt = dialog.findViewById(R.id.idEt);
-                    final AppCompatButton nextBt = dialog.findViewById(R.id.nextBt);
-
-                    //titleTv.setText(title);
-                    noteTv.setText("Note: You can redeem only winning play coin. " + subtitle);
-                    nameEt.setHint("Enter Account Holder Name");
-                    idEt.setHint(message);
-
-                    ((AppCompatButton) dialog.findViewById(R.id.closeBt)).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    ((AppCompatButton) dialog.findViewById(R.id.nextBt)).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            nextBt.setEnabled(false);
-                            if (is_active.equals("1")) {
-                                if (won_coins >= Integer.parseInt(coins)) {
-                                    if (!nameEt.getText().toString().trim().isEmpty() && !idEt.getText().toString().trim().isEmpty()) {
-                                        dialog.dismiss();
-                                        redeemTransactionDetails(nameEt.getText().toString().trim(), idEt.getText().toString().trim(), String.valueOf(System.currentTimeMillis()));
-                                    } else {
-                                        nextBt.setEnabled(true);
-                                        Toast.makeText(MyWalletActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                                    }
-                                } else {
-                                    dialog.dismiss();
-                                    nextBt.setEnabled(true);
-                                    Toast.makeText(MyWalletActivity.this, "You don't have enough won play coin to redeem", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                dialog.dismiss();
-                                nextBt.setEnabled(true);
-                                Toast.makeText(MyWalletActivity.this, "You are not eligible to redeem play coin as your account is not active.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-                    dialog.show();
-                    dialog.getWindow().setAttributes(lp);
-                } else {
-                    Toast.makeText(this, "You don't have enough won play coin to redeem", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "You cant't redeem play coin. Your account isn't active.", Toast.LENGTH_SHORT).show();
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        if(is_block.equalsIgnoreCase("1"))
+        {
+            Toast.makeText(this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
         }
+        else if(status.equalsIgnoreCase("0"))
+        {
+            Toast.makeText(this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+        }
+        else{
+            if(kyc.equalsIgnoreCase("1"))
+            {
+                walletSt = title;
+                amountSt = amount;
+                coinSt = coins;
+                currencySt = amount + " " + currency;
+                modeSt = mode;
+                remarkSt = "Redeem From " + title;
+                try {
+                    if (is_active.equals("1")) {
+                        if (won_coins >= Integer.parseInt(coins)) {
+                            final Dialog dialog = new Dialog(this);
+                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            dialog.setContentView(R.layout.dialog_payout);
+                            dialog.setCancelable(false);
+
+                            final WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                            lp.copyFrom(dialog.getWindow().getAttributes());
+                            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+                            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+                            //final TextView titleTv = dialog.findViewById(R.id.titleTv);
+                            final TextView noteTv = dialog.findViewById(R.id.noteTv);
+                            final TextInputEditText nameEt = dialog.findViewById(R.id.nameEt);
+                            final TextInputEditText idEt = dialog.findViewById(R.id.idEt);
+                            final AppCompatButton nextBt = dialog.findViewById(R.id.nextBt);
+
+                            //titleTv.setText(title);
+                            noteTv.setText("Note: You can redeem only winning play coin. " + subtitle);
+                            nameEt.setHint("Enter Account Holder Name");
+                            idEt.setHint(message);
+
+                            ((AppCompatButton) dialog.findViewById(R.id.closeBt)).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            ((AppCompatButton) dialog.findViewById(R.id.nextBt)).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    nextBt.setEnabled(false);
+                                    if (is_active.equals("1")) {
+                                        if (won_coins >= Integer.parseInt(coins)) {
+                                            if (!nameEt.getText().toString().trim().isEmpty() && !idEt.getText().toString().trim().isEmpty()) {
+                                                dialog.dismiss();
+                                                redeemTransactionDetails(nameEt.getText().toString().trim(), idEt.getText().toString().trim(), String.valueOf(System.currentTimeMillis()));
+                                            } else {
+                                                nextBt.setEnabled(true);
+                                                Toast.makeText(MyWalletActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            dialog.dismiss();
+                                            nextBt.setEnabled(true);
+                                            Toast.makeText(MyWalletActivity.this, "You don't have enough won play coin to redeem", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        dialog.dismiss();
+                                        nextBt.setEnabled(true);
+                                        Toast.makeText(MyWalletActivity.this, "You are not eligible to redeem play coin as your account is not active.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                            dialog.show();
+                            dialog.getWindow().setAttributes(lp);
+                        } else {
+                            Toast.makeText(this, "You don't have enough won play coin to redeem", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(this, "You cant't redeem play coin. Your account isn't active.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(kyc.equalsIgnoreCase("2")){
+                Toast.makeText(this, "Your kyc under review, admin will review soon...", Toast.LENGTH_LONG).show();
+            }
+            else{
+                startActivity(new Intent(MyWalletActivity.this,KycActivity.class));
+                finish();
+            }
+        }
+
+
     }
 
     private void redeemTransactionDetails(String account_holder_name, String account_holder_id, String orderIdSt) {
@@ -994,6 +1020,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         builder.appendQueryParameter("type", modeSt);
         builder.appendQueryParameter("request_name", account_holder_name);
         builder.appendQueryParameter("req_from", account_holder_id);
+        Log.e("urlisssssss",builder.toString());
         StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

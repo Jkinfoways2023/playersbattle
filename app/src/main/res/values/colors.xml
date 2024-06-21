@@ -365,4 +365,6 @@
     <color name="blue">#5B05F9</color>
     <color name="sky">#04D1FE</color>
     <color name="shimmer_gray">#ffdddddd</color>
+
+    <color name="red">#ca0924</color>
 </resources>

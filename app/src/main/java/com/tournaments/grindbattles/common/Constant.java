@@ -61,7 +61,7 @@ public class Constant {
     public static final String MY_STATISTICS_URL = Config.ADMIN_PANEL_URL + "get_my_statistics/?";
     public static final String MY_TRANSACTIONS_URL = Config.ADMIN_PANEL_URL + "get_my_transactions/?";
 
-    public static final String TOP_PLAYERS_URL = Config.ADMIN_PANEL_URL + "get_top_players";
+    public static final String TOP_PLAYERS_URL = Config.ADMIN_PANEL_URL + "get_top_players_new/?";
     public static final String REFERRAL_SUMMARY_URL = Config.ADMIN_PANEL_URL + "get_my_referrals_summary/?";
     public static final String REFERRAL_LIST_URL = Config.ADMIN_PANEL_URL + "get_my_referralsList/?";
     public static final String TOP_LEADERS_URL = Config.ADMIN_PANEL_URL + "get_top_leaders/?";
@@ -71,7 +71,7 @@ public class Constant {
 
     public static final String JOIN_MATCH_URL = Config.ADMIN_PANEL_URL + "join_match_new/?";
 
-    public static final String ADD_TRANSACTION_URL = Config.ADMIN_PANEL_URL + "add_transaction/?";
+    public static final String ADD_TRANSACTION_URL = Config.ADMIN_PANEL_URL + "add_transaction_new/?";
     public static final String ADD_REWARD_URL = Config.ADMIN_PANEL_URL + "add_reward/?";
 
     public static final String GET_ADD_COINS_URL = Config.ADMIN_PANEL_URL + "get_add_coins/?";

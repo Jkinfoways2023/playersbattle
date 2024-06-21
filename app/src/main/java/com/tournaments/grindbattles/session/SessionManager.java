@@ -33,6 +33,10 @@ public class SessionManager {
     private static final String IS_LOGIN = "IsLoggedIn";
     public static final String ACCESS_TOKEN = "ACCESS_TOKEN";
     public static final String upi_gateway_key = "upi_gateway_key";
+    public static final String kyc = "kyc";
+    public static final String is_block = "is_block";
+    public static final String status = "status";
+    public static final String telegram_link = "telegram_link";
 
     // Id (make variable public to access from outside)
     public static final String KEY_ID = "id";
@@ -60,6 +64,7 @@ public class SessionManager {
 
     // Mobile(make variable public to access from outside)
     public static final String KEY_MOBILE = "mobile";
+    public static final String KYC = "KYC";
 
 
     // Constructor
@@ -153,6 +158,11 @@ public class SessionManager {
         user.put(KEY_CODE, pref.getString(KEY_CODE,null));
         user.put(upi_gateway_key, pref.getString(upi_gateway_key,null));
         user.put(KEY_MOBILE, pref.getString(KEY_MOBILE,null));
+        user.put(telegram_link, pref.getString(telegram_link,null));
+        user.put(kyc, pref.getString(kyc,null));
+        user.put(is_block, pref.getString(is_block,null));
+        user.put(status, pref.getString(status,null));
+
         // return user
         return user;
     }

@@ -20,7 +20,7 @@
 
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="305.0dip">
+                android:layout_height="325.0dip">
 
                 <View
                     android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="205.0dip">
+                    android:layout_height="225.0dip">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profileImage"
@@ -60,6 +60,19 @@
                             android:text="My Name"
                             android:textColor="#ff000000"
                             android:textSize="18.0sp" />
+
+                        <TextView
+                            android:id="@+id/kycstatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/lato_black"
+                            android:text="Kyc Required"
+                            android:visibility="gone"
+                            android:textColor="@color/red"
+                            android:textSize="18.0sp" />
+
+
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -301,6 +314,55 @@
                             app:srcCompat="@drawable/ic_navigate" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/kyccard"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5.0dip"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:foreground="?android:selectableItemBackground"
+                    app:cardCornerRadius="3.0dip"
+                    app:cardPreventCornerOverlap="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25.0dip"
+                        android:layout_marginTop="10.0dip"
+                        android:layout_marginRight="25.0dip"
+                        android:layout_marginBottom="10.0dip"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/kycIcon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:tint="#ff3796bc"
+                            app:srcCompat="@drawable/kyc_img" />
+
+                        <TextView
+                            android:id="@+id/kycText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15.0dip"
+                            android:layout_toRightOf="@+id/kycIcon"
+                            android:fontFamily="@font/lato_black"
+                            android:text="Complete your kyc"
+                            android:textSize="17.0sp"
+                            android:textStyle="normal" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            app:srcCompat="@drawable/ic_navigate" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/myWalletCard"

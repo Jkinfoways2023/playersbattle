@@ -82,7 +82,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
     private String firstname;
     private String lastname;
     private String email;
-    private String mnumber;
+    private String mnumber,kyc,is_block,status;
     public String selected_slot;
     ArrayList<String> selected_slots=new ArrayList<>();
     ArrayList<String> selected_positions=new ArrayList<>();
@@ -132,7 +132,18 @@ public class JoiningMatchActivity extends AppCompatActivity {
                 name = firstname+" "+lastname;
                 if(selected_ids.size()==0)
                 {
-                    new ActionAlertMessage().showJoinMatchAlert(JoiningMatchActivity.this, id, username, name, matchID, type, matchType, privateStatus, entryFee);
+                    if(is_block.equalsIgnoreCase("1"))
+                    {
+                        Toast.makeText(JoiningMatchActivity.this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
+                    }
+                    else if(status.equalsIgnoreCase("0"))
+                    {
+                        Toast.makeText(JoiningMatchActivity.this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        new ActionAlertMessage().showJoinMatchAlert(JoiningMatchActivity.this, id, username, name, matchID, type, matchType, privateStatus, entryFee);
+
+                    }
                 }
                 else{
 
@@ -163,7 +174,17 @@ public class JoiningMatchActivity extends AppCompatActivity {
                         else{
                             Log.e("ifcalled","else 11");
                             encodeGameUserID1=selected_ids.get(0)+"____"+add_player1.getText().toString().trim();
-                            joinmatch();
+                            if(is_block.equalsIgnoreCase("1"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else if(status.equalsIgnoreCase("0"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                joinmatch();
+                            }
                         }
 
 
@@ -185,7 +206,17 @@ public class JoiningMatchActivity extends AppCompatActivity {
                             Log.e("ifcalled","else 22");
                             encodeGameUserID1=selected_ids.get(0)+"____"+add_player1.getText().toString().trim();
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
-                            joinmatch();
+                            if(is_block.equalsIgnoreCase("1"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else if(status.equalsIgnoreCase("0"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                joinmatch();
+                            }
                         }
 
                     }
@@ -214,7 +245,17 @@ public class JoiningMatchActivity extends AppCompatActivity {
                              encodeGameUserID1=selected_ids.get(0)+"=>"+add_player1.getText().toString().trim();
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(2)+"____"+add_player3.getText().toString().trim();
-                            joinmatch();
+                            if(is_block.equalsIgnoreCase("1"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else if(status.equalsIgnoreCase("0"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                joinmatch();
+                            }
                         }
 
 
@@ -247,7 +288,17 @@ public class JoiningMatchActivity extends AppCompatActivity {
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(1)+"____"+add_player2.getText().toString().trim();
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(2)+"____"+add_player3.getText().toString().trim();
                             encodeGameUserID1=encodeGameUserID1+"/_/"+selected_ids.get(3)+"____"+add_player4.getText().toString().trim();
-                            joinmatch();
+                            if(is_block.equalsIgnoreCase("1"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else if(status.equalsIgnoreCase("0"))
+                            {
+                                Toast.makeText(JoiningMatchActivity.this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                joinmatch();
+                            }
                         }
 
                     }
@@ -327,7 +378,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
             };
             request.setRetryPolicy(new DefaultRetryPolicy(60000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             request.setShouldCache(false);
-            //MySingleton.getInstance(JoiningMatchActivity.this).addToRequestque(request);
+            MySingleton.getInstance(JoiningMatchActivity.this).addToRequestque(request);
         } else {
             Toast.makeText(JoiningMatchActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
         }
@@ -671,6 +722,9 @@ public class JoiningMatchActivity extends AppCompatActivity {
         password = user.get(SessionManager.KEY_PASSWORD);
         email = user.get(SessionManager.KEY_EMAIL);
         mnumber = user.get(SessionManager.KEY_MOBILE);
+        kyc=user.get(SessionManager.kyc);
+        is_block=user.get(SessionManager.is_block);
+        status=user.get(SessionManager.status);
     }
 
 

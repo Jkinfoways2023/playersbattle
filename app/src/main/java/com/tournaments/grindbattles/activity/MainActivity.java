@@ -226,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
             Uri.Builder builder = Uri.parse(Constant.GET_PROFILE_URL).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("id", id);
+            Log.e("statusissssss",builder.toString());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -240,7 +241,10 @@ public class MainActivity extends AppCompatActivity {
                             balance = jsonObject1.getInt("cur_balance");
                             won = jsonObject1.getInt("won_balance");
                             bonus = jsonObject1.getInt("bonus_balance");
-                            isBlocked = jsonObject1.getString("status");
+                            isBlocked = jsonObject1.getString("is_block");
+                            session.setstringdata(session.kyc,jsonObject1.getString("kyc_status"));
+                            session.setstringdata(session.is_block,jsonObject1.getString("is_block"));
+                            session.setstringdata(session.status,jsonObject1.getString("status"));
                             try {
                                 toolwallet.setText(String.valueOf(balance));
                             }catch (NullPointerException | NumberFormatException e ) {
@@ -424,6 +428,8 @@ public class MainActivity extends AppCompatActivity {
         if (new ExtraOperations().haveNetworkConnection(getApplicationContext())) {
             Uri.Builder builder = Uri.parse(Constant.get_upi_data).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
+
+            Log.e("telegramurl",builder.toString());
             StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -433,6 +439,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray jsonArray=jsonObject.getJSONArray("result");
                         JSONObject jsonObject1=jsonArray.getJSONObject(0);
                         session.setstringdata(session.upi_gateway_key,jsonObject1.getString("upi_gateway_key"));
+                        session.setstringdata(session.telegram_link,jsonObject1.getString("telegram_link"));
                         Log.e("errorisssss","key"+jsonObject1.getString("upi_gateway_key"));
                     } catch (JSONException e) {
                         Log.e("errorisssss", "error"+String.valueOf(e));
