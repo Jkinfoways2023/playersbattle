@@ -440,7 +440,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject1=jsonArray.getJSONObject(0);
                         session.setstringdata(session.upi_gateway_key,jsonObject1.getString("upi_gateway_key"));
                         session.setstringdata(session.telegram_link,jsonObject1.getString("telegram_link"));
-                        Log.e("errorisssss","key"+jsonObject1.getString("upi_gateway_key"));
+                        session.setstringdata(session.telegram_imag_home,jsonObject1.getString("telegram_icon"));
+                        Log.e("urlisssssss","key  "+jsonObject1.getString("upi_gateway_key"));
                     } catch (JSONException e) {
                         Log.e("errorisssss", "error"+String.valueOf(e));
                         e.printStackTrace();

@@ -693,6 +693,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 app:srcCompat="@drawable/ic_telegram"
+                android:id="@+id/image_button"
                 android:tint="@color/white"/>
 
         </LinearLayout>

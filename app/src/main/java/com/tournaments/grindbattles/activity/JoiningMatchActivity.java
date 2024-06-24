@@ -197,7 +197,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
                         }
 
-                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player2.getText().toString().trim().equalsIgnoreCase("Player 2"))
                         {
                             Log.e("ifcalled","22");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
@@ -230,12 +230,12 @@ public class JoiningMatchActivity extends AppCompatActivity {
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
                         }
 
-                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                        else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player2.getText().toString().trim().equalsIgnoreCase("Player 2"))
                         {
                             Log.e("if","32");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
                         }
-                         else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 3"))
+                         else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player3.getText().toString().trim().equalsIgnoreCase("Player 3"))
                         {
                             Log.e("if","33");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 3 detail", Toast.LENGTH_SHORT).show();
@@ -267,17 +267,17 @@ public class JoiningMatchActivity extends AppCompatActivity {
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 1 detail", Toast.LENGTH_SHORT).show();
                         }
 
-                       else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 2"))
+                       else if(add_player2.getText().toString().trim().equalsIgnoreCase("")|| add_player2.getText().toString().trim().equalsIgnoreCase("Player 2"))
                         {
                             Log.e("if","42");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 2 detail", Toast.LENGTH_SHORT).show();
                         }
-                        else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 3"))
+                        else if(add_player3.getText().toString().trim().equalsIgnoreCase("")|| add_player3.getText().toString().trim().equalsIgnoreCase("Player 3"))
                         {
                             Log.e("if","43");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 3 detail", Toast.LENGTH_SHORT).show();
                         }
-                        else if(add_player4.getText().toString().trim().equalsIgnoreCase("")|| add_player1.getText().toString().trim().equalsIgnoreCase("Player 4"))
+                        else if(add_player4.getText().toString().trim().equalsIgnoreCase("")|| add_player4.getText().toString().trim().equalsIgnoreCase("Player 4"))
                         {
                             Log.e("if","44");
                             Toast.makeText(JoiningMatchActivity.this, "Enter player 4 detail", Toast.LENGTH_SHORT).show();
@@ -302,9 +302,7 @@ public class JoiningMatchActivity extends AppCompatActivity {
                         }
 
                     }
-
                 }
-
             }
         });
 
@@ -528,7 +526,12 @@ public class JoiningMatchActivity extends AppCompatActivity {
             this.roomSize = getIntent().getIntExtra("ROOM_SIZE_KEY",100);
             this.totalJoined = getIntent().getIntExtra("TOTAL_JOINED_KEY",0);
 
-
+            if (this.matchType.equals("Free")) {
+                this.entryfee.setText("Free");
+                this.entryfee.setTextColor(Color.parseColor("#1E7E34"));
+            } else {
+                this.entryfee.setText(String.valueOf(entryFee));
+            }
 
             if(getIntent().hasExtra("from"))
             {

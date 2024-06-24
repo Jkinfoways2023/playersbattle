@@ -382,7 +382,6 @@ public class PlayDetailsActivity extends AppCompatActivity {
             slotNo = String.valueOf(extras.getInt("SLOT_KEY"));
             betStatus = extras.getString("BET_STATUS_KEY");
             game_type = extras.getString("GAME_TYPE");
-            Log.e("gametypeisssss 2",game_type);
             toolbar.setTitle((CharSequence) matchTitle);
             this.title.setText(this.matchTitle);
             this.startTime.setText(this.matchStartTime);

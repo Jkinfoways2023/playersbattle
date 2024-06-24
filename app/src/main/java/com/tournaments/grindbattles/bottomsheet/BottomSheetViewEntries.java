@@ -2,6 +2,7 @@ package com.tournaments.grindbattles.bottomsheet;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +89,7 @@ public class BottomSheetViewEntries extends BottomSheetDialogFragment {
         sb.append("Match #");
         sb.append(this.matchTitle);
         textView.setText(sb.toString());
-
+        Log.e("urlisssss",matchID.toString());
         this.recyclerView.setHasFixedSize(true);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -109,21 +110,31 @@ public class BottomSheetViewEntries extends BottomSheetDialogFragment {
             Uri.Builder builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchTitle);
+            Log.e("urlisssss",builder.toString());
             jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
+                            Log.e("objectares", String.valueOf(response));
                             participantPojoList.clear();
                             for(int i = 0; i<response.length(); i++) {
                                 ParticipantPojo participantPojo = new ParticipantPojo();
-                                JSONObject json = null;
+
                                 try {
+                                    JSONObject json = null;
+
                                     json = response.getJSONObject(i);
+                                    Log.e("objectares", String.valueOf(json));
                                     //participantPojo.setId(json.getString("id"));
                                     //participantPojo.setUser_id(json.getString("user_id"));
+                                    participantPojo.setId(json.getString("id"));
+                                    participantPojo.setUser_id(json.getString("user_id"));
+                                    //participantPojo.setMatch_id(json.getString("match_id"));
                                     participantPojo.setPubg_id(json.getString("pubg_id"));
+                                    participantPojo.setSlot_position(json.getString("slot_position"));
                                     participantPojo.setSlot(json.getInt("slot"));
                                 } catch (JSONException e) {
+                                    Log.e("exceptionissss", String.valueOf(e));
                                     e.printStackTrace();
                                 }
                                 participantPojoList.add(participantPojo);

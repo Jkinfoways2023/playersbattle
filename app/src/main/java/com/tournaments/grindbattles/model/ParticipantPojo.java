@@ -3,6 +3,24 @@ package com.tournaments.grindbattles.model;
 public class ParticipantPojo {
     String id, user_id, pubg_id,pos_string;
     int  kills, position,win, prize, slot;
+    private String slot_position;
+    private String match_id;
+
+    public String getSlot_position() {
+        return slot_position;
+    }
+
+    public void setSlot_position(String slot_position) {
+        this.slot_position = slot_position;
+    }
+
+    public String getMatch_id() {
+        return match_id;
+    }
+
+    public void setMatch_id(String match_id) {
+        this.match_id = match_id;
+    }
 
     public ParticipantPojo() {
     }
@@ -17,6 +35,7 @@ public class ParticipantPojo {
         this.win = win;
         this.prize = prize;
         this.slot = slot;
+
     }
 
     public String getPos_string() {

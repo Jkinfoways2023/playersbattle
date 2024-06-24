@@ -123,7 +123,7 @@ public class ActionAlertMessage {
 
     private void joinSoloMatch(final JoiningMatchActivity joiningMatchActivity, final String id, final String username, final String accessKey, final String encodeGameUserID1, final String name, final String matchID, final String entryType, final String matchType, final String privateStatus, final int entryFee) {
         if (new ExtraOperations().haveNetworkConnection(joiningMatchActivity)) {
-            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL).buildUpon();
+            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL_old).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchID);
             builder.appendQueryParameter("user_id", id);
@@ -194,7 +194,7 @@ public class ActionAlertMessage {
 
     private void joinDuoMatch(final JoiningMatchActivity joiningMatchActivity, final String id, final String username, final String accessKey, final String encodeGameUserID1, final String encodeGameUserID2, final String name, final String matchID, final String entryType, final String matchType, final String privateStatus, final int entryFee) {
         if (new ExtraOperations().haveNetworkConnection(joiningMatchActivity)) {
-            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL).buildUpon();
+            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL_old).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchID);
             builder.appendQueryParameter("user_id", id);
@@ -265,7 +265,7 @@ public class ActionAlertMessage {
 
     private void joinSquadMatch(final JoiningMatchActivity joiningMatchActivity, final String id, final String username, final String accessKey, final String encodeGameUserID1, final String encodeGameUserID2, final String encodeGameUserID3, final String encodeGameUserID4, final String name, final String matchID, final String entryType, final String matchType, final String privateStatus, final int entryFee) {
         if (new ExtraOperations().haveNetworkConnection(joiningMatchActivity)) {
-            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL).buildUpon();
+            Uri.Builder builder = Uri.parse(Constant.JOIN_MATCH_URL_old).buildUpon();
             builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
             builder.appendQueryParameter("match_id", matchID);
             builder.appendQueryParameter("user_id", id);

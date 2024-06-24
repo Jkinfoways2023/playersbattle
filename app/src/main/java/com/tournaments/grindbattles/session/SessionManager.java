@@ -37,6 +37,7 @@ public class SessionManager {
     public static final String is_block = "is_block";
     public static final String status = "status";
     public static final String telegram_link = "telegram_link";
+    public static final String telegram_imag_home = "telegram_imag_home";
 
     // Id (make variable public to access from outside)
     public static final String KEY_ID = "id";
@@ -162,6 +163,7 @@ public class SessionManager {
         user.put(kyc, pref.getString(kyc,null));
         user.put(is_block, pref.getString(is_block,null));
         user.put(status, pref.getString(status,null));
+        user.put(telegram_imag_home, pref.getString(telegram_imag_home,null));
 
         // return user
         return user;

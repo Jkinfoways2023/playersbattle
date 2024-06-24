@@ -51,6 +51,11 @@ public class ViewEntriesAdapter extends RecyclerView.Adapter<ViewEntriesAdapter.
         TextView textView = holder.ingamename;
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("• ");
+        if(myEntriesPojo.getSlot()!=0)
+        {
+            stringBuilder.append("Team : "+myEntriesPojo.getSlot());
+            stringBuilder.append(",Pos : "+myEntriesPojo.getSlot_position()+" - ");
+        }
         stringBuilder.append(myEntriesPojo.getPubg_id());
         textView.setText(stringBuilder.toString());
         //holder.cancelButton.setOnClickListener(new BottomSheetMyEntries.CustomList.C2182a(myEntriesPojo));

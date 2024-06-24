@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -71,7 +72,7 @@ public class RoomAuthActivity extends AppCompatActivity implements View.OnClickL
     private TextView textView41;
 
     private int matchEntryFee,matchPerKill,matchWinPrize,roomSize,totalJoined,admin_share;
-    private String matchID, matchMap,matchRules,currentTime,startTime,matchStartTime,matchStatus,matchTitle,matchTopImage,roomID,roomPass,backTag,matchPrizePool,platform,pool_type,slotNo;
+    private String matchID, matchMap,matchRules,currentTime,startTime,matchStartTime,matchStatus,matchTitle,matchTopImage,roomID,roomPass,backTag,matchPrizePool,platform,pool_type,slotNo,game_type;
     private String matchType,matchVersion,entryType,spectateURL,privateStatus,matchIds,joinedStatus,userJoined,isCanceled,canceledDesc,secretCode;
 
     private SessionManager session;
@@ -297,6 +298,8 @@ public class RoomAuthActivity extends AppCompatActivity implements View.OnClickL
                     intent.putExtra("PLATFORM_KEY", platform);
                     intent.putExtra("POOL_TYPE_KEY", pool_type);
                     intent.putExtra("ADMIN_SHARE_KEY", admin_share);
+                    intent.putExtra("GAME_TYPE", game_type);
+                    Log.e("gametypeisssss","roomauth "+game_type);
                     startActivity(intent);
                 }
                 else {
@@ -314,7 +317,15 @@ public class RoomAuthActivity extends AppCompatActivity implements View.OnClickL
             new BottomSheetMyEntries(matchID,id,password,roomID,isCanceled).show(getSupportFragmentManager(), "myBidsBottomSheet");
         }
         else if (v.getId() == R.id.joinButton){
-            Intent intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+            //Intent intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+            Intent intent;
+            if(game_type.equalsIgnoreCase("1"))
+            {
+                intent = new Intent(getApplicationContext(), JoiningMatchActivity.class);
+            }
+            else{
+                intent = new Intent(getApplicationContext(), SlotSelectionActivity.class);
+            }
             intent.putExtra("matchType", matchType);
             intent.putExtra("matchID", matchID);
             intent.putExtra("matchName", matchTitle);
@@ -374,6 +385,7 @@ public class RoomAuthActivity extends AppCompatActivity implements View.OnClickL
             admin_share = extras.getInt("ADMIN_SHARE_KEY");
             slotNo = String.valueOf(extras.getInt("SLOT_KEY"));
             backTag = extras.getString("BACK_TAG_KEY");
+            game_type=extras.getString("GAME_TYPE");
 
             try {
                 if (isCanceled.equals("1")){

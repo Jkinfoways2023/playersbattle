@@ -268,6 +268,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                         intent.putExtra("POOL_TYPE_KEY", playPojo.getPool_type());
                         intent.putExtra("ADMIN_SHARE_KEY", playPojo.getAdmin_share());
                         intent.putExtra("SLOT_KEY", playPojo.getSlot());
+
                         intent.putExtra("GAME_TYPE", playPojo.getGame_type());
                         Log.e("gametypeisssss",playPojo.getGame_type());
                         context.startActivity(intent);
@@ -310,6 +311,8 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.ViewHolder> {
                     intent.putExtra("POOL_TYPE_KEY", playPojo.getPool_type());
                     intent.putExtra("ADMIN_SHARE_KEY", playPojo.getAdmin_share());
                     intent.putExtra("SLOT_KEY", playPojo.getSlot());
+                    intent.putExtra("GAME_TYPE", playPojo.getGame_type());
+                    Log.e("gametypeisssss","play adapter "+playPojo.getGame_type());
                     context.startActivity(intent);
                 }
 

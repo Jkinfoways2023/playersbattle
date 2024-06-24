@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.tournaments.grindbattles.MyApplication;
 import com.tournaments.grindbattles.R;
 import com.tournaments.grindbattles.activity.ContactUsActivity;
@@ -35,12 +39,15 @@ import com.tournaments.grindbattles.activity.MyStatisticsActivity;
 import com.tournaments.grindbattles.activity.MyWalletActivity;
 import com.tournaments.grindbattles.activity.NotificationActivity;
 import com.tournaments.grindbattles.activity.SettingActivity;
+import com.tournaments.grindbattles.activity.SignInActivity;
+import com.tournaments.grindbattles.activity.SplashActivity;
 import com.tournaments.grindbattles.activity.TopPlayersActivity;
 import com.tournaments.grindbattles.activity.game.GameActivity;
 import com.tournaments.grindbattles.activity.my_contest.MyContestActivity;
 import com.tournaments.grindbattles.adapter.GameAdapter;
 import com.tournaments.grindbattles.adapter.SliderHomeAdapter;
 import com.tournaments.grindbattles.adapter.game.HtmlGameAdapter;
+import com.tournaments.grindbattles.common.Config;
 import com.tournaments.grindbattles.common.Constant;
 import com.tournaments.grindbattles.common.Toolbox;
 import com.tournaments.grindbattles.model.GamePojo;
@@ -188,6 +195,53 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
             }
         });
+        //view.findViewById(R.id.image_button).setDra
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                user = session.getUserDetails();
+                ImageView img_float=view.findViewById(R.id.image_button);
+                String link = user.get(SessionManager.telegram_imag_home);
+                if(link!=null)
+                {
+                    Log.e("urlisssssss",Config.FILE_PATH_URL+link);
+                    Glide.with(getContext()).load(Config.FILE_PATH_URL+link)
+                            .apply(new RequestOptions().override(120,120))
+                            .apply(new RequestOptions().placeholder(R.drawable.profile).error(R.drawable.profile))
+                            .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                            .apply(RequestOptions.skipMemoryCacheOf(true))
+                            .into(img_float);
+                }
+                else{
+                    Log.e("urlisssssss","not found");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            user = session.getUserDetails();
+                            ImageView img_float=view.findViewById(R.id.image_button);
+                            String link = user.get(SessionManager.telegram_imag_home);
+                            if(link!=null)
+                            {
+                                Log.e("urlisssssss",Config.FILE_PATH_URL+link);
+                                Glide.with(getContext()).load(Config.FILE_PATH_URL+link)
+                                        .apply(new RequestOptions().override(120,120))
+                                        .apply(new RequestOptions().placeholder(R.drawable.profile).error(R.drawable.profile))
+                                        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                                        .apply(RequestOptions.skipMemoryCacheOf(true))
+                                        .into(img_float);
+                            }
+                            else{
+                                Log.e("urlisssssss","not found");
+                            }
+                        }
+                    }, 1000);
+                }
+            }
+        }, 1000);
+
+
+
 
         view.findViewById(R.id.cvWhatsapp).setOnClickListener(new View.OnClickListener() {
             @Override

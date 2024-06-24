@@ -70,6 +70,7 @@ public class Constant {
     public static final String TOP_REWARDS_URL = Config.ADMIN_PANEL_URL + "get_top_rewards/?";
 
     public static final String JOIN_MATCH_URL = Config.ADMIN_PANEL_URL + "join_match_new/?";
+    public static final String JOIN_MATCH_URL_old= Config.ADMIN_PANEL_URL + "join_match/?";
 
     public static final String ADD_TRANSACTION_URL = Config.ADMIN_PANEL_URL + "add_transaction_new/?";
     public static final String ADD_REWARD_URL = Config.ADMIN_PANEL_URL + "add_reward/?";

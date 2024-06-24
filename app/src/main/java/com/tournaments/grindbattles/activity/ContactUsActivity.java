@@ -268,7 +268,7 @@ public class ContactUsActivity extends AppCompatActivity {
     private void openMessengerConversationUsingUri(Context context, String numberWithCountryCode) {
         try {
             Log.e("numberissssss",numberWithCountryCode);
-            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + numberWithCountryCode+"?text=Hi My Register Mobile No   In GRIND BATTLE Is "+mnumber+" and my registered email is " +email);
+            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=+" + numberWithCountryCode+"?text=Hi My Register Mobile No   In GRIND BATTLE Is "+mnumber+" and my registered email is " +email);
             Intent sendIntent = new Intent(Intent.ACTION_VIEW, uri);
             context.startActivity(sendIntent);
         } catch (NullPointerException | ActivityNotFoundException e) {
