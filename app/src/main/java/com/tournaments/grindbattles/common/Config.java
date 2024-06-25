@@ -37,7 +37,7 @@ public class Config {
 
     // How To Join Room YouTube Link
     public static final String YOUTUBE_CHANNEL_ID = "https://www.youtube.com/@ADOXRYNDERGAMING";
-    public static final String HOW_TO_JOIN_URL = "https://www.youtube.com/watch?v=GtV9tqkj6Wo";
+    public static final String HOW_TO_JOIN_URL = "https://youtu.be/HRAK0ezcKIo?feature=shared";
 
     // Discord Channel Link
     public static final String DISCORD_CHANNEL_ID = "https://discord.gg/6qMeuX";
