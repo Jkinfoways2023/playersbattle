@@ -128,7 +128,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="2dp"
                         android:background="@null"
-                        android:text="Front Side Adharcard"
+                        android:text="Back Side Adharcard"
                         android:paddingStart="10dp"
                         android:singleLine="true"
                         android:textColor="@android:color/black"
