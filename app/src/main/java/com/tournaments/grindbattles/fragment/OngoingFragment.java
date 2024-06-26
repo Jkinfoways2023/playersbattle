@@ -3,6 +3,7 @@ package com.tournaments.grindbattles.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,6 +152,7 @@ public class OngoingFragment extends Fragment {
             builder.appendQueryParameter("game_id", strId);
             builder.appendQueryParameter("user_id", id);
         }
+        Log.e("matchongoing",builder.toString());
 
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
@@ -217,6 +219,7 @@ public class OngoingFragment extends Fragment {
                 livePojo.setUrl(json.getString("url"));
                 livePojo.setAdmin_share(json.getInt("admin_share"));
                 livePojo.setSlot(json.getInt("slot"));
+                livePojo.setGame_type(json.getString("game_type"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -36,6 +37,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.tournaments.grindbattles.adapter.ParticipantsSlotListAdapter;
 import com.tournaments.grindbattles.views.Tools;
 
 import org.json.JSONArray;
@@ -90,7 +92,7 @@ public class LiveDetailsActivity extends AppCompatActivity {
     int admin_share;
     String joinedStatus;
     String platform;
-    String pool_type;
+    String pool_type,game_type;
 
     TextView matchtype;
     NestedScrollView nestedScrollView;
@@ -253,9 +255,17 @@ public class LiveDetailsActivity extends AppCompatActivity {
         loadBtnLL.setVisibility(View.GONE);
         lvParticipants.setVisibility(View.VISIBLE);
         refreshLV.setVisibility(View.VISIBLE);
-        Uri.Builder builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
+        Uri.Builder builder;
+        if(game_type.equalsIgnoreCase("1"))
+        {
+            builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL).buildUpon();
+        }
+        else{
+            builder = Uri.parse(Constant.PARTICIPANTS_MATCH_URL_SLOT).buildUpon();
+        }
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("match_id", matchID);
+        Log.e("participantdetails",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -286,19 +296,38 @@ public class LiveDetailsActivity extends AppCompatActivity {
             JSONObject json = null;
             try {
                 json = response.getJSONObject(i);
-                //participantPojo.setId(json.getString("id"));
-                //participantPojo.setUser_id(json.getString("user_id"));
-                participantPojo.setPubg_id(json.getString("pubg_id"));
-                participantPojo.setSlot(json.getInt("slot"));
+                if(game_type.equalsIgnoreCase("1"))
+                {
+                    participantPojo.setPubg_id(json.getString("pubg_id"));
+                    participantPojo.setSlot(json.getInt("slot"));
+                }
+                else{
+                    participantPojo.setPubg_id(json.getString("user_name"));
+                    participantPojo.setSlot(json.getInt("slot"));
+                    participantPojo.setPos_string("Team: "+String.valueOf(json.getInt("slot"))+", Pos: "+json.getString("position")+" - ");
+                }
             } catch (JSONException e) {
+                Log.e("exceptionissss", String.valueOf(e));
+
                 e.printStackTrace();
             }
             participantPojoList.add(participantPojo);
         }
         if (!participantPojoList.isEmpty()){
-            adapter = new ParticipantsListAdapter(participantPojoList,this);
+           /* adapter = new ParticipantsListAdapter(participantPojoList,this);
             adapter.notifyDataSetChanged();
-            lvParticipants.setAdapter(adapter);
+            lvParticipants.setAdapter(adapter);*/
+            if(game_type.equalsIgnoreCase("1"))
+            {
+                adapter = new ParticipantsListAdapter(participantPojoList,this);
+                adapter.notifyDataSetChanged();
+                lvParticipants.setAdapter(adapter);
+            }
+            else{
+                adapter = new ParticipantsSlotListAdapter(participantPojoList,this);
+                adapter.notifyDataSetChanged();
+                lvParticipants.setAdapter(adapter);
+            }
         }
         else {
             noParticipants.setVisibility(View.VISIBLE);
@@ -339,7 +368,7 @@ public class LiveDetailsActivity extends AppCompatActivity {
             pool_type = extras.getString("POOL_TYPE_KEY");
             admin_share = extras.getInt("ADMIN_SHARE_KEY");
             slotNo = String.valueOf(extras.getInt("SLOT_KEY"));
-
+            game_type = extras.getString("GAME_TYPE");
             toolbar.setTitle((CharSequence) matchTitle);
             this.title.setText(this.matchTitle);
             this.startTime.setText(this.matchStartTime);

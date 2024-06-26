@@ -2,8 +2,16 @@ package com.tournaments.grindbattles.model;
 
 public class LivePojo {
     private String id,game_id,title,time,match_type,version,map,is_private,entry_type,sponsored_by,spectate_url,platform,pool_type;
-    private String match_status,match_id,room_id,room_pass,joined_status,rules,image,match_desc,is_cancel,cancel_reason,game,url;
+    private String match_status,match_id,room_id,room_pass,joined_status,rules,image,match_desc,is_cancel,cancel_reason,game,url,game_type;
     private int entry_fee,per_kill,prize_pool,room_size,total_joined,admin_share,slot;
+
+    public String getGame_type() {
+        return game_type;
+    }
+
+    public void setGame_type(String game_type) {
+        this.game_type = game_type;
+    }
 
     public LivePojo() {
     }

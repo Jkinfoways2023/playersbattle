@@ -219,6 +219,11 @@ public class MyAccountFragment extends Fragment implements View.OnClickListener 
             kycstatus.setTextColor(getContext().getColor(R.color.orange_A400));
             kycstatus.setVisibility(View.VISIBLE);
         }
+        else{
+            kycstatus.setText("Kyc Verified");
+            kycstatus.setTextColor(getContext().getColor(R.color.green_600));
+            kycstatus.setVisibility(View.VISIBLE);
+        }
 
         kyccard.setOnClickListener(v->{
             startActivity(new Intent(getActivity(), KycActivity.class));

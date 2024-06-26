@@ -139,6 +139,7 @@ public class LiveFragment extends androidx.fragment.app.Fragment {
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id",id);
         builder.appendQueryParameter("game_id",strId);
+        Log.e("urilssx",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -203,6 +204,7 @@ public class LiveFragment extends androidx.fragment.app.Fragment {
                 livePojo.setUrl(json.getString("url"));
                 livePojo.setAdmin_share(json.getInt("admin_share"));
                 livePojo.setSlot(json.getInt("slot"));
+                livePojo.setGame_type(json.getString("game_type"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

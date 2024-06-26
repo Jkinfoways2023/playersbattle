@@ -115,7 +115,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
     private TextView bonusTv;
 
     private SessionManager session;
-    private String id, name, firstname, lastname, email, mnumber, username, password,kyc,is_block,status;
+    private String id, name, firstname, lastname, email, mnumber, username, password,kyc,is_block,account_status;
     private String walletSt, statusSt, orderIdSt, txnIdSt, mid, amountSt, coinSt, remarkSt, modeSt, currencySt, is_active,paytm_pay_login_id,paytm_pay_api_key;
     private int tot_coins, won_coins, bonus_coins;
 
@@ -284,7 +284,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         mnumber = user.get(SessionManager.KEY_MOBILE);
         kyc=user.get(SessionManager.kyc);
         is_block=user.get(SessionManager.is_block);
-        status=user.get(SessionManager.status);
+        account_status=user.get(SessionManager.status);
     }
 
     private void initView() {
@@ -914,7 +914,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         {
             Toast.makeText(this, "Account banned contact admin...", Toast.LENGTH_LONG).show();
         }
-        else if(status.equalsIgnoreCase("0"))
+        else if(account_status.equalsIgnoreCase("0"))
         {
             Toast.makeText(this, "Account locked contact admin...", Toast.LENGTH_LONG).show();
         }
@@ -1000,6 +1000,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                 Toast.makeText(this, "Your kyc under review, admin will review soon...", Toast.LENGTH_LONG).show();
             }
             else{
+                Toast.makeText(this, "Complete your kyc to redeem coins...", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MyWalletActivity.this,KycActivity.class));
                 finish();
             }

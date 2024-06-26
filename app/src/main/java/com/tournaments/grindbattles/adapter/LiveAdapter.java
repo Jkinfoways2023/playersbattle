@@ -201,6 +201,7 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
                     intent.putExtra("POOL_TYPE_KEY", livePojo.getPool_type());
                     intent.putExtra("ADMIN_SHARE_KEY", livePojo.getAdmin_share());
                     intent.putExtra("SLOT_KEY", livePojo.getSlot());
+                    intent.putExtra("GAME_TYPE", livePojo.getGame_type());
                     context.startActivity(intent);
                 }
                 else {
