@@ -120,7 +120,7 @@
         <item name="android:textSize">11sp</item>
     </style>
 
-    <style name="MyCustomTabLayout" parent="MyCustomTabLayout">
+    <style name="MyCustomTabLayout">
         <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
     </style>
 

@@ -1,9 +1,17 @@
 package com.tournaments.grindbattles.model;
 
 public class TransactionPojo {
-    private String id,payment_id,user_id,request_name,req_from,req_amount,coins_used,getway_name,remark,status,type,date;
+    private String id,payment_id,user_id,request_name,req_from,req_amount,coins_used,getway_name,remark,status,type,date,order_id;
 
     public TransactionPojo() {
+    }
+
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
     }
 
     public String getId() {

@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.tournaments.grindbattles.R;
@@ -55,7 +58,14 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         try {
             if (transactionPojo.getDate().intern() != PrevDate.intern()){
 
-                holder.date.setText(transactionPojo.getDate());
+
+                if(!transactionPojo.getDate().contains("-"))
+                {
+                    holder.date.setText(convertTimestampToDate(transactionPojo.getDate()));
+                }
+                else{
+                    holder.date.setText(convertDateString(transactionPojo.getDate()));
+                }
                 holder.date.setVisibility(View.VISIBLE);
             }
 
@@ -92,11 +102,52 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.SingleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActionAlertMessage.transactionDetailDialog(context,transactionPojo.getId(), transactionPojo.getUser_id(), transactionPojo.getRequest_name(), transactionPojo.getReq_from(), transactionPojo.getGetway_name(), transactionPojo.getDate(), transactionPojo.getPayment_id(),transactionPojo.getCoins_used(),transactionPojo.getReq_amount(), transactionPojo.getType(),transactionPojo.getStatus(),transactionPojo.getRemark());
+                ActionAlertMessage.transactionDetailDialog(context,transactionPojo.getId(), transactionPojo.getUser_id(), transactionPojo.getRequest_name(), transactionPojo.getReq_from(), transactionPojo.getGetway_name(),  holder.date.getText().toString(), transactionPojo.getPayment_id(),transactionPojo.getCoins_used(),transactionPojo.getReq_amount(), transactionPojo.getType(),transactionPojo.getStatus(),transactionPojo.getRemark());
             }
         });
     }
 
+    public static String convertTimestampToDate(String timestampString) {
+        // Convert the String to a long
+        long timestamp = Long.parseLong(timestampString);
+
+        // Determine if the timestamp is in milliseconds or microseconds
+        if (timestampString.length() > 13) {
+            // Assume timestamp is in microseconds
+            timestamp /= 1000;
+        } else if (timestampString.length() > 10) {
+            // Assume timestamp is in milliseconds
+            // No conversion needed
+        } else {
+            // Assume timestamp is in seconds
+            timestamp *= 1000;
+        }
+
+        // Create a Date object with the timestamp in milliseconds
+        Date date = new Date(timestamp);
+
+        // Format the date to a human-readable format
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+        return formatter.format(date);
+    }
+
+    public static String convertDateString(String dateString) {
+        // Define the input and output date formats
+        SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat outputFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
+
+        try {
+            // Parse the input date string to a Date object
+            Date date = inputFormatter.parse(dateString);
+
+            // Format the Date object to the desired output format
+            return outputFormatter.format(date);
+        } catch (ParseException e) {
+            // Handle the exception if the date string is not parsable
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     public int getItemCount() {

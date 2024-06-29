@@ -1026,6 +1026,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
             @Override
             public void onResponse(String response) {
                 try {
+                    Log.e("responseissss",response);
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("result");
                     JSONObject jsonObject1 = jsonArray.getJSONObject(0);
@@ -1039,6 +1040,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
                         successDialog(msg);
                     }
                 } catch (JSONException e) {
+                    Log.e("exceptioissss", String.valueOf(e));
                     e.printStackTrace();
                 }
             }
@@ -1371,7 +1373,7 @@ public class MyWalletActivity extends AppCompatActivity implements PaytmPaymentT
         try {
             jsonParams.put("loginid", paytm_pay_login_id);
             jsonParams.put("apikey", paytm_pay_api_key);
-            jsonParams.put("orderid", upi_new_order_id);
+                jsonParams.put("orderid", upi_new_order_id);
             jsonParams.put("amt", amount);
             jsonParams.put("trxnote", user.get(SessionManager.KEY_ID));
             jsonParams.put("custmobile", user.get(SessionManager.KEY_MOBILE));

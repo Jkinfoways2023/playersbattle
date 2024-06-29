@@ -205,6 +205,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 String link = user.get(SessionManager.telegram_imag_home);
                 if(link!=null)
                 {
+                    view.findViewById(R.id.cvWhatsapp).setVisibility(View.VISIBLE);
                     Log.e("urlisssssss",Config.FILE_PATH_URL+link);
                     Glide.with(getContext()).load(Config.FILE_PATH_URL+link)
                             .apply(new RequestOptions().override(120,120))
@@ -223,6 +224,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                             String link = user.get(SessionManager.telegram_imag_home);
                             if(link!=null)
                             {
+                                view.findViewById(R.id.cvWhatsapp).setVisibility(View.VISIBLE);
                                 Log.e("urlisssssss",Config.FILE_PATH_URL+link);
                                 Glide.with(getContext()).load(Config.FILE_PATH_URL+link)
                                         .apply(new RequestOptions().override(120,120))

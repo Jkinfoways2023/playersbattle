@@ -8,6 +8,8 @@ import android.app.Fragment;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,6 +117,7 @@ public class TransactionsFragment extends androidx.fragment.app.Fragment {
         Uri.Builder builder = Uri.parse(Constant.MY_TRANSACTIONS_URL).buildUpon();
         builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
         builder.appendQueryParameter("user_id",id);
+        Log.e("transactionlist",builder.toString());
         jsonArrayRequest = new JsonArrayRequest(builder.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -156,6 +159,7 @@ public class TransactionsFragment extends androidx.fragment.app.Fragment {
                 transactionPojo.setType(json.getString("type"));
                 transactionPojo.setDate(json.getString("date"));
                 transactionPojo.setGetway_name(json.getString("getway_name"));
+                transactionPojo.setOrder_id(json.getString("order_id"));
                 transactionPojo.setCoins_used(json.getString("coins_used"));
                 transactionPojo.setStatus(json.getString("status"));
                 transactionPojo.setRequest_name(json.getString("request_name"));

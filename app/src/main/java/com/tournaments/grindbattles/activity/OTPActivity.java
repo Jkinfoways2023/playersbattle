@@ -276,6 +276,7 @@ public class OTPActivity extends AppCompatActivity {
             }
         }
         else {
+            Log.e("codeinvalidate","invalid code 279");
             Snackbar.make(parent_layout,"verification code entered was invalid.", Snackbar.LENGTH_LONG).show();
         }
     }
@@ -291,7 +292,7 @@ public class OTPActivity extends AppCompatActivity {
             public void onVerificationFailed(FirebaseException e) {
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
-                    Log.d(TAG, "Invalid credential: " + e.getLocalizedMessage());
+                    Log.e(TAG, "Invalid credential: " + e.getLocalizedMessage());
                     Snackbar.make(parent_layout,"Invalid OTP", Snackbar.LENGTH_LONG).show();
 
                     et_otp1.setText("");
@@ -308,7 +309,8 @@ public class OTPActivity extends AppCompatActivity {
                     }
                 } else if (e instanceof FirebaseTooManyRequestsException) {
                     // SMS quota exceeded
-                    Log.d(TAG, "SMS Quota exceeded.");
+                    Log.e(TAG, "SMS Quota exceeded.");
+                    Log.e("codeinvalidate","invalid code 313"+e.toString());
                     Snackbar.make(parent_layout,"SMS Quota exceeded.", Snackbar.LENGTH_LONG).show();
 
                     et_otp1.setText("");
@@ -364,6 +366,7 @@ public class OTPActivity extends AppCompatActivity {
                 } else {
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
+                        Log.e("codeinvalidate","invalid code 369");
                         Snackbar.make(parent_layout,"verification code entered was invalid.", Snackbar.LENGTH_LONG).show();
                     }
                 }
@@ -397,9 +400,11 @@ public class OTPActivity extends AppCompatActivity {
             while ((line = rd.readLine()) != null) {
                 stringBuffer.append(line);
             }
+            Log.e("smsexceptioisss","otp => "+line);
             rd.close();
             progressBar.setVisibility(View.GONE);
         } catch (Exception e) {
+            Log.e("smsexceptioisss", String.valueOf(e));
             System.out.println("Error SMS "+e);
             progressBar.setVisibility(View.GONE);
         }
@@ -443,6 +448,7 @@ public class OTPActivity extends AppCompatActivity {
             }
         }
         else{
+            Log.e("codeinvalidate","invalid code 451");
             Snackbar.make(parent_layout,"verification code entered was invalid.",Snackbar.LENGTH_LONG).show();
         }
     }
@@ -463,6 +469,7 @@ public class OTPActivity extends AppCompatActivity {
                 builder.appendQueryParameter("mobile",mobileNumber);
                 builder.appendQueryParameter("device_id",strDeviceID);
                 builder.appendQueryParameter("referer",promocode);
+                Log.e("statussisssss",builder.toString());
                 StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -477,11 +484,13 @@ public class OTPActivity extends AppCompatActivity {
                             if (success.equals("0")) {
                                 onBackPressed();
                                 progressBar.setVisibility(View.GONE);
+                                Log.e("codeinvalidate","invalid code 487");
                                 Snackbar.make(parent_layout,""+msg,Snackbar.LENGTH_LONG).show();
                             }
                             else  if (success.equals("1")) {
                                 onBackPressed();
                                 progressBar.setVisibility(View.GONE);
+                                Log.e("codeinvalidate","invalid code 493");
                                 Snackbar.make(parent_layout,""+msg,Snackbar.LENGTH_LONG).show();
                             }
                             else if (success.equals("2")){
@@ -535,6 +544,7 @@ public class OTPActivity extends AppCompatActivity {
                 builder.appendQueryParameter("country_code",countryCode);
                 builder.appendQueryParameter("mobile",mobileNumber);
                 builder.appendQueryParameter("device_id",strDeviceID);
+                Log.e("statussisssss",builder.toString());
                 StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -549,6 +559,7 @@ public class OTPActivity extends AppCompatActivity {
                             if (success.equals("0")) {
                                 onBackPressed();
                                 progressBar.setVisibility(View.GONE);
+                                Log.e("codeinvalidate","invalid code 562");
                                 Snackbar.make(parent_layout,""+msg,Snackbar.LENGTH_LONG).show();
                             }
                             else  if (success.equals("1")) {
