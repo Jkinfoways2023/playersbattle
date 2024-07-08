@@ -210,8 +210,9 @@ public class UpcomingFragment extends Fragment {
                 playPojo.setPool_type(json.getString("pool_type"));
                 playPojo.setAdmin_share(json.getInt("admin_share"));
                 playPojo.setPool_type(json.getString("pool_type"));
-                playPojo.setSlot(json.getInt("slot"));
                 playPojo.setGame_type(json.getString("game_type"));
+                playPojo.setSlot(json.getInt("slot"));
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

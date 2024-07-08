@@ -173,6 +173,7 @@ public class LiveFragment extends androidx.fragment.app.Fragment {
             JSONObject json = null;
             try {
                 json = response.getJSONObject(i);
+                livePojo.setGame_type(json.getString("game_type"));
                 livePojo.setId(json.getString("id"));
                 livePojo.setTitle(json.getString("title"));
                 livePojo.setTime(json.getString("time"));
@@ -204,8 +205,9 @@ public class LiveFragment extends androidx.fragment.app.Fragment {
                 livePojo.setUrl(json.getString("url"));
                 livePojo.setAdmin_share(json.getInt("admin_share"));
                 livePojo.setSlot(json.getInt("slot"));
-                livePojo.setGame_type(json.getString("game_type"));
+                Log.e("gametypeissssslive","filling => "+livePojo.getGame_type());
             } catch (JSONException e) {
+                Log.e("gametypeissssslive","exception => "+e);
                 e.printStackTrace();
             }
             livePojoList.add(livePojo);

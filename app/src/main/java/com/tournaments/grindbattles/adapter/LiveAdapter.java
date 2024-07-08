@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -170,6 +171,7 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.ViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (new ExtraOperations().haveNetworkConnection(context)) {
+                    Log.e("gametypeissssslive","=> "+livePojo.getGame_type());
                     Intent intent = new Intent(context, LiveDetailsActivity.class);
                     intent.putExtra("EntryFee_KEY", livePojo.getEntry_fee());
                     intent.putExtra("ID_KEY", livePojo.getId());

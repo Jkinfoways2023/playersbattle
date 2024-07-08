@@ -234,6 +234,7 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
                 Uri.Builder builder = Uri.parse(Constant.TIMER_MATCH_URL).buildUpon();
                 builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
                 builder.appendQueryParameter("match_id", matchTitle);
+                Log.e("matchurl",builder.toString());
                 StringRequest request = new StringRequest(Request.Method.POST, builder.toString(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -425,10 +426,11 @@ public class BottomSheetMyEntries extends BottomSheetDialogFragment {
             if (new ExtraOperations().haveNetworkConnection(context)) {
                 Uri.Builder builder = Uri.parse(Constant.UPDATE_MY_ENTRIES_URL).buildUpon();
                 builder.appendQueryParameter("access_key", MyApplication.getInstance().testsignin());
-                builder.appendQueryParameter("id", id);
+                builder.appendQueryParameter("join_id", id);
                 builder.appendQueryParameter("match_id", match_id);
                 builder.appendQueryParameter("user_id", user_id);
                 builder.appendQueryParameter("pubg_id", encodeGameUserID1);
+                Log.e("finalurlissss",builder.toString());
                 StringRequest request = new StringRequest(Request.Method.GET, builder.toString(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

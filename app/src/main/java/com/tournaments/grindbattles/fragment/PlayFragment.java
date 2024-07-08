@@ -203,6 +203,7 @@ public class PlayFragment extends androidx.fragment.app.Fragment {
                 playPojo.setGame_type(json.getString("game_type"));
                 playPojo.setSlot(json.getInt("slot"));
             } catch (JSONException e) {
+                Log.e("Exceptionisssplay", String.valueOf(e));
                 e.printStackTrace();
             }
             playPojoList.add(playPojo);
